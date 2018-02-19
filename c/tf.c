@@ -42,10 +42,13 @@ typedef TF_Output* * tfc_TF_Output_p_p;
 typedef tfc_TF_Operation_p_p * tfc_TF_Operation_p_p_p;
 typedef char** * tfc_S_p_p;
 typedef TF_Function* * tfc_TF_Function_p_p;
-typedef void  tfc__anontype140(void* ,size_t ,void* );
-typedef tfc__anontype140 tfc_deallocator_func;
+typedef const char* * tfc_cchar_p_p;
+typedef long* * tfc_long_p_p;
+typedef tfc_cchar_p_p * tfc_cchar_p_p_p;
+typedef void  tfc__anontype146(void* ,size_t ,void* );
+typedef tfc__anontype146 tfc_deallocator_func;
 typedef tfc_deallocator_func * tfc_deallocator_func_p;
-typedef I tfc__anontype143[20];
+typedef I tfc__anontype149[20];
 static K  __K2i_cast(I* x0,K x1);
 static K  __K2j_cast(J* x0,K x1);
 static K  __K2f_cast(F* x0,K x1);
@@ -123,9 +126,9 @@ K tf_tf_TF_NumDims(K x0) { return tf_tf_TF_NumDims__q(r1(x0));};
 K  tf_tf_TF_Dim__q(K x0,K x1);
 static K tf_tf_TF_Dim__k=(K)0;
 K tf_tf_TF_Dim(K x0,K x1) { return tf_tf_TF_Dim__q(r1(x0),r1(x1));};
-K  tf_tf_TF_TensorByteSize__q(K x0,K x1);
+K  tf_tf_TF_TensorByteSize__q(K x0);
 static K tf_tf_TF_TensorByteSize__k=(K)0;
-K tf_tf_TF_TensorByteSize(K x0,K x1) { return tf_tf_TF_TensorByteSize__q(r1(x0),r1(x1));};
+K tf_tf_TF_TensorByteSize(K x0) { return tf_tf_TF_TensorByteSize__q(r1(x0));};
 K  tf_tf_TF_TensorData__q(K x0);
 static K tf_tf_TF_TensorData__k=(K)0;
 K tf_tf_TF_TensorData(K x0) { return tf_tf_TF_TensorData__q(r1(x0));};
@@ -213,9 +216,6 @@ K tf_tf_TF_SetAttrType(K x0,K x1,K x2) { return tf_tf_TF_SetAttrType__q(r1(x0),r
 K  tf_tf_TF_SetAttrTypeList__q(K x0,K x1,K x2);
 static K tf_tf_TF_SetAttrTypeList__k=(K)0;
 K tf_tf_TF_SetAttrTypeList(K x0,K x1,K x2) { return tf_tf_TF_SetAttrTypeList__q(r1(x0),r1(x1),r1(x2));};
-K  tf_tf_TF_SetAttrFuncName__q(K x0,K x1,K x2);
-static K tf_tf_TF_SetAttrFuncName__k=(K)0;
-K tf_tf_TF_SetAttrFuncName(K x0,K x1,K x2) { return tf_tf_TF_SetAttrFuncName__q(r1(x0),r1(x1),r1(x2));};
 K  tf_tf_TF_SetAttrShape__q(K x0,K x1,K x2);
 static K tf_tf_TF_SetAttrShape__k=(K)0;
 K tf_tf_TF_SetAttrShape(K x0,K x1,K x2) { return tf_tf_TF_SetAttrShape__q(r1(x0),r1(x1),r1(x2));};
@@ -411,12 +411,6 @@ K tf_tf_TF_GraphImportGraphDef(K x0,K x1,K x2,K x3) { return tf_tf_TF_GraphImpor
 K  tf_tf_TF_GraphCopyFunction__q(K x0,K x1,K x2,K x3);
 static K tf_tf_TF_GraphCopyFunction__k=(K)0;
 K tf_tf_TF_GraphCopyFunction(K x0,K x1,K x2,K x3) { return tf_tf_TF_GraphCopyFunction__q(r1(x0),r1(x1),r1(x2),r1(x3));};
-K  tf_tf_TF_GraphNumFunctions__q(K x0);
-static K tf_tf_TF_GraphNumFunctions__k=(K)0;
-K tf_tf_TF_GraphNumFunctions(K x0) { return tf_tf_TF_GraphNumFunctions__q(r1(x0));};
-K  tf_tf_TF_GraphGetFunctions__q(K x0,K x1,K x2);
-static K tf_tf_TF_GraphGetFunctions__k=(K)0;
-K tf_tf_TF_GraphGetFunctions(K x0,K x1,K x2) { return tf_tf_TF_GraphGetFunctions__q(r1(x0),r1(x1),r1(x2));};
 K  tf_tf_TF_OperationToNodeDef__q(K x0,K x1,K x2);
 static K tf_tf_TF_OperationToNodeDef__k=(K)0;
 K tf_tf_TF_OperationToNodeDef(K x0,K x1,K x2) { return tf_tf_TF_OperationToNodeDef__q(r1(x0),r1(x1),r1(x2));};
@@ -424,9 +418,6 @@ K  tf_tf_createWhileParams(TF_WhileParams* x0);
 K  tf_tf_setWhileParams__q(K x0,K x1,K x2);
 static K tf_tf_setWhileParams__k=(K)0;
 K tf_tf_setWhileParams(K x0,K x1,K x2) { return tf_tf_setWhileParams__q(r1(x0),r1(x1),r1(x2));};
-K  tf_tf_TF_NewWhile__q(K x0,K x1,K x2);
-static K tf_tf_TF_NewWhile__k=(K)0;
-K tf_tf_TF_NewWhile(K x0,K x1,K x2) { return tf_tf_TF_NewWhile__q(r1(x0),r1(x1),r1(x2));};
 K  tf_tf_TF_FinishWhile__q(K x0,K x1);
 static K tf_tf_TF_FinishWhile__k=(K)0;
 K tf_tf_TF_FinishWhile(K x0,K x1) { return tf_tf_TF_FinishWhile__q(r1(x0),r1(x1));};
@@ -1144,13 +1135,13 @@ K tf_tf_getBuffer__q(K _x){
  };
 K tf_tf_TF_Version__q(K _x1){
   K __st[1]; int __stc=0; K __v=(K)1;
-  char* _c_res; _Bool _vc_bool1;
+  const char* _c_res; _Bool _vc_bool1;
   
   _c_res=TF_Version();  // C.TF_Version[::]
   // c.res[()]::<val> - no rval, global
   
   // end of statement
-  _vc_bool1=0LL==(J)_c_res;  // =[0LL;<val>]
+  _vc_bool1=0LL==(J)(void*)_c_res;  // =[0LL;<val>]
   if(0==_vc_bool1) goto __l2;  // if/while check condition
   __v=ki(errno); if(0==__v) goto __return;   // C.toK[C.errno]
   __st[__stc++]=__v; __v=kdot(r1(__consts[26]),knk(1,r1(__glob[17]))); if(0==__v) goto __return;   // global .string.strerror
@@ -1161,7 +1152,7 @@ K tf_tf_TF_Version__q(K _x1){
   // end of statement
 
  __l2:
-  __v=__toKS(_c_res); if(0==__v) goto __return;   // C.toK[c.res]
+  __v=__toKS((char*)_c_res); if(0==__v) goto __return;   // C.toK[<val>]
   goto __return;  // return cmd
 
  __return:
@@ -1255,14 +1246,14 @@ K tf_tf_TF_GetCode__q(K _x1){
  };
 K tf_tf_TF_Message__q(K _x1){
   K __st[1]; int __stc=0; K __v=(K)1;
-  char* _c_res; J _vc_j1; _Bool _vc_bool1;
+  const char* _c_res; J _vc_j1; _Bool _vc_bool1;
   
   __v=__K2j_cast(&_vc_j1,r1(_x1)); if(0==__v) goto __return; r0(__v);   // `c.j$<val>
   _c_res=TF_Message((TF_Status*)_vc_j1);  // C.TF_Message[<val>]
   // c.res[()]::<val> - no rval, global
   
   // end of statement
-  _vc_bool1=0LL==(J)_c_res;  // =[0LL;<val>]
+  _vc_bool1=0LL==(J)(void*)_c_res;  // =[0LL;<val>]
   if(0==_vc_bool1) goto __l2;  // if/while check condition
   __v=ki(errno); if(0==__v) goto __return;   // C.toK[C.errno]
   __st[__stc++]=__v; __v=kdot(r1(__consts[26]),knk(1,r1(__glob[17]))); if(0==__v) goto __return;   // global .string.strerror
@@ -1273,7 +1264,7 @@ K tf_tf_TF_Message__q(K _x1){
   // end of statement
 
  __l2:
-  __v=__toKS(_c_res); if(0==__v) goto __return;   // C.toK[c.res]
+  __v=__toKS((char*)_c_res); if(0==__v) goto __return;   // C.toK[<val>]
   goto __return;  // return cmd
 
  __return:
@@ -1422,7 +1413,7 @@ K tf_tf_TF_NewTensor__q(K _dt,K _dims,K _data,K _arg){
   __v=__K2i_cast(&_vc_i5,__v); if(0==__v) goto __return; r0(__v);   // `c.i$<val>
   __v=__K2J_cast(&_vc_J6,r1(_dims)); if(0==__v) goto __return; r0(__v);   // `c.J$<val>
   __v=__K2i_cast(&_vc_i7,r1(_dt)); if(0==__v) goto __return; r0(__v);   // `c.i$<val>
-  _vc_TF_Tensor_p1=TF_NewTensor((TF_DataType)_vc_i7,_vc_J6,_vc_i5,_c_dt,(size_t)_vc_j3,&tf_tf_deallocator,(void*)_vc_j1);  // C.TF_NewTensor[<val>;_vc_J6;_vc_i5;c.dt;<val>;<val>;<val>]
+  _vc_TF_Tensor_p1=TF_NewTensor((TF_DataType)_vc_i7,(long*)_vc_J6,_vc_i5,_c_dt,(size_t)_vc_j3,&tf_tf_deallocator,(void*)_vc_j1);  // C.TF_NewTensor[<val>;<val>;_vc_i5;c.dt;<val>;<val>;<val>]
   __v=kj((J)_vc_TF_Tensor_p1); if(0==__v) goto __return;   // C.toK[<val>]
   r0(_r); _r=__v;  // r:<val> - no rval, local
   
@@ -1451,7 +1442,7 @@ K tf_tf_TF_AllocateTensor__q(K _x1,K _x2,K _x4){
   __v=__K2j_cast(&_vc_j2,__v); if(0==__v) goto __return; r0(__v);   // `c.j$<val>
   __v=__K2J_cast(&_vc_J3,r1(_x2)); if(0==__v) goto __return; r0(__v);   // `c.J$<val>
   __v=__K2i_cast(&_vc_i4,r1(_x1)); if(0==__v) goto __return; r0(__v);   // `c.i$<val>
-  _c_res=TF_AllocateTensor((TF_DataType)_vc_i4,_vc_J3,(I)(tfc_ij)_vc_j2,(size_t)_vc_j1);  // C.TF_AllocateTensor[<val>;_vc_J3;<val>;<val>]
+  _c_res=TF_AllocateTensor((TF_DataType)_vc_i4,(long*)_vc_J3,(I)(tfc_ij)_vc_j2,(size_t)_vc_j1);  // C.TF_AllocateTensor[<val>;<val>;<val>;<val>]
   // c.res[()]::<val> - no rval, global
   
   // end of statement
@@ -1548,13 +1539,12 @@ K tf_tf_TF_Dim__q(K _x1,K _x2){
   while(__stc>0) r0(__st[--__stc]); 
   return __v;
  };
-K tf_tf_TF_TensorByteSize__q(K _x1,K _x2){
+K tf_tf_TF_TensorByteSize__q(K _x1){
   K __st[1]; int __stc=0; K __v=(K)1;
-  size_t _c_res; I _vc_i1; J _vc_j2;
+  size_t _c_res; J _vc_j1;
   
-  __v=__K2i_cast(&_vc_i1,r1(_x2)); if(0==__v) goto __return; r0(__v);   // `c.i$<val>
-  __v=__K2j_cast(&_vc_j2,r1(_x1)); if(0==__v) goto __return; r0(__v);   // `c.j$<val>
-  _c_res=TF_TensorByteSize((TF_Tensor*)_vc_j2,_vc_i1);  // C.TF_TensorByteSize[<val>;_vc_i1]
+  __v=__K2j_cast(&_vc_j1,r1(_x1)); if(0==__v) goto __return; r0(__v);   // `c.j$<val>
+  _c_res=TF_TensorByteSize((TF_Tensor*)_vc_j1);  // C.TF_TensorByteSize[<val>]
   // c.res[()]::<val> - no rval, global
   
   // end of statement
@@ -1562,7 +1552,7 @@ K tf_tf_TF_TensorByteSize__q(K _x1,K _x2){
   goto __return;  // return cmd
 
  __return:
-  r0(_x1); r0(_x2); 
+  r0(_x1); 
   while(__stc>0) r0(__st[--__stc]); 
   return __v;
  };
@@ -1608,7 +1598,7 @@ K tf_tf_TF_StringEncode__q(K _x1,K _x3,K _x5){
  };
 K tf_tf_TF_StringDecode__q(K _src,K _st){
   K __st[1]; int __stc=0; K __v=(K)1;
-  size_t _c_r; size_t _c_l; char* _c_dst; J _vc_j1; J _vc_j4; char* _vc_C5; _Bool _vc_bool1;
+  size_t _c_r; size_t _c_l; const char* _c_dst; J _vc_j1; J _vc_j4; char* _vc_C5; _Bool _vc_bool1;
   
   __v=__K2j_cast(&_vc_j1,r1(_st)); if(0==__v) goto __return; r0(__v);   // `c.j$<val>
   __v=kdot(r1(__consts[20]),knk(1,r1(_src))); if(0==__v) goto __return;   // count[src]
@@ -1626,7 +1616,7 @@ K tf_tf_TF_StringDecode__q(K _src,K _st){
   // end of statement
 
  __l2:
-  __v=__toKC(_c_dst,(J)_c_l); if(0==__v) goto __return;   // C.toK[c.dst;<val>]
+  __v=__toKC((char*)_c_dst,(J)_c_l); if(0==__v) goto __return;   // C.toK[<val>;<val>]
   goto __return;  // return cmd
   r0(__v); 
   // end of statement
@@ -1766,7 +1756,7 @@ K tf_tf_TF_GraphSetTensorShape__q(K _x1,K _x2,K _x3,K _x5){
   __v=__K2J_cast(&_vc_J3,r1(_x3)); if(0==__v) goto __return; r0(__v);   // `c.J$<val>
   __v=__K2TF_Output_cast(&_vc_TF_Output4,r1(_x2)); if(0==__v) goto __return; r0(__v);   // `c.TF_Output$<val>
   __v=__K2j_cast(&_vc_j5,r1(_x1)); if(0==__v) goto __return; r0(__v);   // `c.j$<val>
-  TF_GraphSetTensorShape((TF_Graph*)_vc_j5,_vc_TF_Output4,_vc_J3,(I)(tfc_ij)_vc_j2,(TF_Status*)_vc_j1);  // C.TF_GraphSetTensorShape[<val>;_vc_TF_Output4;_vc_J3;<val>;<val>]
+  TF_GraphSetTensorShape((TF_Graph*)_vc_j5,_vc_TF_Output4,(long*)_vc_J3,(I)(tfc_ij)_vc_j2,(TF_Status*)_vc_j1);  // C.TF_GraphSetTensorShape[<val>;_vc_TF_Output4;<val>;<val>;<val>]
   
   // end of statement
   __v=r1(__consts[5]);  // const ::
@@ -1806,7 +1796,7 @@ K tf_tf_TF_GraphGetTensorShape__q(K _x1,K _x2,K _x3,K _x5){
   __v=__K2J_cast(&_vc_J3,r1(_x3)); if(0==__v) goto __return; r0(__v);   // `c.J$<val>
   __v=__K2TF_Output_cast(&_vc_TF_Output4,r1(_x2)); if(0==__v) goto __return; r0(__v);   // `c.TF_Output$<val>
   __v=__K2j_cast(&_vc_j5,r1(_x1)); if(0==__v) goto __return; r0(__v);   // `c.j$<val>
-  TF_GraphGetTensorShape((TF_Graph*)_vc_j5,_vc_TF_Output4,_vc_J3,(I)(tfc_ij)_vc_j2,(TF_Status*)_vc_j1);  // C.TF_GraphGetTensorShape[<val>;_vc_TF_Output4;_vc_J3;<val>;<val>]
+  TF_GraphGetTensorShape((TF_Graph*)_vc_j5,_vc_TF_Output4,(long*)_vc_J3,(I)(tfc_ij)_vc_j2,(TF_Status*)_vc_j1);  // C.TF_GraphGetTensorShape[<val>;_vc_TF_Output4;<val>;<val>;<val>]
   
   // end of statement
   __v=r1(__consts[5]);  // const ::
@@ -2044,7 +2034,7 @@ K tf_tf_TF_SetAttrStringList__q(K _op,K _name,K _str){
   __v=__K2i_cast(&_vc_i1,__v); if(0==__v) goto __return; r0(__v);   // `c.i$<val>
   __v=__K2S_cast(&_vc_S4,r1(_name)); if(0==__v) goto __return; r0(__v);   // `c.S$<val>
   __v=__K2j_cast(&_vc_j5,r1(_op)); if(0==__v) goto __return; r0(__v);   // `c.j$<val>
-  TF_SetAttrStringList((TF_OperationDescription*)_vc_j5,_vc_S4,(tfc_void_p_p)(void*)_c_a,(size_t*)(void*)_c_l,_vc_i1);  // C.TF_SetAttrStringList[<val>;_vc_S4;<val>;<val>;_vc_i1]
+  TF_SetAttrStringList((TF_OperationDescription*)_vc_j5,_vc_S4,(const void* const*)(void*)_c_a,(size_t*)(void*)_c_l,_vc_i1);  // C.TF_SetAttrStringList[<val>;_vc_S4;<val>;<val>;_vc_i1]
   
   // end of statement
   __v=r1(__consts[5]);  // const ::
@@ -2082,7 +2072,7 @@ K tf_tf_TF_SetAttrIntList__q(K _x1,K _x2,K _x3){
   __v=__K2J_cast(&_vc_J2,r1(_x3)); if(0==__v) goto __return; r0(__v);   // `c.J$<val>
   __v=__K2S_cast(&_vc_S3,r1(_x2)); if(0==__v) goto __return; r0(__v);   // `c.S$<val>
   __v=__K2j_cast(&_vc_j4,r1(_x1)); if(0==__v) goto __return; r0(__v);   // `c.j$<val>
-  TF_SetAttrIntList((TF_OperationDescription*)_vc_j4,_vc_S3,_vc_J2,(I)(tfc_ij)_vc_j1);  // C.TF_SetAttrIntList[<val>;_vc_S3;_vc_J2;<val>]
+  TF_SetAttrIntList((TF_OperationDescription*)_vc_j4,_vc_S3,(long*)_vc_J2,(I)(tfc_ij)_vc_j1);  // C.TF_SetAttrIntList[<val>;_vc_S3;<val>;<val>]
   
   // end of statement
   __v=r1(__consts[5]);  // const ::
@@ -2113,14 +2103,14 @@ K tf_tf_TF_SetAttrFloat__q(K _x1,K _x2,K _x3){
  };
 K tf_tf_TF_SetAttrFloatList__q(K _x1,K _x2,K _x3){
   K __st[1]; int __stc=0; K __v=(K)1;
-  J _vc_j1; F* _vc_F2; char* _vc_S3; J _vc_j4;
+  J _vc_j1; E* _vc_E2; char* _vc_S3; J _vc_j4;
   
   __v=kdot(r1(__consts[20]),knk(1,r1(_x3))); if(0==__v) goto __return;   // count[x3]
   __v=__K2j_cast(&_vc_j1,__v); if(0==__v) goto __return; r0(__v);   // `c.j$<val>
-  __v=__K2F_cast(&_vc_F2,r1(_x3)); if(0==__v) goto __return; r0(__v);   // `c.F$<val>
+  __v=__K2E_cast(&_vc_E2,r1(_x3)); if(0==__v) goto __return; r0(__v);   // `c.E$<val>
   __v=__K2S_cast(&_vc_S3,r1(_x2)); if(0==__v) goto __return; r0(__v);   // `c.S$<val>
   __v=__K2j_cast(&_vc_j4,r1(_x1)); if(0==__v) goto __return; r0(__v);   // `c.j$<val>
-  TF_SetAttrFloatList((TF_OperationDescription*)_vc_j4,_vc_S3,_vc_F2,(I)(tfc_ij)_vc_j1);  // C.TF_SetAttrFloatList[<val>;_vc_S3;_vc_F2;<val>]
+  TF_SetAttrFloatList((TF_OperationDescription*)_vc_j4,_vc_S3,_vc_E2,(I)(tfc_ij)_vc_j1);  // C.TF_SetAttrFloatList[<val>;_vc_S3;_vc_E2;<val>]
   
   // end of statement
   __v=r1(__consts[5]);  // const ::
@@ -2207,26 +2197,6 @@ K tf_tf_TF_SetAttrTypeList__q(K _x1,K _x2,K _x3){
   while(__stc>0) r0(__st[--__stc]); 
   return __v;
  };
-K tf_tf_TF_SetAttrFuncName__q(K _x1,K _x2,K _x3){
-  K __st[1]; int __stc=0; K __v=(K)1;
-  J _vc_j1; char* _vc_S2; char* _vc_S3; J _vc_j4;
-  
-  __v=kdot(r1(__consts[20]),knk(1,r1(_x3))); if(0==__v) goto __return;   // count[x3]
-  __v=__K2j_cast(&_vc_j1,__v); if(0==__v) goto __return; r0(__v);   // `c.j$<val>
-  __v=__K2S_cast(&_vc_S2,r1(_x3)); if(0==__v) goto __return; r0(__v);   // `c.S$<val>
-  __v=__K2S_cast(&_vc_S3,r1(_x2)); if(0==__v) goto __return; r0(__v);   // `c.S$<val>
-  __v=__K2j_cast(&_vc_j4,r1(_x1)); if(0==__v) goto __return; r0(__v);   // `c.j$<val>
-  TF_SetAttrFuncName((TF_OperationDescription*)_vc_j4,_vc_S3,_vc_S2,(I)(tfc_ij)_vc_j1);  // C.TF_SetAttrFuncName[<val>;_vc_S3;_vc_S2;<val>]
-  
-  // end of statement
-  __v=r1(__consts[5]);  // const ::
-  goto __return;  // return cmd
-
- __return:
-  r0(_x1); r0(_x2); r0(_x3); 
-  while(__stc>0) r0(__st[--__stc]); 
-  return __v;
- };
 K tf_tf_TF_SetAttrShape__q(K _x1,K _x2,K _x3){
   K __st[1]; int __stc=0; K __v=(K)1;
   J _vc_j1; J* _vc_J2; char* _vc_S3; J _vc_j4;
@@ -2236,7 +2206,7 @@ K tf_tf_TF_SetAttrShape__q(K _x1,K _x2,K _x3){
   __v=__K2J_cast(&_vc_J2,r1(_x3)); if(0==__v) goto __return; r0(__v);   // `c.J$<val>
   __v=__K2S_cast(&_vc_S3,r1(_x2)); if(0==__v) goto __return; r0(__v);   // `c.S$<val>
   __v=__K2j_cast(&_vc_j4,r1(_x1)); if(0==__v) goto __return; r0(__v);   // `c.j$<val>
-  TF_SetAttrShape((TF_OperationDescription*)_vc_j4,_vc_S3,_vc_J2,(I)(tfc_ij)_vc_j1);  // C.TF_SetAttrShape[<val>;_vc_S3;_vc_J2;<val>]
+  TF_SetAttrShape((TF_OperationDescription*)_vc_j4,_vc_S3,(long*)_vc_J2,(I)(tfc_ij)_vc_j1);  // C.TF_SetAttrShape[<val>;_vc_S3;<val>;<val>]
   
   // end of statement
   __v=r1(__consts[5]);  // const ::
@@ -2249,7 +2219,7 @@ K tf_tf_TF_SetAttrShape__q(K _x1,K _x2,K _x3){
  };
 K tf_tf_TF_SetAttrShapeList__q(K _op,K _name,K _dims){
   K __st[1]; int __stc=0; K __v=(K)1;
-  J* _c_a; J* _c_l; J* _vc_J1; J _c_do1; J _vc_j1; I _vc_i1; char* _vc_S4; J _vc_j5;
+  J* _c_a; I* _c_l; J* _vc_J1; I* _vc_I1; J _c_do1; I _vc_i1; char* _vc_S4; J _vc_j5;
   K _a=r1(__consts[0]); K _l=r1(__consts[0]); K _s=r1(__consts[0]); 
   __v=kdot(r1(__q[14]),knk(2,r1(__q[17]),r1(_dims))); if(0==__v) goto __return;   // each[type;dims]
   __v=kdot(r1(__consts[47]),knk(2,r1(__consts[130]),__v)); if(0==__v) goto __return;   // =[7;<val>]
@@ -2276,8 +2246,8 @@ K tf_tf_TF_SetAttrShapeList__q(K _op,K _name,K _dims){
   _c_a=_vc_J1;  // c.a[()]::_vc_J1 - no rval, global
   
   // end of statement
-  __v=__K2J_cast(&_vc_J1,r1(_l)); if(0==__v) goto __return; r0(__v);   // `c.J$<val>
-  _c_l=_vc_J1;  // c.l[()]::_vc_J1 - no rval, global
+  __v=__K2I_cast(&_vc_I1,r1(_l)); if(0==__v) goto __return; r0(__v);   // `c.I$<val>
+  _c_l=_vc_I1;  // c.l[()]::_vc_I1 - no rval, global
   
   // end of statement
   __v=kdot(r1(__consts[20]),knk(1,r1(_dims))); if(0==__v) goto __return;   // count[dims]
@@ -2293,8 +2263,9 @@ K tf_tf_TF_SetAttrShapeList__q(K _op,K _name,K _dims){
   
   // end of statement
   __v=kdot(r1(__consts[20]),knk(1,r1(_s))); if(0==__v) goto __return;   // count[s]
-  __v=__K2j_cast(&_vc_j1,__v); if(0==__v) goto __return; r0(__v);   // `c.j$<val>
-  _c_l[_c_do1]=_vc_j1;  // c.l[<val>]::_vc_j1 - no rval, global
+  __v=kdot(r1(__consts[50]),knk(2,r1(__consts[132]),__v)); if(0==__v) goto __return;   // $["i";<val>]
+  __v=__K2i_cast(&_vc_i1,__v); if(0==__v) goto __return; r0(__v);   // `c.i$<val>
+  _c_l[_c_do1]=_vc_i1;  // c.l[<val>]::_vc_i1 - no rval, global
   
   // end of statement
   goto __l3;  // jump back to do/while
@@ -2305,7 +2276,7 @@ K tf_tf_TF_SetAttrShapeList__q(K _op,K _name,K _dims){
   __v=__K2i_cast(&_vc_i1,__v); if(0==__v) goto __return; r0(__v);   // `c.i$<val>
   __v=__K2S_cast(&_vc_S4,r1(_name)); if(0==__v) goto __return; r0(__v);   // `c.S$<val>
   __v=__K2j_cast(&_vc_j5,r1(_op)); if(0==__v) goto __return; r0(__v);   // `c.j$<val>
-  TF_SetAttrShapeList((TF_OperationDescription*)_vc_j5,_vc_S4,(J**)(void*)_c_a,_c_l,_vc_i1);  // C.TF_SetAttrShapeList[<val>;_vc_S4;<val>;c.l;_vc_i1]
+  TF_SetAttrShapeList((TF_OperationDescription*)_vc_j5,_vc_S4,(const long int* const*)(void*)_c_a,_c_l,_vc_i1);  // C.TF_SetAttrShapeList[<val>;_vc_S4;<val>;c.l;_vc_i1]
   
   // end of statement
   __v=r1(__consts[5]);  // const ::
@@ -2396,7 +2367,7 @@ K tf_tf_TF_SetAttrTensorShapeProtoList__q(K _op,K _name,K _proto,K _st){
   __v=__K2i_cast(&_vc_i2,__v); if(0==__v) goto __return; r0(__v);   // `c.i$<val>
   __v=__K2S_cast(&_vc_S5,r1(_name)); if(0==__v) goto __return; r0(__v);   // `c.S$<val>
   __v=__K2j_cast(&_vc_j6,r1(_op)); if(0==__v) goto __return; r0(__v);   // `c.j$<val>
-  TF_SetAttrTensorShapeProtoList((TF_OperationDescription*)_vc_j6,_vc_S5,(tfc_void_p_p)(void*)_c_a,(size_t*)(void*)_c_l,_vc_i2,(TF_Status*)_vc_j1);  // C.TF_SetAttrTensorShapeProtoList[<val>;_vc_S5;<val>;<val>;_vc_i2;<val>]
+  TF_SetAttrTensorShapeProtoList((TF_OperationDescription*)_vc_j6,_vc_S5,(const void* const*)(void*)_c_a,(size_t*)(void*)_c_l,_vc_i2,(TF_Status*)_vc_j1);  // C.TF_SetAttrTensorShapeProtoList[<val>;_vc_S5;<val>;<val>;_vc_i2;<val>]
   
   // end of statement
   __v=r1(__consts[5]);  // const ::
@@ -2488,7 +2459,7 @@ K tf_tf_TF_FinishOperation__q(K _x1,K _x2){
  };
 K tf_tf_TF_OperationName__q(K _x1){
   K __st[1]; int __stc=0; K __v=(K)1;
-  char* _c_res; J _vc_j1; _Bool _vc_bool1;
+  const char* _c_res; J _vc_j1; _Bool _vc_bool1;
   
   __v=__K2j_cast(&_vc_j1,r1(_x1)); if(0==__v) goto __return; r0(__v);   // `c.j$<val>
   _c_res=TF_OperationName((TF_Operation*)_vc_j1);  // C.TF_OperationName[<val>]
@@ -2506,7 +2477,7 @@ K tf_tf_TF_OperationName__q(K _x1){
   // end of statement
 
  __l2:
-  __v=__toKS(_c_res); if(0==__v) goto __return;   // C.toK[c.res]
+  __v=__toKS((char*)_c_res); if(0==__v) goto __return;   // C.toK[<val>]
   goto __return;  // return cmd
 
  __return:
@@ -2516,7 +2487,7 @@ K tf_tf_TF_OperationName__q(K _x1){
  };
 K tf_tf_TF_OperationOpType__q(K _x1){
   K __st[1]; int __stc=0; K __v=(K)1;
-  char* _c_res; J _vc_j1; _Bool _vc_bool1;
+  const char* _c_res; J _vc_j1; _Bool _vc_bool1;
   
   __v=__K2j_cast(&_vc_j1,r1(_x1)); if(0==__v) goto __return; r0(__v);   // `c.j$<val>
   _c_res=TF_OperationOpType((TF_Operation*)_vc_j1);  // C.TF_OperationOpType[<val>]
@@ -2534,7 +2505,7 @@ K tf_tf_TF_OperationOpType__q(K _x1){
   // end of statement
 
  __l2:
-  __v=__toKS(_c_res); if(0==__v) goto __return;   // C.toK[c.res]
+  __v=__toKS((char*)_c_res); if(0==__v) goto __return;   // C.toK[<val>]
   goto __return;  // return cmd
 
  __return:
@@ -2544,7 +2515,7 @@ K tf_tf_TF_OperationOpType__q(K _x1){
  };
 K tf_tf_TF_OperationDevice__q(K _x1){
   K __st[1]; int __stc=0; K __v=(K)1;
-  char* _c_res; J _vc_j1; _Bool _vc_bool1;
+  const char* _c_res; J _vc_j1; _Bool _vc_bool1;
   
   __v=__K2j_cast(&_vc_j1,r1(_x1)); if(0==__v) goto __return; r0(__v);   // `c.j$<val>
   _c_res=TF_OperationDevice((TF_Operation*)_vc_j1);  // C.TF_OperationDevice[<val>]
@@ -2562,7 +2533,7 @@ K tf_tf_TF_OperationDevice__q(K _x1){
   // end of statement
 
  __l2:
-  __v=__toKS(_c_res); if(0==__v) goto __return;   // C.toK[c.res]
+  __v=__toKS((char*)_c_res); if(0==__v) goto __return;   // C.toK[<val>]
   goto __return;  // return cmd
 
  __return:
@@ -2899,7 +2870,7 @@ K tf_tf_TF_OperationGetAttrStringList__q(K _x1,K _x2,K _x3,K _x4,K _x6,K _x8){
  };
 K tf_tf_TF_OperationGetAttrInt__q(K _x1,K _x2,K _x4){
   K __st[1]; int __stc=0; K __v=(K)1;
-  J _c_c3; J _vc_j1; char* _vc_S3; J _vc_j4;
+  long _c_c3; J _vc_j1; char* _vc_S3; J _vc_j4;
   
   __v=__K2j_cast(&_vc_j1,r1(_x4)); if(0==__v) goto __return; r0(__v);   // `c.j$<val>
   __v=__K2S_cast(&_vc_S3,r1(_x2)); if(0==__v) goto __return; r0(__v);   // `c.S$<val>
@@ -2907,7 +2878,7 @@ K tf_tf_TF_OperationGetAttrInt__q(K _x1,K _x2,K _x4){
   TF_OperationGetAttrInt((TF_Operation*)_vc_j4,_vc_S3,&_c_c3,(TF_Status*)_vc_j1);  // C.TF_OperationGetAttrInt[<val>;_vc_S3;<val>;<val>]
   
   // end of statement
-  __v=kj(_c_c3); if(0==__v) goto __return;   // C.toK[c.c3]
+  __v=kj((J)_c_c3); if(0==__v) goto __return;   // C.toK[<val>]
   goto __return;  // return cmd
 
  __return:
@@ -2925,7 +2896,7 @@ K tf_tf_TF_OperationGetAttrIntList__q(K _x1,K _x2,K _x3,K _x5){
   __v=__K2J_cast(&_vc_J3,r1(_x3)); if(0==__v) goto __return; r0(__v);   // `c.J$<val>
   __v=__K2S_cast(&_vc_S4,r1(_x2)); if(0==__v) goto __return; r0(__v);   // `c.S$<val>
   __v=__K2j_cast(&_vc_j5,r1(_x1)); if(0==__v) goto __return; r0(__v);   // `c.j$<val>
-  TF_OperationGetAttrIntList((TF_Operation*)_vc_j5,_vc_S4,_vc_J3,(I)(tfc_ij)_vc_j2,(TF_Status*)_vc_j1);  // C.TF_OperationGetAttrIntList[<val>;_vc_S4;_vc_J3;<val>;<val>]
+  TF_OperationGetAttrIntList((TF_Operation*)_vc_j5,_vc_S4,(long*)_vc_J3,(I)(tfc_ij)_vc_j2,(TF_Status*)_vc_j1);  // C.TF_OperationGetAttrIntList[<val>;_vc_S4;<val>;<val>;<val>]
   
   // end of statement
   __v=r1(__consts[5]);  // const ::
@@ -2938,7 +2909,7 @@ K tf_tf_TF_OperationGetAttrIntList__q(K _x1,K _x2,K _x3,K _x5){
  };
 K tf_tf_TF_OperationGetAttrFloat__q(K _x1,K _x2,K _x4){
   K __st[1]; int __stc=0; K __v=(K)1;
-  F _c_c3; J _vc_j1; char* _vc_S3; J _vc_j4;
+  E _c_c3; J _vc_j1; char* _vc_S3; J _vc_j4;
   
   __v=__K2j_cast(&_vc_j1,r1(_x4)); if(0==__v) goto __return; r0(__v);   // `c.j$<val>
   __v=__K2S_cast(&_vc_S3,r1(_x2)); if(0==__v) goto __return; r0(__v);   // `c.S$<val>
@@ -2946,7 +2917,7 @@ K tf_tf_TF_OperationGetAttrFloat__q(K _x1,K _x2,K _x4){
   TF_OperationGetAttrFloat((TF_Operation*)_vc_j4,_vc_S3,&_c_c3,(TF_Status*)_vc_j1);  // C.TF_OperationGetAttrFloat[<val>;_vc_S3;<val>;<val>]
   
   // end of statement
-  __v=kf(_c_c3); if(0==__v) goto __return;   // C.toK[c.c3]
+  __v=kf((F)_c_c3); if(0==__v) goto __return;   // C.toK[<val>]
   goto __return;  // return cmd
 
  __return:
@@ -2956,15 +2927,15 @@ K tf_tf_TF_OperationGetAttrFloat__q(K _x1,K _x2,K _x4){
  };
 K tf_tf_TF_OperationGetAttrFloatList__q(K _x1,K _x2,K _x3,K _x5){
   K __st[1]; int __stc=0; K __v=(K)1;
-  J _vc_j1; J _vc_j2; F* _vc_F3; char* _vc_S4; J _vc_j5;
+  J _vc_j1; J _vc_j2; E* _vc_E3; char* _vc_S4; J _vc_j5;
   
   __v=__K2j_cast(&_vc_j1,r1(_x5)); if(0==__v) goto __return; r0(__v);   // `c.j$<val>
   __v=kdot(r1(__consts[20]),knk(1,r1(_x3))); if(0==__v) goto __return;   // count[x3]
   __v=__K2j_cast(&_vc_j2,__v); if(0==__v) goto __return; r0(__v);   // `c.j$<val>
-  __v=__K2F_cast(&_vc_F3,r1(_x3)); if(0==__v) goto __return; r0(__v);   // `c.F$<val>
+  __v=__K2E_cast(&_vc_E3,r1(_x3)); if(0==__v) goto __return; r0(__v);   // `c.E$<val>
   __v=__K2S_cast(&_vc_S4,r1(_x2)); if(0==__v) goto __return; r0(__v);   // `c.S$<val>
   __v=__K2j_cast(&_vc_j5,r1(_x1)); if(0==__v) goto __return; r0(__v);   // `c.j$<val>
-  TF_OperationGetAttrFloatList((TF_Operation*)_vc_j5,_vc_S4,_vc_F3,(I)(tfc_ij)_vc_j2,(TF_Status*)_vc_j1);  // C.TF_OperationGetAttrFloatList[<val>;_vc_S4;_vc_F3;<val>;<val>]
+  TF_OperationGetAttrFloatList((TF_Operation*)_vc_j5,_vc_S4,_vc_E3,(I)(tfc_ij)_vc_j2,(TF_Status*)_vc_j1);  // C.TF_OperationGetAttrFloatList[<val>;_vc_S4;_vc_E3;<val>;<val>]
   
   // end of statement
   __v=r1(__consts[5]);  // const ::
@@ -3063,7 +3034,7 @@ K tf_tf_TF_OperationGetAttrShape__q(K _x1,K _x2,K _x3,K _x5){
   __v=__K2J_cast(&_vc_J3,r1(_x3)); if(0==__v) goto __return; r0(__v);   // `c.J$<val>
   __v=__K2S_cast(&_vc_S4,r1(_x2)); if(0==__v) goto __return; r0(__v);   // `c.S$<val>
   __v=__K2j_cast(&_vc_j5,r1(_x1)); if(0==__v) goto __return; r0(__v);   // `c.j$<val>
-  TF_OperationGetAttrShape((TF_Operation*)_vc_j5,_vc_S4,_vc_J3,(I)(tfc_ij)_vc_j2,(TF_Status*)_vc_j1);  // C.TF_OperationGetAttrShape[<val>;_vc_S4;_vc_J3;<val>;<val>]
+  TF_OperationGetAttrShape((TF_Operation*)_vc_j5,_vc_S4,(long*)_vc_J3,(I)(tfc_ij)_vc_j2,(TF_Status*)_vc_j1);  // C.TF_OperationGetAttrShape[<val>;_vc_S4;<val>;<val>;<val>]
   
   // end of statement
   __v=r1(__consts[5]);  // const ::
@@ -3088,7 +3059,7 @@ K tf_tf_TF_OperationGetAttrShapeList__q(K _x1,K _x2,K _x3,K _x4,K _x6,K _x8){
   __v=__K2J_cast(&_vc_J6,r1(_x3)); if(0==__v) goto __return; r0(__v);   // `c.J$<val>
   __v=__K2S_cast(&_vc_S7,r1(_x2)); if(0==__v) goto __return; r0(__v);   // `c.S$<val>
   __v=__K2j_cast(&_vc_j8,r1(_x1)); if(0==__v) goto __return; r0(__v);   // `c.j$<val>
-  TF_OperationGetAttrShapeList((TF_Operation*)_vc_j8,_vc_S7,(J**)(void*)_vc_J6,_vc_I5,(I)(tfc_ij)_vc_j4,_vc_J3,(I)(tfc_ij)_vc_j2,(TF_Status*)_vc_j1);  // C.TF_OperationGetAttrShapeList[<val>;_vc_S7;<val>;_vc_I5;<val>;_vc_J3;<val>;<val>]
+  TF_OperationGetAttrShapeList((TF_Operation*)_vc_j8,_vc_S7,(tfc_long_p_p)(void*)_vc_J6,_vc_I5,(I)(tfc_ij)_vc_j4,(long*)_vc_J3,(I)(tfc_ij)_vc_j2,(TF_Status*)_vc_j1);  // C.TF_OperationGetAttrShapeList[<val>;_vc_S7;<val>;_vc_I5;<val>;<val>;<val>;<val>]
   
   // end of statement
   __v=r1(__consts[5]);  // const ::
@@ -3136,25 +3107,23 @@ K tf_tf_TF_OperationGetAttrTensor__q(K _x1,K _x2,K _x4){
   while(__stc>0) r0(__st[--__stc]); 
   return __v;
  };
-K tf_tf_TF_OperationGetAttrTensorList__q(K _x1,K _x2,K _x3,K _x4,K _x6){
+K tf_tf_TF_OperationGetAttrTensorList__q(K _x1,K _x2,K _x3,K _x4,K _x5){
   K __st[1]; int __stc=0; K __v=(K)1;
-  J _vc_j1; J _vc_j2; I* _vc_I3; J* _vc_J4; char* _vc_S5; J _vc_j6;
+  J _vc_j1; I _vc_i2; J* _vc_J3; char* _vc_S4; J _vc_j5;
   
-  __v=__K2j_cast(&_vc_j1,r1(_x6)); if(0==__v) goto __return; r0(__v);   // `c.j$<val>
-  __v=kdot(r1(__consts[20]),knk(1,r1(_x3))); if(0==__v) goto __return;   // count[x3]
-  __v=__K2j_cast(&_vc_j2,__v); if(0==__v) goto __return; r0(__v);   // `c.j$<val>
-  __v=__K2I_cast(&_vc_I3,r1(_x4)); if(0==__v) goto __return; r0(__v);   // `c.I$<val>
-  __v=__K2J_cast(&_vc_J4,r1(_x3)); if(0==__v) goto __return; r0(__v);   // `c.J$<val>
-  __v=__K2S_cast(&_vc_S5,r1(_x2)); if(0==__v) goto __return; r0(__v);   // `c.S$<val>
-  __v=__K2j_cast(&_vc_j6,r1(_x1)); if(0==__v) goto __return; r0(__v);   // `c.j$<val>
-  TF_OperationGetAttrTensorList((TF_Operation*)_vc_j6,_vc_S5,(tfc_TF_Tensor_p_p)(void*)_vc_J4,_vc_I3,(I)(tfc_ij)_vc_j2,(TF_Status*)_vc_j1);  // C.TF_OperationGetAttrTensorList[<val>;_vc_S5;<val>;_vc_I3;<val>;<val>]
+  __v=__K2j_cast(&_vc_j1,r1(_x5)); if(0==__v) goto __return; r0(__v);   // `c.j$<val>
+  __v=__K2i_cast(&_vc_i2,r1(_x4)); if(0==__v) goto __return; r0(__v);   // `c.i$<val>
+  __v=__K2J_cast(&_vc_J3,r1(_x3)); if(0==__v) goto __return; r0(__v);   // `c.J$<val>
+  __v=__K2S_cast(&_vc_S4,r1(_x2)); if(0==__v) goto __return; r0(__v);   // `c.S$<val>
+  __v=__K2j_cast(&_vc_j5,r1(_x1)); if(0==__v) goto __return; r0(__v);   // `c.j$<val>
+  TF_OperationGetAttrTensorList((TF_Operation*)_vc_j5,_vc_S4,(tfc_TF_Tensor_p_p)(void*)_vc_J3,_vc_i2,(TF_Status*)_vc_j1);  // C.TF_OperationGetAttrTensorList[<val>;_vc_S4;<val>;_vc_i2;<val>]
   
   // end of statement
   __v=r1(__consts[5]);  // const ::
   goto __return;  // return cmd
 
  __return:
-  r0(_x1); r0(_x2); r0(_x3); r0(_x4); r0(_x6); 
+  r0(_x1); r0(_x2); r0(_x3); r0(_x4); r0(_x5); 
   while(__stc>0) r0(__st[--__stc]); 
   return __v;
  };
@@ -3334,13 +3303,13 @@ K tf_tf_TF_ImportGraphDefOptionsSetUniquifyPrefix__q(K _x1,K _x2){
  };
 K tf_tf_TF_ImportGraphDefOptionsAddInputMapping__q(K _x1,K _x2,K _x3,K _x4){
   K __st[1]; int __stc=0; K __v=(K)1;
-  TF_Input _vc_TF_Input1; I _vc_i2; char* _vc_S3; J _vc_j4;
+  TF_Output _vc_TF_Output1; I _vc_i2; char* _vc_S3; J _vc_j4;
   
-  __v=__K2TF_Input_cast(&_vc_TF_Input1,r1(_x4)); if(0==__v) goto __return; r0(__v);   // `c.TF_Input$<val>
+  __v=__K2TF_Output_cast(&_vc_TF_Output1,r1(_x4)); if(0==__v) goto __return; r0(__v);   // `c.TF_Output$<val>
   __v=__K2i_cast(&_vc_i2,r1(_x3)); if(0==__v) goto __return; r0(__v);   // `c.i$<val>
   __v=__K2S_cast(&_vc_S3,r1(_x2)); if(0==__v) goto __return; r0(__v);   // `c.S$<val>
   __v=__K2j_cast(&_vc_j4,r1(_x1)); if(0==__v) goto __return; r0(__v);   // `c.j$<val>
-  TF_ImportGraphDefOptionsAddInputMapping((TF_ImportGraphDefOptions*)_vc_j4,_vc_S3,_vc_i2,_vc_TF_Input1);  // C.TF_ImportGraphDefOptionsAddInputMapping[<val>;_vc_S3;_vc_i2;_vc_TF_Input1]
+  TF_ImportGraphDefOptionsAddInputMapping((TF_ImportGraphDefOptions*)_vc_j4,_vc_S3,_vc_i2,_vc_TF_Output1);  // C.TF_ImportGraphDefOptionsAddInputMapping[<val>;_vc_S3;_vc_i2;_vc_TF_Output1]
   
   // end of statement
   __v=r1(__consts[5]);  // const ::
@@ -3545,7 +3514,7 @@ K tf_tf_TF_ImportGraphDefResultsReturnOperations__q(K _r){
  };
 K tf_tf_TF_ImportGraphDefResultsMissingUnusedInputMappings__q(K _r){
   K __st[2]; int __stc=0; K __v=(K)1;
-  I* _c_i; char** _c_c; I _c_n; J _vc_j4; _Bool _vc_bool1; J _c_do1;
+  I* _c_i; tfc_cchar_p_p _c_c; I _c_n; J _vc_j4; _Bool _vc_bool1; J _c_do1;
   K _res=r1(__consts[0]); 
   __v=__K2j_cast(&_vc_j4,r1(_r)); if(0==__v) goto __return; r0(__v);   // `c.j$<val>
   TF_ImportGraphDefResultsMissingUnusedInputMappings((TF_ImportGraphDefResults*)_vc_j4,&_c_n,&_c_c,&_c_i);  // C.TF_ImportGraphDefResultsMissingUnusedInputMappings[<val>;<val>;<val>;<val>]
@@ -3568,7 +3537,7 @@ K tf_tf_TF_ImportGraphDefResultsMissingUnusedInputMappings__q(K _r){
  __l4:
   if(0>=_c_do1)goto __l6; _c_do1-=1;  // do condition
   __v=ki(_c_i[_c_do1]); if(0==__v) goto __return;   // C.toK[<val>]
-  __st[__stc++]=__v; __v=__toKS(_c_c[_c_do1]); if(0==__v) goto __return;   // C.toK[<val>]
+  __st[__stc++]=__v; __v=__toKS((char*)_c_c[_c_do1]); if(0==__v) goto __return;   // C.toK[<val>]
   __v=__enlist(knk(2,__v,__st[__stc-1]));__stc-=1;  if(0==__v) goto __return;   // enlist[<val>;<val>]
   { K __v1=r1(__consts[0]); K __v2=__v; __v = kamend(__consts[58],_res,__v1,r1(__consts[51]),__v2);}; if(0==__v){_res=r1(__consts[0]);goto __return;}; _res=__v;  // res[()],:<val> - no rval, local
   
@@ -3705,44 +3674,6 @@ K tf_tf_TF_GraphCopyFunction__q(K _x1,K _x2,K _x3,K _x4){
   while(__stc>0) r0(__st[--__stc]); 
   return __v;
  };
-K tf_tf_TF_GraphNumFunctions__q(K _x1){
-  K __st[1]; int __stc=0; K __v=(K)1;
-  I _c_res; J _vc_j1;
-  
-  __v=__K2j_cast(&_vc_j1,r1(_x1)); if(0==__v) goto __return; r0(__v);   // `c.j$<val>
-  _c_res=TF_GraphNumFunctions((TF_Graph*)_vc_j1);  // C.TF_GraphNumFunctions[<val>]
-  // c.res[()]::<val> - no rval, global
-  
-  // end of statement
-  __v=ki(_c_res); if(0==__v) goto __return;   // C.toK[c.res]
-  goto __return;  // return cmd
-
- __return:
-  r0(_x1); 
-  while(__stc>0) r0(__st[--__stc]); 
-  return __v;
- };
-K tf_tf_TF_GraphGetFunctions__q(K _x1,K _x2,K _x4){
-  K __st[1]; int __stc=0; K __v=(K)1;
-  I _c_res; J _vc_j1; J _vc_j2; J* _vc_J3; J _vc_j4;
-  
-  __v=__K2j_cast(&_vc_j1,r1(_x4)); if(0==__v) goto __return; r0(__v);   // `c.j$<val>
-  __v=kdot(r1(__consts[20]),knk(1,r1(_x2))); if(0==__v) goto __return;   // count[x2]
-  __v=__K2j_cast(&_vc_j2,__v); if(0==__v) goto __return; r0(__v);   // `c.j$<val>
-  __v=__K2J_cast(&_vc_J3,r1(_x2)); if(0==__v) goto __return; r0(__v);   // `c.J$<val>
-  __v=__K2j_cast(&_vc_j4,r1(_x1)); if(0==__v) goto __return; r0(__v);   // `c.j$<val>
-  _c_res=TF_GraphGetFunctions((TF_Graph*)_vc_j4,(tfc_TF_Function_p_p)(void*)_vc_J3,(I)(tfc_ij)_vc_j2,(TF_Status*)_vc_j1);  // C.TF_GraphGetFunctions[<val>;<val>;<val>;<val>]
-  // c.res[()]::<val> - no rval, global
-  
-  // end of statement
-  __v=ki(_c_res); if(0==__v) goto __return;   // C.toK[c.res]
-  goto __return;  // return cmd
-
- __return:
-  r0(_x1); r0(_x2); r0(_x4); 
-  while(__stc>0) r0(__st[--__stc]); 
-  return __v;
- };
 K tf_tf_TF_OperationToNodeDef__q(K _x1,K _x2,K _x3){
   K __st[1]; int __stc=0; K __v=(K)1;
   J _vc_j1; J _vc_j2; J _vc_j3;
@@ -3874,36 +3805,6 @@ K tf_tf_setWhileParams__q(K _p,K _name,K _val){
 
  __return:
   r0(_p); r0(_name); r0(_val); 
-  while(__stc>0) r0(__st[--__stc]); 
-  return __v;
- };
-K tf_tf_TF_NewWhile__q(K _g,K _i,K _s){
-  K __st[1]; int __stc=0; K __v=(K)1;
-  TF_WhileParams _c_p; J _vc_j1; I _vc_i2; char* _vc_C3; J _vc_j4;
-  K _v=r1(__consts[0]); 
-  __v=tf_b2c_enStruct__q(r1(_i)); if(0==__v) goto __return;   // .b2c.enStruct[i]
-  r0(_v); _v=__v;  // v:<val> - no rval, local
-  
-  // end of statement
-  __v=__K2j_cast(&_vc_j1,r1(_s)); if(0==__v) goto __return; r0(__v);   // `c.j$<val>
-  __v=kdot(r1(__consts[20]),knk(1,r1(_i))); if(0==__v) goto __return;   // count[i]
-  __v=kdot(r1(__consts[50]),knk(2,r1(__consts[132]),__v)); if(0==__v) goto __return;   // $["i";<val>]
-  __v=__K2i_cast(&_vc_i2,__v); if(0==__v) goto __return; r0(__v);   // `c.i$<val>
-  __v=__K2C_cast(&_vc_C3,r1(_v)); if(0==__v) goto __return; r0(__v);   // `c.C$<val>
-  __v=__K2j_cast(&_vc_j4,r1(_g)); if(0==__v) goto __return; r0(__v);   // `c.j$<val>
-  _c_p=TF_NewWhile((TF_Graph*)_vc_j4,(TF_Output*)(void*)_vc_C3,_vc_i2,(TF_Status*)_vc_j1);  // C.TF_NewWhile[<val>;<val>;_vc_i2;<val>]
-  // c.p[()]::<val> - no rval, global
-  
-  // end of statement
-  __v=tf_tf_createWhileParams(&_c_p); if(0==__v) goto __return;   // .tf.createWhileParams[<val>]
-  goto __return;  // return cmd
-  r0(__v); 
-  // end of statement
-  __v=r1(__consts[5]);  // const ::
-  goto __return;  // return cmd
-
- __return:
-  r0(_v); r0(_g); r0(_i); r0(_s); 
   while(__stc>0) r0(__st[--__stc]); 
   return __v;
  };
@@ -4143,7 +4044,7 @@ K tf_tf_TF_GraphToFunction__q(K _g,K _name,K _hash,K _args,K _o,K _d,K _s){
   __v=__K2c_cast(&_vc_c11,r1(_hash)); if(0==__v) goto __return; r0(__v);   // `c.c$<val>
   __v=__K2S_cast(&_vc_S12,r1(_name)); if(0==__v) goto __return; r0(__v);   // `c.S$<val>
   __v=__K2j_cast(&_vc_j13,r1(_g)); if(0==__v) goto __return; r0(__v);   // `c.j$<val>
-  _vc_TF_Function_p1=TF_GraphToFunction((TF_Graph*)_vc_j13,_vc_S12,(unsigned char)_vc_c11,_vc_i10,(tfc_TF_Operation_p_p)(void*)_vc_J9,_vc_i8,(TF_Output*)(void*)_vc_C7,_vc_i6,(TF_Output*)(void*)_vc_C5,_c_s,(TF_FunctionOptions*)_vc_j3,_vc_S2,(TF_Status*)_vc_j1);  // C.TF_GraphToFunction[<val>;_vc_S12;<val>;_vc_i10;<val>;_vc_i8;<val>;_vc_i6;<val>;c.s;<val>;_vc_S2;<val>]
+  _vc_TF_Function_p1=TF_GraphToFunction((TF_Graph*)_vc_j13,_vc_S12,(unsigned char)_vc_c11,_vc_i10,(const TF_Operation* const*)(void*)_vc_J9,_vc_i8,(TF_Output*)(void*)_vc_C7,_vc_i6,(TF_Output*)(void*)_vc_C5,(tfc_cchar_p_p)(void*)_c_s,(TF_FunctionOptions*)_vc_j3,_vc_S2,(TF_Status*)_vc_j1);  // C.TF_GraphToFunction[<val>;_vc_S12;<val>;_vc_i10;<val>;_vc_i8;<val>;_vc_i6;<val>;<val>;<val>;_vc_S2;<val>]
   __v=kj((J)_vc_TF_Function_p1); if(0==__v) goto __return;   // C.toK[<val>]
   goto __return;  // return cmd
   r0(__v); 
@@ -4316,7 +4217,7 @@ K tf_tf_TF_LoadSessionFromSavedModel__q(K _sopt,K _ropt,K _dir,K _tags,K _g,K _g
   __v=__K2S_cast(&_vc_S6,r1(_dir)); if(0==__v) goto __return; r0(__v);   // `c.S$<val>
   __v=__K2j_cast(&_vc_j7,r1(_ropt)); if(0==__v) goto __return; r0(__v);   // `c.j$<val>
   __v=__K2j_cast(&_vc_j8,r1(_sopt)); if(0==__v) goto __return; r0(__v);   // `c.j$<val>
-  _vc_TF_Session_p1=TF_LoadSessionFromSavedModel((TF_SessionOptions*)_vc_j8,(TF_Buffer*)_vc_j7,_vc_S6,(char**)(void*)_c_a,_vc_i4,(TF_Graph*)_vc_j3,(TF_Buffer*)_vc_j2,(TF_Status*)_vc_j1);  // C.TF_LoadSessionFromSavedModel[<val>;<val>;_vc_S6;<val>;_vc_i4;<val>;<val>;<val>]
+  _vc_TF_Session_p1=TF_LoadSessionFromSavedModel((TF_SessionOptions*)_vc_j8,(TF_Buffer*)_vc_j7,_vc_S6,(tfc_cchar_p_p)(void*)_c_a,_vc_i4,(TF_Graph*)_vc_j3,(TF_Buffer*)_vc_j2,(TF_Status*)_vc_j1);  // C.TF_LoadSessionFromSavedModel[<val>;<val>;_vc_S6;<val>;_vc_i4;<val>;<val>;<val>]
   __v=kj((J)_vc_TF_Session_p1); if(0==__v) goto __return;   // C.toK[<val>]
   goto __return;  // return cmd
   r0(__v); 
@@ -4399,7 +4300,7 @@ K tf_tf_TF_SessionRun__q(K _sess,K _ropts,K _inp,K _out,K _ops,K _mdata,K _st){
   __v=__K2C_cast(&_vc_C10,r1(_ii)); if(0==__v) goto __return; r0(__v);   // `c.C$<val>
   __v=__K2j_cast(&_vc_j11,r1(_ropts)); if(0==__v) goto __return; r0(__v);   // `c.j$<val>
   __v=__K2j_cast(&_vc_j12,r1(_sess)); if(0==__v) goto __return; r0(__v);   // `c.j$<val>
-  TF_SessionRun((TF_Session*)_vc_j12,(TF_Buffer*)_vc_j11,(TF_Output*)(void*)_vc_C10,(tfc_TF_Tensor_p_p)(void*)_vc_J9,_vc_i8,(TF_Output*)(void*)_vc_C7,(tfc_TF_Tensor_p_p)(void*)_vc_J6,_vc_i5,(tfc_TF_Operation_p_p)(void*)_vc_J4,_vc_i3,(TF_Buffer*)_vc_j2,(TF_Status*)_vc_j1);  // C.TF_SessionRun[<val>;<val>;<val>;<val>;_vc_i8;<val>;<val>;_vc_i5;<val>;_vc_i3;<val>;<val>]
+  TF_SessionRun((TF_Session*)_vc_j12,(TF_Buffer*)_vc_j11,(TF_Output*)(void*)_vc_C10,(tfc_TF_Tensor_p_p)(void*)_vc_J9,_vc_i8,(TF_Output*)(void*)_vc_C7,(tfc_TF_Tensor_p_p)(void*)_vc_J6,_vc_i5,(const TF_Operation* const*)(void*)_vc_J4,_vc_i3,(TF_Buffer*)_vc_j2,(TF_Status*)_vc_j1);  // C.TF_SessionRun[<val>;<val>;<val>;<val>;_vc_i8;<val>;<val>;_vc_i5;<val>;_vc_i3;<val>;<val>]
   
   // end of statement
   __v=r1(__consts[5]);  // const ::
@@ -4439,7 +4340,7 @@ K tf_tf_TF_SessionPRunSetup__q(K _sess,K _inp,K _out,K _ops,K _st){
   __v=__K2i_cast(&_vc_i7,__v); if(0==__v) goto __return; r0(__v);   // `c.i$<val>
   __v=__K2C_cast(&_vc_C8,r1(_ii)); if(0==__v) goto __return; r0(__v);   // `c.C$<val>
   __v=__K2j_cast(&_vc_j9,r1(_sess)); if(0==__v) goto __return; r0(__v);   // `c.j$<val>
-  TF_SessionPRunSetup((TF_Session*)_vc_j9,(TF_Output*)(void*)_vc_C8,_vc_i7,(TF_Output*)(void*)_vc_C6,_vc_i5,(tfc_TF_Operation_p_p)(void*)_vc_J4,_vc_i3,_c_p,(TF_Status*)_vc_j1);  // C.TF_SessionPRunSetup[<val>;<val>;_vc_i7;<val>;_vc_i5;<val>;_vc_i3;c.p;<val>]
+  TF_SessionPRunSetup((TF_Session*)_vc_j9,(TF_Output*)(void*)_vc_C8,_vc_i7,(TF_Output*)(void*)_vc_C6,_vc_i5,(const TF_Operation* const*)(void*)_vc_J4,_vc_i3,(tfc_cchar_p_p)(void*)_c_p,(TF_Status*)_vc_j1);  // C.TF_SessionPRunSetup[<val>;<val>;_vc_i7;<val>;_vc_i5;<val>;_vc_i3;<val>;<val>]
   
   // end of statement
   __v=kj((J)_c_p[0]); if(0==__v) goto __return;   // C.toK[<val>]
@@ -4489,7 +4390,7 @@ K tf_tf_TF_SessionPRun__q(K _sess,K _hh,K _inp,K _out,K _ops,K _st){
   __v=__K2C_cast(&_vc_C9,r1(_ii)); if(0==__v) goto __return; r0(__v);   // `c.C$<val>
   __v=__K2j_cast(&_vc_j10,r1(_hh)); if(0==__v) goto __return; r0(__v);   // `c.j$<val>
   __v=__K2j_cast(&_vc_j11,r1(_sess)); if(0==__v) goto __return; r0(__v);   // `c.j$<val>
-  TF_SessionPRun((TF_Session*)_vc_j11,(char*)_vc_j10,(TF_Output*)(void*)_vc_C9,(tfc_TF_Tensor_p_p)(void*)_vc_J8,_vc_i7,(TF_Output*)(void*)_vc_C6,(tfc_TF_Tensor_p_p)(void*)_vc_J5,_vc_i4,(tfc_TF_Operation_p_p)(void*)_vc_J3,_vc_i2,(TF_Status*)_vc_j1);  // C.TF_SessionPRun[<val>;<val>;<val>;<val>;_vc_i7;<val>;<val>;_vc_i4;<val>;_vc_i2;<val>]
+  TF_SessionPRun((TF_Session*)_vc_j11,(char*)_vc_j10,(TF_Output*)(void*)_vc_C9,(tfc_TF_Tensor_p_p)(void*)_vc_J8,_vc_i7,(TF_Output*)(void*)_vc_C6,(tfc_TF_Tensor_p_p)(void*)_vc_J5,_vc_i4,(const TF_Operation* const*)(void*)_vc_J3,_vc_i2,(TF_Status*)_vc_j1);  // C.TF_SessionPRun[<val>;<val>;<val>;<val>;_vc_i7;<val>;<val>;_vc_i4;<val>;_vc_i2;<val>]
   
   // end of statement
   __v=r1(__consts[5]);  // const ::
@@ -4569,7 +4470,7 @@ K tf_tf_TF_DeviceListCount__q(K _x1){
  };
 K tf_tf_TF_DeviceListName__q(K _x1,K _x2,K _x3){
   K __st[1]; int __stc=0; K __v=(K)1;
-  char* _c_res; J _vc_j1; I _vc_i2; J _vc_j3;
+  const char* _c_res; J _vc_j1; I _vc_i2; J _vc_j3;
   
   __v=__K2j_cast(&_vc_j1,r1(_x3)); if(0==__v) goto __return; r0(__v);   // `c.j$<val>
   __v=__K2i_cast(&_vc_i2,r1(_x2)); if(0==__v) goto __return; r0(__v);   // `c.i$<val>
@@ -4578,7 +4479,7 @@ K tf_tf_TF_DeviceListName__q(K _x1,K _x2,K _x3){
   // c.res[()]::<val> - no rval, global
   
   // end of statement
-  __v=__toKS(_c_res); if(0==__v) goto __return;   // C.toK[c.res]
+  __v=__toKS((char*)_c_res); if(0==__v) goto __return;   // C.toK[<val>]
   goto __return;  // return cmd
 
  __return:
@@ -4588,7 +4489,7 @@ K tf_tf_TF_DeviceListName__q(K _x1,K _x2,K _x3){
  };
 K tf_tf_TF_DeviceListType__q(K _x1,K _x2,K _x3){
   K __st[1]; int __stc=0; K __v=(K)1;
-  char* _c_res; J _vc_j1; I _vc_i2; J _vc_j3;
+  const char* _c_res; J _vc_j1; I _vc_i2; J _vc_j3;
   
   __v=__K2j_cast(&_vc_j1,r1(_x3)); if(0==__v) goto __return; r0(__v);   // `c.j$<val>
   __v=__K2i_cast(&_vc_i2,r1(_x2)); if(0==__v) goto __return; r0(__v);   // `c.i$<val>
@@ -4597,7 +4498,7 @@ K tf_tf_TF_DeviceListType__q(K _x1,K _x2,K _x3){
   // c.res[()]::<val> - no rval, global
   
   // end of statement
-  __v=__toKS(_c_res); if(0==__v) goto __return;   // C.toK[c.res]
+  __v=__toKS((char*)_c_res); if(0==__v) goto __return;   // C.toK[<val>]
   goto __return;  // return cmd
 
  __return:
@@ -4720,8 +4621,8 @@ static K tf__cnstInit() {
 static K tf__getLib(K x) {
   K k=(K)0, v=(K)0, k1=(K)0, v1=(K)0;
   if(0==__ginited) { K res=tf__init((K)0); if((0==res)||(-128==res->t)) return res; r0(res); };
-  k=ktn(KS,147); v=ktn(0,147);
-  k1=ktn(KS,1); v1=ktn(KI,1);
+  k=ktn(KS,143); v=ktn(0,143);
+  k1=ktn(KS,1); v1=ktn(KJ,1);
   kS(k)[0]=ss(".tf.getBuffer"); kK(v)[0]=r1(tf_tf_getBuffer__k);
   kS(k)[1]=ss(".tf.TF_Version"); kK(v)[1]=r1(tf_tf_TF_Version__k);
   kS(k)[2]=ss(".tf.TF_DataTypeSize"); kK(v)[2]=r1(tf_tf_TF_DataTypeSize__k);
@@ -4771,105 +4672,101 @@ static K tf__getLib(K x) {
   kS(k)[46]=ss(".tf.TF_SetAttrBoolList"); kK(v)[46]=r1(tf_tf_TF_SetAttrBoolList__k);
   kS(k)[47]=ss(".tf.TF_SetAttrType"); kK(v)[47]=r1(tf_tf_TF_SetAttrType__k);
   kS(k)[48]=ss(".tf.TF_SetAttrTypeList"); kK(v)[48]=r1(tf_tf_TF_SetAttrTypeList__k);
-  kS(k)[49]=ss(".tf.TF_SetAttrFuncName"); kK(v)[49]=r1(tf_tf_TF_SetAttrFuncName__k);
-  kS(k)[50]=ss(".tf.TF_SetAttrShape"); kK(v)[50]=r1(tf_tf_TF_SetAttrShape__k);
-  kS(k)[51]=ss(".tf.TF_SetAttrShapeList"); kK(v)[51]=r1(tf_tf_TF_SetAttrShapeList__k);
-  kS(k)[52]=ss(".tf.TF_SetAttrTensorShapeProto"); kK(v)[52]=r1(tf_tf_TF_SetAttrTensorShapeProto__k);
-  kS(k)[53]=ss(".tf.TF_SetAttrTensorShapeProtoList"); kK(v)[53]=r1(tf_tf_TF_SetAttrTensorShapeProtoList__k);
-  kS(k)[54]=ss(".tf.TF_SetAttrTensor"); kK(v)[54]=r1(tf_tf_TF_SetAttrTensor__k);
-  kS(k)[55]=ss(".tf.TF_SetAttrTensorList"); kK(v)[55]=r1(tf_tf_TF_SetAttrTensorList__k);
-  kS(k)[56]=ss(".tf.TF_SetAttrValueProto"); kK(v)[56]=r1(tf_tf_TF_SetAttrValueProto__k);
-  kS(k)[57]=ss(".tf.TF_FinishOperation"); kK(v)[57]=r1(tf_tf_TF_FinishOperation__k);
-  kS(k)[58]=ss(".tf.TF_OperationName"); kK(v)[58]=r1(tf_tf_TF_OperationName__k);
-  kS(k)[59]=ss(".tf.TF_OperationOpType"); kK(v)[59]=r1(tf_tf_TF_OperationOpType__k);
-  kS(k)[60]=ss(".tf.TF_OperationDevice"); kK(v)[60]=r1(tf_tf_TF_OperationDevice__k);
-  kS(k)[61]=ss(".tf.TF_OperationNumOutputs"); kK(v)[61]=r1(tf_tf_TF_OperationNumOutputs__k);
-  kS(k)[62]=ss(".tf.TF_OperationOutputType"); kK(v)[62]=r1(tf_tf_TF_OperationOutputType__k);
-  kS(k)[63]=ss(".tf.TF_OperationOutputListLength"); kK(v)[63]=r1(tf_tf_TF_OperationOutputListLength__k);
-  kS(k)[64]=ss(".tf.TF_OperationNumInputs"); kK(v)[64]=r1(tf_tf_TF_OperationNumInputs__k);
-  kS(k)[65]=ss(".tf.TF_OperationInputType"); kK(v)[65]=r1(tf_tf_TF_OperationInputType__k);
-  kS(k)[66]=ss(".tf.TF_OperationInputListLength"); kK(v)[66]=r1(tf_tf_TF_OperationInputListLength__k);
-  kS(k)[67]=ss(".tf.TF_OperationInput"); kK(v)[67]=r1(tf_tf_TF_OperationInput__k);
-  kS(k)[68]=ss(".tf.TF_OperationOutputNumConsumers"); kK(v)[68]=r1(tf_tf_TF_OperationOutputNumConsumers__k);
-  kS(k)[69]=ss(".tf.TF_OperationOutputConsumers"); kK(v)[69]=r1(tf_tf_TF_OperationOutputConsumers__k);
-  kS(k)[70]=ss(".tf.TF_OperationNumControlInputs"); kK(v)[70]=r1(tf_tf_TF_OperationNumControlInputs__k);
-  kS(k)[71]=ss(".tf.TF_OperationGetControlInputs"); kK(v)[71]=r1(tf_tf_TF_OperationGetControlInputs__k);
-  kS(k)[72]=ss(".tf.TF_OperationNumControlOutputs"); kK(v)[72]=r1(tf_tf_TF_OperationNumControlOutputs__k);
-  kS(k)[73]=ss(".tf.TF_OperationGetControlOutputs"); kK(v)[73]=r1(tf_tf_TF_OperationGetControlOutputs__k);
-  kS(k)[74]=ss(".tf.TF_OperationGetAttrMetadata"); kK(v)[74]=r1(tf_tf_TF_OperationGetAttrMetadata__k);
-  kS(k)[75]=ss(".tf.TF_OperationGetAttrString"); kK(v)[75]=r1(tf_tf_TF_OperationGetAttrString__k);
-  kS(k)[76]=ss(".tf.TF_OperationGetAttrStringList"); kK(v)[76]=r1(tf_tf_TF_OperationGetAttrStringList__k);
-  kS(k)[77]=ss(".tf.TF_OperationGetAttrInt"); kK(v)[77]=r1(tf_tf_TF_OperationGetAttrInt__k);
-  kS(k)[78]=ss(".tf.TF_OperationGetAttrIntList"); kK(v)[78]=r1(tf_tf_TF_OperationGetAttrIntList__k);
-  kS(k)[79]=ss(".tf.TF_OperationGetAttrFloat"); kK(v)[79]=r1(tf_tf_TF_OperationGetAttrFloat__k);
-  kS(k)[80]=ss(".tf.TF_OperationGetAttrFloatList"); kK(v)[80]=r1(tf_tf_TF_OperationGetAttrFloatList__k);
-  kS(k)[81]=ss(".tf.TF_OperationGetAttrBool"); kK(v)[81]=r1(tf_tf_TF_OperationGetAttrBool__k);
-  kS(k)[82]=ss(".tf.TF_OperationGetAttrBoolList"); kK(v)[82]=r1(tf_tf_TF_OperationGetAttrBoolList__k);
-  kS(k)[83]=ss(".tf.TF_OperationGetAttrType"); kK(v)[83]=r1(tf_tf_TF_OperationGetAttrType__k);
-  kS(k)[84]=ss(".tf.TF_OperationGetAttrTypeList"); kK(v)[84]=r1(tf_tf_TF_OperationGetAttrTypeList__k);
-  kS(k)[85]=ss(".tf.TF_OperationGetAttrShape"); kK(v)[85]=r1(tf_tf_TF_OperationGetAttrShape__k);
-  kS(k)[86]=ss(".tf.TF_OperationGetAttrShapeList"); kK(v)[86]=r1(tf_tf_TF_OperationGetAttrShapeList__k);
-  kS(k)[87]=ss(".tf.TF_OperationGetAttrTensorShapeProto"); kK(v)[87]=r1(tf_tf_TF_OperationGetAttrTensorShapeProto__k);
-  kS(k)[88]=ss(".tf.TF_OperationGetAttrTensor"); kK(v)[88]=r1(tf_tf_TF_OperationGetAttrTensor__k);
-  kS(k)[89]=ss(".tf.TF_OperationGetAttrTensorList"); kK(v)[89]=r1(tf_tf_TF_OperationGetAttrTensorList__k);
-  kS(k)[90]=ss(".tf.TF_GraphOperationByName"); kK(v)[90]=r1(tf_tf_TF_GraphOperationByName__k);
-  kS(k)[91]=ss(".tf.TF_GraphNextOperation"); kK(v)[91]=r1(tf_tf_TF_GraphNextOperation__k);
-  kS(k)[92]=ss(".tf.TF_GraphToGraphDef"); kK(v)[92]=r1(tf_tf_TF_GraphToGraphDef__k);
-  kS(k)[93]=ss(".tf.TF_GraphGetOpDef"); kK(v)[93]=r1(tf_tf_TF_GraphGetOpDef__k);
-  kS(k)[94]=ss(".tf.TF_GraphVersions"); kK(v)[94]=r1(tf_tf_TF_GraphVersions__k);
-  kS(k)[95]=ss(".tf.TF_NewImportGraphDefOptions"); kK(v)[95]=r1(tf_tf_TF_NewImportGraphDefOptions__k);
-  kS(k)[96]=ss(".tf.TF_DeleteImportGraphDefOptions"); kK(v)[96]=r1(tf_tf_TF_DeleteImportGraphDefOptions__k);
-  kS(k)[97]=ss(".tf.TF_ImportGraphDefOptionsSetPrefix"); kK(v)[97]=r1(tf_tf_TF_ImportGraphDefOptionsSetPrefix__k);
-  kS(k)[98]=ss(".tf.TF_ImportGraphDefOptionsSetUniquifyNames"); kK(v)[98]=r1(tf_tf_TF_ImportGraphDefOptionsSetUniquifyNames__k);
-  kS(k)[99]=ss(".tf.TF_ImportGraphDefOptionsSetUniquifyPrefix"); kK(v)[99]=r1(tf_tf_TF_ImportGraphDefOptionsSetUniquifyPrefix__k);
-  kS(k)[100]=ss(".tf.TF_ImportGraphDefOptionsAddInputMapping"); kK(v)[100]=r1(tf_tf_TF_ImportGraphDefOptionsAddInputMapping__k);
-  kS(k)[101]=ss(".tf.TF_ImportGraphDefOptionsRemapControlDependency"); kK(v)[101]=r1(tf_tf_TF_ImportGraphDefOptionsRemapControlDependency__k);
-  kS(k)[102]=ss(".tf.TF_ImportGraphDefOptionsAddControlDependency"); kK(v)[102]=r1(tf_tf_TF_ImportGraphDefOptionsAddControlDependency__k);
-  kS(k)[103]=ss(".tf.TF_ImportGraphDefOptionsAddReturnOutput"); kK(v)[103]=r1(tf_tf_TF_ImportGraphDefOptionsAddReturnOutput__k);
-  kS(k)[104]=ss(".tf.TF_ImportGraphDefOptionsNumReturnOutputs"); kK(v)[104]=r1(tf_tf_TF_ImportGraphDefOptionsNumReturnOutputs__k);
-  kS(k)[105]=ss(".tf.TF_ImportGraphDefOptionsAddReturnOperation"); kK(v)[105]=r1(tf_tf_TF_ImportGraphDefOptionsAddReturnOperation__k);
-  kS(k)[106]=ss(".tf.TF_ImportGraphDefOptionsNumReturnOperations"); kK(v)[106]=r1(tf_tf_TF_ImportGraphDefOptionsNumReturnOperations__k);
-  kS(k)[107]=ss(".tf.TF_ImportGraphDefResultsReturnOutputs"); kK(v)[107]=r1(tf_tf_TF_ImportGraphDefResultsReturnOutputs__k);
-  kS(k)[108]=ss(".tf.TF_ImportGraphDefResultsReturnOperations"); kK(v)[108]=r1(tf_tf_TF_ImportGraphDefResultsReturnOperations__k);
-  kS(k)[109]=ss(".tf.TF_ImportGraphDefResultsMissingUnusedInputMappings"); kK(v)[109]=r1(tf_tf_TF_ImportGraphDefResultsMissingUnusedInputMappings__k);
-  kS(k)[110]=ss(".tf.TF_DeleteImportGraphDefResults"); kK(v)[110]=r1(tf_tf_TF_DeleteImportGraphDefResults__k);
-  kS(k)[111]=ss(".tf.TF_GraphImportGraphDefWithResults"); kK(v)[111]=r1(tf_tf_TF_GraphImportGraphDefWithResults__k);
-  kS(k)[112]=ss(".tf.TF_GraphImportGraphDefWithReturnOutputs"); kK(v)[112]=r1(tf_tf_TF_GraphImportGraphDefWithReturnOutputs__k);
-  kS(k)[113]=ss(".tf.TF_GraphImportGraphDef"); kK(v)[113]=r1(tf_tf_TF_GraphImportGraphDef__k);
-  kS(k)[114]=ss(".tf.TF_GraphCopyFunction"); kK(v)[114]=r1(tf_tf_TF_GraphCopyFunction__k);
-  kS(k)[115]=ss(".tf.TF_GraphNumFunctions"); kK(v)[115]=r1(tf_tf_TF_GraphNumFunctions__k);
-  kS(k)[116]=ss(".tf.TF_GraphGetFunctions"); kK(v)[116]=r1(tf_tf_TF_GraphGetFunctions__k);
-  kS(k)[117]=ss(".tf.TF_OperationToNodeDef"); kK(v)[117]=r1(tf_tf_TF_OperationToNodeDef__k);
-  kS(k)[118]=ss(".tf.setWhileParams"); kK(v)[118]=r1(tf_tf_setWhileParams__k);
-  kS(k)[119]=ss(".tf.TF_NewWhile"); kK(v)[119]=r1(tf_tf_TF_NewWhile__k);
-  kS(k)[120]=ss(".tf.TF_FinishWhile"); kK(v)[120]=r1(tf_tf_TF_FinishWhile__k);
-  kS(k)[121]=ss(".tf.TF_AbortWhile"); kK(v)[121]=r1(tf_tf_TF_AbortWhile__k);
-  kS(k)[122]=ss(".tf.TF_AddGradients"); kK(v)[122]=r1(tf_tf_TF_AddGradients__k);
-  kS(k)[123]=ss(".tf.TF_GraphToFunction"); kK(v)[123]=r1(tf_tf_TF_GraphToFunction__k);
-  kS(k)[124]=ss(".tf.TF_FunctionToFunctionDef"); kK(v)[124]=r1(tf_tf_TF_FunctionToFunctionDef__k);
-  kS(k)[125]=ss(".tf.TF_FunctionImportFunctionDef"); kK(v)[125]=r1(tf_tf_TF_FunctionImportFunctionDef__k);
-  kS(k)[126]=ss(".tf.TF_FunctionSetAttrValueProto"); kK(v)[126]=r1(tf_tf_TF_FunctionSetAttrValueProto__k);
-  kS(k)[127]=ss(".tf.TF_FunctionGetAttrValueProto"); kK(v)[127]=r1(tf_tf_TF_FunctionGetAttrValueProto__k);
-  kS(k)[128]=ss(".tf.TF_DeleteFunction"); kK(v)[128]=r1(tf_tf_TF_DeleteFunction__k);
-  kS(k)[129]=ss(".tf.TF_NewSession"); kK(v)[129]=r1(tf_tf_TF_NewSession__k);
-  kS(k)[130]=ss(".tf.TF_LoadSessionFromSavedModel"); kK(v)[130]=r1(tf_tf_TF_LoadSessionFromSavedModel__k);
-  kS(k)[131]=ss(".tf.TF_CloseSession"); kK(v)[131]=r1(tf_tf_TF_CloseSession__k);
-  kS(k)[132]=ss(".tf.TF_DeleteSession"); kK(v)[132]=r1(tf_tf_TF_DeleteSession__k);
-  kS(k)[133]=ss(".tf.TF_SessionRun"); kK(v)[133]=r1(tf_tf_TF_SessionRun__k);
-  kS(k)[134]=ss(".tf.TF_SessionPRunSetup"); kK(v)[134]=r1(tf_tf_TF_SessionPRunSetup__k);
-  kS(k)[135]=ss(".tf.TF_SessionPRun"); kK(v)[135]=r1(tf_tf_TF_SessionPRun__k);
-  kS(k)[136]=ss(".tf.TF_DeletePRunHandle"); kK(v)[136]=r1(tf_tf_TF_DeletePRunHandle__k);
-  kS(k)[137]=ss(".tf.TF_SessionListDevices"); kK(v)[137]=r1(tf_tf_TF_SessionListDevices__k);
-  kS(k)[138]=ss(".tf.TF_DeleteDeviceList"); kK(v)[138]=r1(tf_tf_TF_DeleteDeviceList__k);
-  kS(k)[139]=ss(".tf.TF_DeviceListCount"); kK(v)[139]=r1(tf_tf_TF_DeviceListCount__k);
-  kS(k)[140]=ss(".tf.TF_DeviceListName"); kK(v)[140]=r1(tf_tf_TF_DeviceListName__k);
-  kS(k)[141]=ss(".tf.TF_DeviceListType"); kK(v)[141]=r1(tf_tf_TF_DeviceListType__k);
-  kS(k)[142]=ss(".tf.TF_DeviceListMemoryBytes"); kK(v)[142]=r1(tf_tf_TF_DeviceListMemoryBytes__k);
-  kS(k)[143]=ss(".tf.TF_LoadLibrary"); kK(v)[143]=r1(tf_tf_TF_LoadLibrary__k);
-  kS(k)[144]=ss(".tf.TF_GetOpList"); kK(v)[144]=r1(tf_tf_TF_GetOpList__k);
-  kS(k)[145]=ss(".tf.TF_DeleteLibraryHandle"); kK(v)[145]=r1(tf_tf_TF_DeleteLibraryHandle__k);
-  kS(k)[146]=ss(".tf.TF_GetAllOpList"); kK(v)[146]=r1(tf_tf_TF_GetAllOpList__k);
-  kS(k1)[0]=ss(".b2c.wglobals"); kI(v1)[0]=(I)&__wglobals;
+  kS(k)[49]=ss(".tf.TF_SetAttrShape"); kK(v)[49]=r1(tf_tf_TF_SetAttrShape__k);
+  kS(k)[50]=ss(".tf.TF_SetAttrShapeList"); kK(v)[50]=r1(tf_tf_TF_SetAttrShapeList__k);
+  kS(k)[51]=ss(".tf.TF_SetAttrTensorShapeProto"); kK(v)[51]=r1(tf_tf_TF_SetAttrTensorShapeProto__k);
+  kS(k)[52]=ss(".tf.TF_SetAttrTensorShapeProtoList"); kK(v)[52]=r1(tf_tf_TF_SetAttrTensorShapeProtoList__k);
+  kS(k)[53]=ss(".tf.TF_SetAttrTensor"); kK(v)[53]=r1(tf_tf_TF_SetAttrTensor__k);
+  kS(k)[54]=ss(".tf.TF_SetAttrTensorList"); kK(v)[54]=r1(tf_tf_TF_SetAttrTensorList__k);
+  kS(k)[55]=ss(".tf.TF_SetAttrValueProto"); kK(v)[55]=r1(tf_tf_TF_SetAttrValueProto__k);
+  kS(k)[56]=ss(".tf.TF_FinishOperation"); kK(v)[56]=r1(tf_tf_TF_FinishOperation__k);
+  kS(k)[57]=ss(".tf.TF_OperationName"); kK(v)[57]=r1(tf_tf_TF_OperationName__k);
+  kS(k)[58]=ss(".tf.TF_OperationOpType"); kK(v)[58]=r1(tf_tf_TF_OperationOpType__k);
+  kS(k)[59]=ss(".tf.TF_OperationDevice"); kK(v)[59]=r1(tf_tf_TF_OperationDevice__k);
+  kS(k)[60]=ss(".tf.TF_OperationNumOutputs"); kK(v)[60]=r1(tf_tf_TF_OperationNumOutputs__k);
+  kS(k)[61]=ss(".tf.TF_OperationOutputType"); kK(v)[61]=r1(tf_tf_TF_OperationOutputType__k);
+  kS(k)[62]=ss(".tf.TF_OperationOutputListLength"); kK(v)[62]=r1(tf_tf_TF_OperationOutputListLength__k);
+  kS(k)[63]=ss(".tf.TF_OperationNumInputs"); kK(v)[63]=r1(tf_tf_TF_OperationNumInputs__k);
+  kS(k)[64]=ss(".tf.TF_OperationInputType"); kK(v)[64]=r1(tf_tf_TF_OperationInputType__k);
+  kS(k)[65]=ss(".tf.TF_OperationInputListLength"); kK(v)[65]=r1(tf_tf_TF_OperationInputListLength__k);
+  kS(k)[66]=ss(".tf.TF_OperationInput"); kK(v)[66]=r1(tf_tf_TF_OperationInput__k);
+  kS(k)[67]=ss(".tf.TF_OperationOutputNumConsumers"); kK(v)[67]=r1(tf_tf_TF_OperationOutputNumConsumers__k);
+  kS(k)[68]=ss(".tf.TF_OperationOutputConsumers"); kK(v)[68]=r1(tf_tf_TF_OperationOutputConsumers__k);
+  kS(k)[69]=ss(".tf.TF_OperationNumControlInputs"); kK(v)[69]=r1(tf_tf_TF_OperationNumControlInputs__k);
+  kS(k)[70]=ss(".tf.TF_OperationGetControlInputs"); kK(v)[70]=r1(tf_tf_TF_OperationGetControlInputs__k);
+  kS(k)[71]=ss(".tf.TF_OperationNumControlOutputs"); kK(v)[71]=r1(tf_tf_TF_OperationNumControlOutputs__k);
+  kS(k)[72]=ss(".tf.TF_OperationGetControlOutputs"); kK(v)[72]=r1(tf_tf_TF_OperationGetControlOutputs__k);
+  kS(k)[73]=ss(".tf.TF_OperationGetAttrMetadata"); kK(v)[73]=r1(tf_tf_TF_OperationGetAttrMetadata__k);
+  kS(k)[74]=ss(".tf.TF_OperationGetAttrString"); kK(v)[74]=r1(tf_tf_TF_OperationGetAttrString__k);
+  kS(k)[75]=ss(".tf.TF_OperationGetAttrStringList"); kK(v)[75]=r1(tf_tf_TF_OperationGetAttrStringList__k);
+  kS(k)[76]=ss(".tf.TF_OperationGetAttrInt"); kK(v)[76]=r1(tf_tf_TF_OperationGetAttrInt__k);
+  kS(k)[77]=ss(".tf.TF_OperationGetAttrIntList"); kK(v)[77]=r1(tf_tf_TF_OperationGetAttrIntList__k);
+  kS(k)[78]=ss(".tf.TF_OperationGetAttrFloat"); kK(v)[78]=r1(tf_tf_TF_OperationGetAttrFloat__k);
+  kS(k)[79]=ss(".tf.TF_OperationGetAttrFloatList"); kK(v)[79]=r1(tf_tf_TF_OperationGetAttrFloatList__k);
+  kS(k)[80]=ss(".tf.TF_OperationGetAttrBool"); kK(v)[80]=r1(tf_tf_TF_OperationGetAttrBool__k);
+  kS(k)[81]=ss(".tf.TF_OperationGetAttrBoolList"); kK(v)[81]=r1(tf_tf_TF_OperationGetAttrBoolList__k);
+  kS(k)[82]=ss(".tf.TF_OperationGetAttrType"); kK(v)[82]=r1(tf_tf_TF_OperationGetAttrType__k);
+  kS(k)[83]=ss(".tf.TF_OperationGetAttrTypeList"); kK(v)[83]=r1(tf_tf_TF_OperationGetAttrTypeList__k);
+  kS(k)[84]=ss(".tf.TF_OperationGetAttrShape"); kK(v)[84]=r1(tf_tf_TF_OperationGetAttrShape__k);
+  kS(k)[85]=ss(".tf.TF_OperationGetAttrShapeList"); kK(v)[85]=r1(tf_tf_TF_OperationGetAttrShapeList__k);
+  kS(k)[86]=ss(".tf.TF_OperationGetAttrTensorShapeProto"); kK(v)[86]=r1(tf_tf_TF_OperationGetAttrTensorShapeProto__k);
+  kS(k)[87]=ss(".tf.TF_OperationGetAttrTensor"); kK(v)[87]=r1(tf_tf_TF_OperationGetAttrTensor__k);
+  kS(k)[88]=ss(".tf.TF_OperationGetAttrTensorList"); kK(v)[88]=r1(tf_tf_TF_OperationGetAttrTensorList__k);
+  kS(k)[89]=ss(".tf.TF_GraphOperationByName"); kK(v)[89]=r1(tf_tf_TF_GraphOperationByName__k);
+  kS(k)[90]=ss(".tf.TF_GraphNextOperation"); kK(v)[90]=r1(tf_tf_TF_GraphNextOperation__k);
+  kS(k)[91]=ss(".tf.TF_GraphToGraphDef"); kK(v)[91]=r1(tf_tf_TF_GraphToGraphDef__k);
+  kS(k)[92]=ss(".tf.TF_GraphGetOpDef"); kK(v)[92]=r1(tf_tf_TF_GraphGetOpDef__k);
+  kS(k)[93]=ss(".tf.TF_GraphVersions"); kK(v)[93]=r1(tf_tf_TF_GraphVersions__k);
+  kS(k)[94]=ss(".tf.TF_NewImportGraphDefOptions"); kK(v)[94]=r1(tf_tf_TF_NewImportGraphDefOptions__k);
+  kS(k)[95]=ss(".tf.TF_DeleteImportGraphDefOptions"); kK(v)[95]=r1(tf_tf_TF_DeleteImportGraphDefOptions__k);
+  kS(k)[96]=ss(".tf.TF_ImportGraphDefOptionsSetPrefix"); kK(v)[96]=r1(tf_tf_TF_ImportGraphDefOptionsSetPrefix__k);
+  kS(k)[97]=ss(".tf.TF_ImportGraphDefOptionsSetUniquifyNames"); kK(v)[97]=r1(tf_tf_TF_ImportGraphDefOptionsSetUniquifyNames__k);
+  kS(k)[98]=ss(".tf.TF_ImportGraphDefOptionsSetUniquifyPrefix"); kK(v)[98]=r1(tf_tf_TF_ImportGraphDefOptionsSetUniquifyPrefix__k);
+  kS(k)[99]=ss(".tf.TF_ImportGraphDefOptionsAddInputMapping"); kK(v)[99]=r1(tf_tf_TF_ImportGraphDefOptionsAddInputMapping__k);
+  kS(k)[100]=ss(".tf.TF_ImportGraphDefOptionsRemapControlDependency"); kK(v)[100]=r1(tf_tf_TF_ImportGraphDefOptionsRemapControlDependency__k);
+  kS(k)[101]=ss(".tf.TF_ImportGraphDefOptionsAddControlDependency"); kK(v)[101]=r1(tf_tf_TF_ImportGraphDefOptionsAddControlDependency__k);
+  kS(k)[102]=ss(".tf.TF_ImportGraphDefOptionsAddReturnOutput"); kK(v)[102]=r1(tf_tf_TF_ImportGraphDefOptionsAddReturnOutput__k);
+  kS(k)[103]=ss(".tf.TF_ImportGraphDefOptionsNumReturnOutputs"); kK(v)[103]=r1(tf_tf_TF_ImportGraphDefOptionsNumReturnOutputs__k);
+  kS(k)[104]=ss(".tf.TF_ImportGraphDefOptionsAddReturnOperation"); kK(v)[104]=r1(tf_tf_TF_ImportGraphDefOptionsAddReturnOperation__k);
+  kS(k)[105]=ss(".tf.TF_ImportGraphDefOptionsNumReturnOperations"); kK(v)[105]=r1(tf_tf_TF_ImportGraphDefOptionsNumReturnOperations__k);
+  kS(k)[106]=ss(".tf.TF_ImportGraphDefResultsReturnOutputs"); kK(v)[106]=r1(tf_tf_TF_ImportGraphDefResultsReturnOutputs__k);
+  kS(k)[107]=ss(".tf.TF_ImportGraphDefResultsReturnOperations"); kK(v)[107]=r1(tf_tf_TF_ImportGraphDefResultsReturnOperations__k);
+  kS(k)[108]=ss(".tf.TF_ImportGraphDefResultsMissingUnusedInputMappings"); kK(v)[108]=r1(tf_tf_TF_ImportGraphDefResultsMissingUnusedInputMappings__k);
+  kS(k)[109]=ss(".tf.TF_DeleteImportGraphDefResults"); kK(v)[109]=r1(tf_tf_TF_DeleteImportGraphDefResults__k);
+  kS(k)[110]=ss(".tf.TF_GraphImportGraphDefWithResults"); kK(v)[110]=r1(tf_tf_TF_GraphImportGraphDefWithResults__k);
+  kS(k)[111]=ss(".tf.TF_GraphImportGraphDefWithReturnOutputs"); kK(v)[111]=r1(tf_tf_TF_GraphImportGraphDefWithReturnOutputs__k);
+  kS(k)[112]=ss(".tf.TF_GraphImportGraphDef"); kK(v)[112]=r1(tf_tf_TF_GraphImportGraphDef__k);
+  kS(k)[113]=ss(".tf.TF_GraphCopyFunction"); kK(v)[113]=r1(tf_tf_TF_GraphCopyFunction__k);
+  kS(k)[114]=ss(".tf.TF_OperationToNodeDef"); kK(v)[114]=r1(tf_tf_TF_OperationToNodeDef__k);
+  kS(k)[115]=ss(".tf.setWhileParams"); kK(v)[115]=r1(tf_tf_setWhileParams__k);
+  kS(k)[116]=ss(".tf.TF_FinishWhile"); kK(v)[116]=r1(tf_tf_TF_FinishWhile__k);
+  kS(k)[117]=ss(".tf.TF_AbortWhile"); kK(v)[117]=r1(tf_tf_TF_AbortWhile__k);
+  kS(k)[118]=ss(".tf.TF_AddGradients"); kK(v)[118]=r1(tf_tf_TF_AddGradients__k);
+  kS(k)[119]=ss(".tf.TF_GraphToFunction"); kK(v)[119]=r1(tf_tf_TF_GraphToFunction__k);
+  kS(k)[120]=ss(".tf.TF_FunctionToFunctionDef"); kK(v)[120]=r1(tf_tf_TF_FunctionToFunctionDef__k);
+  kS(k)[121]=ss(".tf.TF_FunctionImportFunctionDef"); kK(v)[121]=r1(tf_tf_TF_FunctionImportFunctionDef__k);
+  kS(k)[122]=ss(".tf.TF_FunctionSetAttrValueProto"); kK(v)[122]=r1(tf_tf_TF_FunctionSetAttrValueProto__k);
+  kS(k)[123]=ss(".tf.TF_FunctionGetAttrValueProto"); kK(v)[123]=r1(tf_tf_TF_FunctionGetAttrValueProto__k);
+  kS(k)[124]=ss(".tf.TF_DeleteFunction"); kK(v)[124]=r1(tf_tf_TF_DeleteFunction__k);
+  kS(k)[125]=ss(".tf.TF_NewSession"); kK(v)[125]=r1(tf_tf_TF_NewSession__k);
+  kS(k)[126]=ss(".tf.TF_LoadSessionFromSavedModel"); kK(v)[126]=r1(tf_tf_TF_LoadSessionFromSavedModel__k);
+  kS(k)[127]=ss(".tf.TF_CloseSession"); kK(v)[127]=r1(tf_tf_TF_CloseSession__k);
+  kS(k)[128]=ss(".tf.TF_DeleteSession"); kK(v)[128]=r1(tf_tf_TF_DeleteSession__k);
+  kS(k)[129]=ss(".tf.TF_SessionRun"); kK(v)[129]=r1(tf_tf_TF_SessionRun__k);
+  kS(k)[130]=ss(".tf.TF_SessionPRunSetup"); kK(v)[130]=r1(tf_tf_TF_SessionPRunSetup__k);
+  kS(k)[131]=ss(".tf.TF_SessionPRun"); kK(v)[131]=r1(tf_tf_TF_SessionPRun__k);
+  kS(k)[132]=ss(".tf.TF_DeletePRunHandle"); kK(v)[132]=r1(tf_tf_TF_DeletePRunHandle__k);
+  kS(k)[133]=ss(".tf.TF_SessionListDevices"); kK(v)[133]=r1(tf_tf_TF_SessionListDevices__k);
+  kS(k)[134]=ss(".tf.TF_DeleteDeviceList"); kK(v)[134]=r1(tf_tf_TF_DeleteDeviceList__k);
+  kS(k)[135]=ss(".tf.TF_DeviceListCount"); kK(v)[135]=r1(tf_tf_TF_DeviceListCount__k);
+  kS(k)[136]=ss(".tf.TF_DeviceListName"); kK(v)[136]=r1(tf_tf_TF_DeviceListName__k);
+  kS(k)[137]=ss(".tf.TF_DeviceListType"); kK(v)[137]=r1(tf_tf_TF_DeviceListType__k);
+  kS(k)[138]=ss(".tf.TF_DeviceListMemoryBytes"); kK(v)[138]=r1(tf_tf_TF_DeviceListMemoryBytes__k);
+  kS(k)[139]=ss(".tf.TF_LoadLibrary"); kK(v)[139]=r1(tf_tf_TF_LoadLibrary__k);
+  kS(k)[140]=ss(".tf.TF_GetOpList"); kK(v)[140]=r1(tf_tf_TF_GetOpList__k);
+  kS(k)[141]=ss(".tf.TF_DeleteLibraryHandle"); kK(v)[141]=r1(tf_tf_TF_DeleteLibraryHandle__k);
+  kS(k)[142]=ss(".tf.TF_GetAllOpList"); kK(v)[142]=r1(tf_tf_TF_GetAllOpList__k);
+  kS(k1)[0]=ss(".b2c.wglobals"); kJ(v1)[0]=(J)&__wglobals;
   __libFuncs=xD(k,v); __libGlobs=xD(k1,v1);
   return r1(__libFuncs);
  };
@@ -4882,7 +4779,7 @@ K tf__init(K x) {
   __ginited=1; K lst;
 
   res=k(0,".q`set`show`enlist`any`not`get`cols`upsert`meta`xasc`xdesc`inv`keys`all`each`raze`vs`type",(K)0); if((0==res)||(-128==res->t)) { __ginited=0; return res;}; __q=(K*)res->G0;
-  res=k(0,"``.b2c.intmap`.b2c.libFuncs`C.toK`.b2c.libGlobs`C.knk`C.dot`.b2c.kapp1`.b2c.wglobals`C.kamend4`C.r0`C.r1`.b2c.kxsc`C.kamend3`C.ktn`C.TF_Version`C.errno`.string.strerror`C.TF_DataTypeSize`C.TF_NewStatus`C.TF_DeleteStatus`C.TF_SetStatus`C.TF_GetCode`C.TF_Message`C.TF_NewBufferFromString`C.TF_NewBuffer`C.TF_DeleteBuffer`.tf.deallocator`C.TF_NewTensor`if`C.TF_AllocateTensor`C.TF_TensorMaybeMove`C.TF_DeleteTensor`C.TF_TensorType`C.TF_NumDims`C.TF_Dim`C.TF_TensorByteSize`C.TF_TensorData`C.TF_StringEncode`C.TF_StringDecode`C.TF_StringEncodedSize`C.TF_NewSessionOptions`C.TF_SetTarget`C.TF_SetConfig`C.TF_DeleteSessionOptions`C.TF_NewGraph`C.TF_DeleteGraph`C.TF_GraphSetTensorShape`C.TF_GraphGetTensorNumDims`C.TF_GraphGetTensorShape`C.TF_NewOperation`C.TF_SetDevice`C.TF_AddInput`.b2c.enStruct`C.TF_AddInputList`C.TF_AddControlInput`C.TF_SetAttrString`C.TF_SetAttrStringList`C.TF_SetAttrInt`C.TF_SetAttrIntList`C.TF_SetAttrFloat`C.TF_SetAttrFloatList`C.TF_SetAttrBool`C.TF_SetAttrBoolList`C.TF_SetAttrType`C.TF_SetAttrTypeList`C.TF_SetAttrFuncName`C.TF_SetAttrShape`C.TF_SetAttrShapeList`C.TF_SetAttrTensorShapeProto`C.TF_SetAttrTensorShapeProtoList`C.TF_SetAttrTensor`C.TF_SetAttrTensorList`C.TF_SetAttrValueProto`C.TF_FinishOperation`C.TF_OperationName`C.TF_OperationOpType`C.TF_OperationDevice`C.TF_OperationNumOutputs`C.TF_OperationOutputType`C.TF_OperationOutputListLength`C.TF_OperationNumInputs`C.TF_OperationInputType`C.TF_OperationInputListLength`C.TF_OperationInput`C.TF_OperationOutputNumConsumers`C.TF_OperationOutputConsumers`C.TF_OperationNumControlInputs`C.TF_OperationGetControlInputs`C.TF_OperationNumControlOutputs`C.TF_OperationGetControlOutputs`C.TF_OperationGetAttrMetadata`C.TF_OperationGetAttrString`C.TF_OperationGetAttrStringList`C.TF_OperationGetAttrInt`C.TF_OperationGetAttrIntList`C.TF_OperationGetAttrFloat`C.TF_OperationGetAttrFloatList`C.TF_OperationGetAttrBool`C.TF_OperationGetAttrBoolList`C.TF_OperationGetAttrType`C.TF_OperationGetAttrTypeList`C.TF_OperationGetAttrShape`C.TF_OperationGetAttrShapeList`C.TF_OperationGetAttrTensorShapeProto`C.TF_OperationGetAttrTensor`C.TF_OperationGetAttrTensorList`C.TF_GraphOperationByName`C.TF_GraphNextOperation`C.TF_GraphToGraphDef`C.TF_GraphGetOpDef`C.TF_GraphVersions`C.TF_NewImportGraphDefOptions`C.TF_DeleteImportGraphDefOptions`C.TF_ImportGraphDefOptionsSetPrefix`C.TF_ImportGraphDefOptionsSetUniquifyNames`C.TF_ImportGraphDefOptionsSetUniquifyPrefix`C.TF_ImportGraphDefOptionsAddInputMapping`C.TF_ImportGraphDefOptionsRemapControlDependency`C.TF_ImportGraphDefOptionsAddControlDependency`C.TF_ImportGraphDefOptionsAddReturnOutput`C.TF_ImportGraphDefOptionsNumReturnOutputs`C.TF_ImportGraphDefOptionsAddReturnOperation`C.TF_ImportGraphDefOptionsNumReturnOperations`C.TF_ImportGraphDefResultsReturnOutputs`C.TF_ImportGraphDefResultsReturnOperations`C.TF_ImportGraphDefResultsMissingUnusedInputMappings`C.TF_DeleteImportGraphDefResults`C.TF_GraphImportGraphDefWithResults`C.TF_GraphImportGraphDefWithReturnOutputs`C.TF_GraphImportGraphDef`C.TF_GraphCopyFunction`C.TF_GraphNumFunctions`C.TF_GraphGetFunctions`C.TF_OperationToNodeDef`C.TF_NewWhile`.tf.createWhileParams`C.TF_FinishWhile`C.TF_AbortWhile`C.NULL`C.TF_AddGradients`C.TF_GraphToFunction`C.TF_FunctionToFunctionDef`C.TF_FunctionImportFunctionDef`C.TF_FunctionSetAttrValueProto`C.TF_FunctionGetAttrValueProto`C.TF_DeleteFunction`C.TF_NewSession`C.TF_LoadSessionFromSavedModel`C.TF_CloseSession`C.TF_DeleteSession`C.TF_SessionRun`C.TF_SessionPRunSetup`C.TF_SessionPRun`C.TF_DeletePRunHandle`C.TF_SessionListDevices`C.TF_DeleteDeviceList`C.TF_DeviceListCount`C.TF_DeviceListName`C.TF_DeviceListType`C.TF_DeviceListMemoryBytes`C.TF_LoadLibrary`C.TF_GetOpList`.tf.getBuffer`C.TF_DeleteLibraryHandle`C.TF_GetAllOpList,1",(K)0); if((0==res)||(-128==res->t)) { __ginited=0; return res;}; __glob=(K*)res->G0;
+  res=k(0,"``.b2c.intmap`.b2c.libFuncs`C.toK`.b2c.libGlobs`C.knk`C.dot`.b2c.kapp1`.b2c.wglobals`C.kamend4`C.r0`C.r1`.b2c.kxsc`C.kamend3`C.ktn`C.TF_Version`C.errno`.string.strerror`C.TF_DataTypeSize`C.TF_NewStatus`C.TF_DeleteStatus`C.TF_SetStatus`C.TF_GetCode`C.TF_Message`C.TF_NewBufferFromString`C.TF_NewBuffer`C.TF_DeleteBuffer`.tf.deallocator`C.TF_NewTensor`if`C.TF_AllocateTensor`C.TF_TensorMaybeMove`C.TF_DeleteTensor`C.TF_TensorType`C.TF_NumDims`C.TF_Dim`C.TF_TensorByteSize`C.TF_TensorData`C.TF_StringEncode`C.TF_StringDecode`C.TF_StringEncodedSize`C.TF_NewSessionOptions`C.TF_SetTarget`C.TF_SetConfig`C.TF_DeleteSessionOptions`C.TF_NewGraph`C.TF_DeleteGraph`C.TF_GraphSetTensorShape`C.TF_GraphGetTensorNumDims`C.TF_GraphGetTensorShape`C.TF_NewOperation`C.TF_SetDevice`C.TF_AddInput`.b2c.enStruct`C.TF_AddInputList`C.TF_AddControlInput`C.TF_SetAttrString`C.TF_SetAttrStringList`C.TF_SetAttrInt`C.TF_SetAttrIntList`C.TF_SetAttrFloat`C.TF_SetAttrFloatList`C.TF_SetAttrBool`C.TF_SetAttrBoolList`C.TF_SetAttrType`C.TF_SetAttrTypeList`C.TF_SetAttrShape`C.TF_SetAttrShapeList`C.TF_SetAttrTensorShapeProto`C.TF_SetAttrTensorShapeProtoList`C.TF_SetAttrTensor`C.TF_SetAttrTensorList`C.TF_SetAttrValueProto`C.TF_FinishOperation`C.TF_OperationName`C.TF_OperationOpType`C.TF_OperationDevice`C.TF_OperationNumOutputs`C.TF_OperationOutputType`C.TF_OperationOutputListLength`C.TF_OperationNumInputs`C.TF_OperationInputType`C.TF_OperationInputListLength`C.TF_OperationInput`C.TF_OperationOutputNumConsumers`C.TF_OperationOutputConsumers`C.TF_OperationNumControlInputs`C.TF_OperationGetControlInputs`C.TF_OperationNumControlOutputs`C.TF_OperationGetControlOutputs`C.TF_OperationGetAttrMetadata`C.TF_OperationGetAttrString`C.TF_OperationGetAttrStringList`C.TF_OperationGetAttrInt`C.TF_OperationGetAttrIntList`C.TF_OperationGetAttrFloat`C.TF_OperationGetAttrFloatList`C.TF_OperationGetAttrBool`C.TF_OperationGetAttrBoolList`C.TF_OperationGetAttrType`C.TF_OperationGetAttrTypeList`C.TF_OperationGetAttrShape`C.TF_OperationGetAttrShapeList`C.TF_OperationGetAttrTensorShapeProto`C.TF_OperationGetAttrTensor`C.TF_OperationGetAttrTensorList`C.TF_GraphOperationByName`C.TF_GraphNextOperation`C.TF_GraphToGraphDef`C.TF_GraphGetOpDef`C.TF_GraphVersions`C.TF_NewImportGraphDefOptions`C.TF_DeleteImportGraphDefOptions`C.TF_ImportGraphDefOptionsSetPrefix`C.TF_ImportGraphDefOptionsSetUniquifyNames`C.TF_ImportGraphDefOptionsSetUniquifyPrefix`C.TF_ImportGraphDefOptionsAddInputMapping`C.TF_ImportGraphDefOptionsRemapControlDependency`C.TF_ImportGraphDefOptionsAddControlDependency`C.TF_ImportGraphDefOptionsAddReturnOutput`C.TF_ImportGraphDefOptionsNumReturnOutputs`C.TF_ImportGraphDefOptionsAddReturnOperation`C.TF_ImportGraphDefOptionsNumReturnOperations`C.TF_ImportGraphDefResultsReturnOutputs`C.TF_ImportGraphDefResultsReturnOperations`C.TF_ImportGraphDefResultsMissingUnusedInputMappings`C.TF_DeleteImportGraphDefResults`C.TF_GraphImportGraphDefWithResults`C.TF_GraphImportGraphDefWithReturnOutputs`C.TF_GraphImportGraphDef`C.TF_GraphCopyFunction`C.TF_OperationToNodeDef`C.TF_FinishWhile`C.TF_AbortWhile`C.NULL`C.TF_AddGradients`C.TF_GraphToFunction`C.TF_FunctionToFunctionDef`C.TF_FunctionImportFunctionDef`C.TF_FunctionSetAttrValueProto`C.TF_FunctionGetAttrValueProto`C.TF_DeleteFunction`C.TF_NewSession`C.TF_LoadSessionFromSavedModel`C.TF_CloseSession`C.TF_DeleteSession`C.TF_SessionRun`C.TF_SessionPRunSetup`C.TF_SessionPRun`C.TF_DeletePRunHandle`C.TF_SessionListDevices`C.TF_DeleteDeviceList`C.TF_DeviceListCount`C.TF_DeviceListName`C.TF_DeviceListType`C.TF_DeviceListMemoryBytes`C.TF_LoadLibrary`C.TF_GetOpList`.tf.getBuffer`C.TF_DeleteLibraryHandle`C.TF_GetAllOpList,1",(K)0); if((0==res)||(-128==res->t)) { __ginited=0; return res;}; __glob=(K*)res->G0;
   __kvalue__k=dl(__kvalue,1);
   tf_tf_getBuffer__k=dl(tf_tf_getBuffer,1);
   tf_tf_TF_Version__k=dl(tf_tf_TF_Version,1);
@@ -4903,7 +4800,7 @@ K tf__init(K x) {
   tf_tf_TF_TensorType__k=dl(tf_tf_TF_TensorType,1);
   tf_tf_TF_NumDims__k=dl(tf_tf_TF_NumDims,1);
   tf_tf_TF_Dim__k=dl(tf_tf_TF_Dim,2);
-  tf_tf_TF_TensorByteSize__k=dl(tf_tf_TF_TensorByteSize,2);
+  tf_tf_TF_TensorByteSize__k=dl(tf_tf_TF_TensorByteSize,1);
   tf_tf_TF_TensorData__k=dl(tf_tf_TF_TensorData,1);
   tf_tf_TF_StringEncode__k=dl(tf_tf_TF_StringEncode,3);
   tf_tf_TF_StringDecode__k=dl(tf_tf_TF_StringDecode,2);
@@ -4933,7 +4830,6 @@ K tf__init(K x) {
   tf_tf_TF_SetAttrBoolList__k=dl(tf_tf_TF_SetAttrBoolList,3);
   tf_tf_TF_SetAttrType__k=dl(tf_tf_TF_SetAttrType,3);
   tf_tf_TF_SetAttrTypeList__k=dl(tf_tf_TF_SetAttrTypeList,3);
-  tf_tf_TF_SetAttrFuncName__k=dl(tf_tf_TF_SetAttrFuncName,3);
   tf_tf_TF_SetAttrShape__k=dl(tf_tf_TF_SetAttrShape,3);
   tf_tf_TF_SetAttrShapeList__k=dl(tf_tf_TF_SetAttrShapeList,3);
   tf_tf_TF_SetAttrTensorShapeProto__k=dl(tf_tf_TF_SetAttrTensorShapeProto,4);
@@ -4999,11 +4895,8 @@ K tf__init(K x) {
   tf_tf_TF_GraphImportGraphDefWithReturnOutputs__k=dl(tf_tf_TF_GraphImportGraphDefWithReturnOutputs,4);
   tf_tf_TF_GraphImportGraphDef__k=dl(tf_tf_TF_GraphImportGraphDef,4);
   tf_tf_TF_GraphCopyFunction__k=dl(tf_tf_TF_GraphCopyFunction,4);
-  tf_tf_TF_GraphNumFunctions__k=dl(tf_tf_TF_GraphNumFunctions,1);
-  tf_tf_TF_GraphGetFunctions__k=dl(tf_tf_TF_GraphGetFunctions,3);
   tf_tf_TF_OperationToNodeDef__k=dl(tf_tf_TF_OperationToNodeDef,3);
   tf_tf_setWhileParams__k=dl(tf_tf_setWhileParams,3);
-  tf_tf_TF_NewWhile__k=dl(tf_tf_TF_NewWhile,3);
   tf_tf_TF_FinishWhile__k=dl(tf_tf_TF_FinishWhile,2);
   tf_tf_TF_AbortWhile__k=dl(tf_tf_TF_AbortWhile,1);
   tf_tf_TF_AddGradients__k=dl(tf_tf_TF_AddGradients,5);
