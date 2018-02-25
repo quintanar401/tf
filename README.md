@@ -156,7 +156,7 @@ out:.tf.addOp[sc:.tf.newScope .tf.graph.new[];`ShapeN;([] oper:(op1;op2); index:
 out:.tf.addOp[scope;`Placeholder;();`dtype`shape!(`TF_FLOAT;10)]
 ```
 TF unrelated attributes:
-* deps - control dependecies, a list of longs (operations).
+* deps - control dependencies, a list of longs (operations).
 * opName - symbol, optional operation name.
 
 You can pass `deps` and `opName` either in attributes or scope args.
@@ -186,7 +186,7 @@ j:.tf.ops.outputLength[op;`name];            / long, list length of an output op
 
 Scope is used to put operations into namespaces.
 ```
-.tf.newScope[()]
+.tf.newScope[]
 .tf.newScope[graph]
 .tf.newScope[`graph`ns`deps!(graph;`ns;1 2 3)]
 ```

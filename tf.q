@@ -171,7 +171,7 @@
 
 / Create a new scope
 / @op (dict|long) Options - ns, graph, deps.
-.tf.newScope:{[op] if[op~();op:(`$())!()]; if[-7=type op;op:enlist[`graph]!enlist op]; op:(`ns`deps!(`;0#0)),op; if[not `graph in key op; g:.tf.graph.new[]; op[`graph]:g];  op};
+.tf.newScope:{[op] if[(op~(::))|op~();op:(`$())!()]; if[-7=type op;op:enlist[`graph]!enlist op]; op:(`ns`deps!(`;0#0)),op; if[not `graph in key op; g:.tf.graph.new[]; op[`graph]:g];  op};
 .tf.subScope:{[scope;name] if[(n:$[null scope`ns;name;`$string[scope`ns],"/",string name])in .tf.i.scopes;n:`$string[n],"_",string .tf.i.N[]]; scope[`ns]:n; .tf.i.scopes,:n; scope};
 .tf.delScope:{.tf.graph.del x`graph};
 .tf.i.scopes:`$();
@@ -208,7 +208,7 @@
 / @returns (long list) a list of requested tensors
 .tf.session.run:{[sess;i;o;t;runOpts;gmeta]
   if[99=type i; i:enlist i]; if[99=type o; o:enlist o];
-  if[not ((i~())|98=type i)&((o~())|98=type o)&(7=type t:(),t)&7=type (sess;runOpts;gmeta);'".tf.session.run: type"];
+  if[not ((i~())|98=type i)&((o~())|98=type o)&(7=type t:t,`long$())&7=type (sess;runOpts;gmeta);'".tf.session.run: type"];
   if[not all `oper`index`tensor in cols i;'".tf.session.run: input"]; if[not all `oper`index in cols i;'".tf.session.run: output"];
   .tf.i.lib[`.tf.TF_SessionRun][sess;runOpts;(i;i`tensor);(o;r:count[o]#0);t;gmeta;s:.tf.getStatus[]];
   .tf.checkAndDelStatus[".tf.session.run";s];
@@ -223,7 +223,7 @@
  / @returns (long list) a list of requested tensors
 .tf.session.prun:{[sess;h;i;o;t]
   if[99=type i; i:enlist i]; if[99=type o; o:enlist o];
-  if[not ((i~())|98=type i)&((o~())|98=type o)&(7=type t:(),t)&7=type (sess;h);'".tf.session.prun: type"];
+  if[not ((i~())|98=type i)&((o~())|98=type o)&(7=type t:t,`long$())&7=type (sess;h);'".tf.session.prun: type"];
   if[not all `oper`index`tensor in cols i;'".tf.session.prun: input"]; if[not all `oper`index in cols i;'".tf.session.prun: output"];
   .tf.i.lib[`.tf.TF_SessionPRun][sess;h;(i;i`tensor);(o;r:count[o]#0);t;s:.tf.getStatus[]];
   .tf.checkAndDelStatus[".tf.session.prun";s];
