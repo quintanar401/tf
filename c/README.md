@@ -13,6 +13,11 @@ To compile it run something like (following tensorflow installation instructions
 gcc -DKXVER=3 -fPIC -shared -O3 -L/usr/local/lib tf.c -ltensorflow -o tf.so
 ```
 
+Load:
+```
+l:`:tf 2: (`tf__init;1); lib:l[];
+```
+
 ## Operations
 
 To generate operations you need https://github.com/tensorflow/tensorflow/blob/r1.6/tensorflow/core/ops/ops.pbtxt

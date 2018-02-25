@@ -56,15 +56,15 @@
 / TF_Buffer TF_GetBuffer(TF_Buffer* buffer); ???
 
 .b2c.defType[`c.deallocator_func;`f`c.void`c.void_p`c.size_t`c.void_p];
-.tf.qdeallocator:{[d;s;a] '".tf.qdeallocator is undefined"}; / all longs, d - pointer, s - size, a - ID
-.tf.deallocator:{[d;s;a] "c)`c.void`c.void_p`c.size_t`c.void_p"; `.tf.qdeallocator[C.toK `c.j$d;C.toK `c.j$s;C.toK `c.j$a];} / symbol - to avoid compilation
+.tf.deallocator:{[d;s;a] "c)`c.void`c.void_p`c.size_t`c.void_p"; c.k.v:`c.k$a; c.v[`r]-:1i;} / decrease the obj's ref count
+.tf.getQPtr:{"c)`c.void_p`K"; $[t in 4 10h;`c.void_p$`c.C$data;t=5;`c.void_p$`c.H$data;t=6;`c.void_p$`c.I$data;t=7;`c.void_p$`c.J$data;t=9;`c.void_p$`c.F$data;`c.void_p$`c.E$data]};
 / TF_Tensor* TF_NewTensor(TF_DataType, const int64_t* dims, int num_dims, void* data, size_t len, void (*deallocator)(void* data, size_t len, void* arg),void* deallocator_arg);
 .b2c.defExtFn[`tf;`C.TF_NewTensor;`c.TF_Tensor_p;`c.TF_DataType`c.long_p`c.i`c.void_p`c.size_t`c.deallocator_func_p`c.void_p;(enlist`nogen)!(),1b];
-.tf.TF_NewTensor:{[dt;dims;data;arg]
-  if[null sz:(4 6 7 8 9 10h!1 4 8 4 8 1)t:type data; '"TF_NewTensor: unsupported data"];
-  c.void_p.dt:$[t in 4 10h;`c.void_p$`c.C$data;t=6;`c.void_p$`c.I$data;t=7;`c.void_p$`c.J$data;t=9;`c.void_p$`c.F$data;`c.void_p$`c.E$data];
-  r: C.toK `c.j$C.TF_NewTensor[`c.TF_DataType$`c.i$dt;`c.long_p$dims;`c.i$"i"$count dims;c.dt;`c.size_t$`c.j$sz*count data;(&).tf.deallocator;`c.void_p$`c.j$arg];
-  if[not r;'"TF_NewTensor: couldn't create a tensor"]
+.tf.TF_NewTensor:{[dt;dims;data]
+  if[null sz:(4 5 6 7 8 9 10h!1 2 4 8 4 8 1)t:type data; '"TF_NewTensor: unsupported data"];
+  c.void_p.dt:.tf.getQPtr data; c.k.d: `c.k$data;
+  r: C.toK `c.j$C.TF_NewTensor[`c.TF_DataType$`c.i$dt;`c.long_p$dims;`c.i$"i"$count dims;c.dt;`c.size_t$`c.j$sz*count data;(&).tf.deallocator;`c.void_p$c.d];
+  if[r<>0; c.d[`r]+:1i];
   : r;
  };
 .b2c.defExtFn[`tf;`C.TF_AllocateTensor;enlist`c.TF_Tensor_p`c.j;(`c.TF_DataType;`c.long_p;(`c.i;enlist(`length;2));`c.size_t);()];  / TF_Tensor* TF_AllocateTensor(TF_DataType, const int64_t* dims, int num_dims, size_t len);
@@ -75,8 +75,17 @@
 .b2c.defExtFn[`tf;`C.TF_Dim;`c.j;`c.TF_Tensor_p`c.i;()]; / int64_t TF_Dim(const TF_Tensor* tensor, int dim_index)
 .b2c.defExtFn[`tf;`C.TF_TensorByteSize;enlist`c.size_t`c.j;`c.TF_Tensor_p;()]; / size_t TF_TensorByteSize(const TF_Tensor*)
 .b2c.defExtFn[`tf;`C.TF_TensorData;enlist`c.void_p`c.j;`c.TF_Tensor_p;()]; / void* TF_TensorData(const TF_Tensor*)
+.tf.writeToTensor:{[ptr;data]
+  c.C.t:`c.C$`c.void_p$`c.j$ptr; c.C.d:`c.C$.tf.getQPtr data;
+  do[(4 5 6 7 8 9 10h!1 2 4 8 4 8 1)[type data]*count data; c.t[c.do1]: c.d c.do1];
+ };
+ .tf.readFromTensor:{[ptr;data]
+   c.C.t:`c.C$`c.void_p$`c.j$ptr; c.C.d:`c.C$.tf.getQPtr data;
+   do[(4 5 6 7 8 9 10h!1 2 4 8 4 8 1)[type data]*count data; c.d[c.do1]: c.t c.do1];
+   : data;
+  };
 
-.b2c.defExtFn[`tf;`C.TF_StringEncode;enlist`c.size_t`c.j;(`c.C;(`c.size_t;enlist(`length;1));`c.C;(`c.size_t;enlist(`length;3));`c.TF_Status_p);()]; / size_t TF_StringEncode(const char* src, size_t src_len, char* dst, size_t dst_len, TF_Status* status);
+.b2c.defExtFn[`tf;`C.TF_StringEncode;enlist`c.size_t`c.j;(`c.C;(`c.size_t;enlist(`length;1));`c.C;enlist`c.j`c.size_t;`c.TF_Status_p);()]; / size_t TF_StringEncode(const char* src, size_t src_len, char* dst, size_t dst_len, TF_Status* status);
 .b2c.defExtFn[`tf;`C.TF_StringDecode;`c.size_t;`c.C`c.size_t`c.cchar_p_p`c.size_t_p`c.TF_Status_p;(enlist`nogen)!(),1b]; / size_t TF_StringDecode(const char* src, size_t src_len,const char** dst, size_t* dst_len,TF_Status* status);
 .tf.TF_StringDecode:{[src;st]
   c.size_t.r:C.TF_StringDecode[`c.C$src;`c.size_t$`c.j$count src;(&)c.cchar_p.dst;(&)c.size_t.l;`c.TF_Status_p$`c.j$st];
@@ -100,7 +109,7 @@
 .b2c.defExtFn[`tf;`C.TF_SetDevice;`c.void;`c.TF_OperationDescription_p`c.S;()]; / void TF_SetDevice(TF_OperationDescription* desc,const char* device)
 .b2c.defExtFn[`tf;`C.TF_AddInput;`c.void;`c.TF_OperationDescription_p`c.TF_Output;()]; / void TF_AddInput(TF_OperationDescription* desc,TF_Output input)
 .b2c.defExtFn[`tf;`C.TF_AddInputList;`c.void;`c.TF_OperationDescription_p`c.TF_Output_p`c.i;(enlist`nogen)!(),1b]; / void TF_AddInputList(TF_OperationDescription* desc,const TF_Output* inputs,int num_inputs)
-.tf.TF_AddInputList:{[op;out] if[not 98=type out;'"TF_AddInputList: type"]; v:.b2c.enStruct out; C.TF_AddInputList[`c.TF_OperationDescription_p$op;`c.TF_Output_p$`c.void_p$`c.C$v;`c.i$"i"$count out];};
+.tf.TF_AddInputList:{[op;out] if[not 98=type out;'"TF_AddInputList: type"]; v:.b2c.enStruct `oper`index#out; C.TF_AddInputList[`c.TF_OperationDescription_p$op;`c.TF_Output_p$`c.void_p$`c.C$v;`c.i$"i"$count out];};
 .b2c.defExtFn[`tf;`C.TF_AddControlInput;`c.void;`c.TF_OperationDescription_p`c.TF_Operation_p;()]; / void TF_AddControlInput(TF_OperationDescription* desc,TF_Operation* input)
 / deprecated:  void TF_ColocateWith(TF_OperationDescription* desc, TF_Operation* op)
 .b2c.defExtFn[`tf;`C.TF_SetAttrString;`c.void;(`c.TF_OperationDescription_p;`c.S;enlist`c.C`c.void_p;(`c.size_t;enlist(`length;3)));()]; / void TF_SetAttrString(TF_OperationDescription* desc,const char* attr_name,const void* value, size_t length)
@@ -258,7 +267,7 @@
  };
 .b2c.defExtFn[`tf;`C.TF_NewWhile;`c.TF_WhileParams;`c.TF_Graph_p`c.TF_Output_p`c.i`c.TF_Status_p;(enlist`nogen)!(),1b]; / TF_WhileParams TF_NewWhile(TF_Graph* g, TF_Output* inputs,int ninputs,TF_Status* status)
 .tff.TF_NewWhile:{[g;i;s] / remove tmp
-  v:.b2c.enStruct i;
+  v:.b2c.enStruct `oper`index#i;
   c.TF_WhileParams.p: C.TF_NewWhile[`c.TF_Graph_p$g;`c.TF_Output_p$`c.void_p$`c.C$v;`c.i$"i"$count i;`c.TF_Status_p$s];
   : .tf.createWhileParams (&)c.p;
  };
@@ -274,7 +283,7 @@
 / void TF_AddGradients(TF_Graph* g, TF_Output* y, int ny,TF_Output* x, int nx, TF_Output* dx,TF_Status* status, TF_Output* dy)
 .b2c.defExtFn[`tf;`C.TF_AddGradients;`c.void;`c.TF_Graph_p`c.TF_Output_p`c.i`c.TF_Output_p`c.i`c.TF_Output_p`c.TF_Status_p`c.TF_Output_p;(enlist`nogen)!(),1b];
 .tf.TF_AddGradients:{[g;y;x;dx;s]
-  yy:.b2c.enStruct y; xx:.b2c.enStruct x; dx:$[count dx;.b2c.enStruct dx;()];
+  yy:.b2c.enStruct `oper`index#y; xx:.b2c.enStruct x; dx:$[count dx;.b2c.enStruct `oper`index#dx;()];
   c.TF_Output_p.dx:`c.TF_Output_p$C.NULL;
   if[count dx;c.dx:`c.TF_Output_p$`c.void_p$`c.C$dx];
   v:((C.toK`c.j$count`c.TF_Output)*count x)#0x00;
@@ -287,8 +296,8 @@
 .b2c.defExtFn[`tf;`C.TF_GraphToFunction;enlist`c.TF_Function_p`c.j;`c.TF_Graph_p`c.S`c.uchar`c.i`c.ccTF_Operation_p_p`c.i`c.TF_Output_p`c.i`c.TF_Output_p`c.cchar_p_p`c.TF_FunctionOptions_p`c.S`c.TF_Status_p;(enlist`nogen)!(),1b];
 .tf.TF_GraphToFunction:{[g;name;hash;args;o;d;s] / args is (ops;in;out;names), count[names]=count[out] or 0
   nops:"i"$$[c:count a:args 0;c;$[a~();-1;0]]; ops:$[nops<0;0#0;a];
-  inp:$[count a:args 1;.b2c.enStruct a;0#0x00];
-  out:$[count a:args 2;.b2c.enStruct a;0#0x00];
+  inp:$[count a:args 1;.b2c.enStruct `oper`index#a;0#0x00];
+  out:$[count a:args 2;.b2c.enStruct `oper`index#a;0#0x00];
   c.S_p.s:`c.S_p$C.NULL; if[count a:args 3; nms:(8*count a)#0x00; c.s:`c.S_p$`c.void_p$`c.C$nms; do[count a; c.s[c.do1]:`c.S$a C.toK c.do1]];
   : C.toK `c.j$C.TF_GraphToFunction[`c.TF_Graph_p$g;`c.S$name;`c.uchar$`c.c$hash;`c.i$nops;`c.ccTF_Operation_p_p$`c.void_p$`c.J$ops;`c.i$"i"$count args 1;`c.TF_Output_p$`c.void_p$`c.C$inp;
       `c.i$"i"$count args 2;`c.TF_Output_p$`c.void_p$`c.C$out;`c.cchar_p_p$`c.void_p$c.s;`c.TF_FunctionOptions_p$o;`c.S$d;`c.TF_Status_p$s];
@@ -315,14 +324,14 @@
 / const TF_Output* outputs, TF_Tensor** output_values, int noutputs, const TF_Operation* const* target_opers, int ntargets, TF_Buffer* run_metadata, TF_Status*)
 .b2c.defExtFn[`tf;`C.TF_SessionRun;`c.void;`c.TF_Session_p`c.TF_Buffer_p`c.TF_Output_p`c.TF_Tensor_p_p`c.i`c.TF_Output_p`c.TF_Tensor_p_p`c.i`c.ccTF_Operation_p_p`c.i`c.TF_Buffer_p`c.TF_Status_p;(enlist`nogen)!(),1b];
 .tf.TF_SessionRun:{[sess;ropts;inp;out;ops;mdata;st] / inp and out are (ops;tens)
-  ii:.b2c.enStruct inp 0; oo:.b2c.enStruct out 0;
+  ii:$[count inp;.b2c.enStruct `oper`index#inp 0;0#0x00]; oo:$[count out;.b2c.enStruct `oper`index#out 0;0#0x00];
   C.TF_SessionRun[`c.TF_Session_p$sess;`c.TF_Buffer_p$ropts;`c.TF_Output_p$`c.void_p$`c.C$ii;`c.TF_Tensor_p_p$`c.void_p$`c.J$inp 1;`c.i$"i"$count inp 1;
     `c.TF_Output_p$`c.void_p$`c.C$oo;`c.TF_Tensor_p_p$`c.void_p$`c.J$out 1;`c.i$"i"$count out 1;`c.ccTF_Operation_p_p$`c.void_p$`c.J$ops;`c.i$"i"$count ops;`c.TF_Buffer_p$mdata;`c.TF_Status_p$st];
  };
 / void TF_SessionPRunSetup(TF_Session*,const TF_Output* inputs, int ninputs,const TF_Output* outputs, int noutputs, const TF_Operation* const* target_opers, int ntargets, const char** handle,TF_Status*)
 .b2c.defExtFn[`tf;`C.TF_SessionPRunSetup;`c.void;`c.TF_Session_p`c.TF_Output_p`c.i`c.TF_Output_p`c.i`c.ccTF_Operation_p_p`c.i`c.cchar_p_p`c.TF_Status_p;(enlist`nogen)!(),1b];
 .tf.TF_SessionPRunSetup:{[sess;inp;out;ops;st]
-  ii:.b2c.enStruct inp; oo:.b2c.enStruct out;
+  ii:$[count inp;.b2c.enStruct `oper`index#inp 0;0#0x00]; oo:$[count out;.b2c.enStruct `oper`index#out 0;0#0x00];
   c.S_p.p:`c.S_p$`c.void_p$`c.j$0;
   C.TF_SessionPRunSetup[`c.TF_Session_p$sess;`c.TF_Output_p$`c.void_p$`c.C$ii;`c.i$"i"$count inp;`c.TF_Output_p$`c.void_p$`c.C$oo;`c.i$"i"$count out;
     `c.ccTF_Operation_p_p$`c.void_p$`c.J$ops;`c.i$"i"$count ops;`c.cchar_p_p$`c.void_p$c.p;`c.TF_Status_p$st];
@@ -332,7 +341,7 @@
 /     const TF_Output* outputs, TF_Tensor** output_values, int noutputs, const TF_Operation* const* target_opers, int ntargets,TF_Status*)
 .b2c.defExtFn[`tf;`C.TF_SessionPRun;`c.void;`c.TF_Session_p`c.S`c.TF_Output_p`c.TF_Tensor_p_p`c.i`c.TF_Output_p`c.TF_Tensor_p_p`c.i`c.ccTF_Operation_p_p`c.i`c.TF_Status_p;(enlist`nogen)!(),1b];
 .tf.TF_SessionPRun:{[sess;hh;inp;out;ops;st] / inp and out are (ops;tens)
-  ii:.b2c.enStruct inp 0; oo:.b2c.enStruct out 0;
+  ii:$[count inp;.b2c.enStruct `oper`index#inp 0;0#0x00]; oo:$[count out;.b2c.enStruct `oper`index#out 0;0#0x00];
   C.TF_SessionPRun[`c.TF_Session_p$sess;`c.S$`c.j$hh;`c.TF_Output_p$`c.void_p$`c.C$ii;`c.TF_Tensor_p_p$`c.void_p$`c.J$inp 1;`c.i$"i"$count inp 1;
     `c.TF_Output_p$`c.void_p$`c.C$oo;`c.TF_Tensor_p_p$`c.void_p$`c.J$out 1;`c.i$"i"$count out 1;`c.ccTF_Operation_p_p$`c.void_p$`c.J$ops;`c.i$"i"$count ops;`c.TF_Status_p$st];
  };
