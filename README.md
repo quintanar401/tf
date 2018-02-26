@@ -169,6 +169,9 @@ op:.tf.ops.getOpByName[scopeOrGraph;`name];  / long, get the operation by name
 
 Operation properties:
 ```
+.tf.ops.attr`Const;                          / raw help on operation's attributes
+.tf.ops.args`MatMul;                         / raw help on operation's in/out
+
 s:.tf.ops.name op;                           / symbol, op's name
 s:.tf.ops.type op;                           / symbol, op's type
 s:.tf.ops.device op;                         / symbol, op's device

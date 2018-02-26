@@ -60,9 +60,6 @@ static K  __K2F_cast(F** x0,K x1);
 static K  __K2E_cast(E** x0,K x1);
 static K  __K2S_cast(char** x0,K x1);
 static K  __K2C_cast(char** x0,K x1);
-static K  __kvalue__q(K x0);
-static K __kvalue__k=(K)0;
-static K __kvalue(K x0) { return __kvalue__q(r1(x0));};
 static K  __toKS(char* x0);
 static K  __toKC(char* x0,J x1);
 static K  __K2TF_Input_cast(TF_Input* x0,K x1);
@@ -72,6 +69,9 @@ static K  __toKTF_AttrMetadata(TF_AttrMetadata* x0);
 K  tf_tf_getBuffer__q(K x0);
 static K tf_tf_getBuffer__k=(K)0;
 K tf_tf_getBuffer(K x0) { return tf_tf_getBuffer__q(r1(x0));};
+K  tf_tf_encodeOut__q(K x0);
+static K tf_tf_encodeOut__k=(K)0;
+K tf_tf_encodeOut(K x0) { return tf_tf_encodeOut__q(r1(x0));};
 K  tf_tf_TF_Version__q(K x0);
 static K tf_tf_TF_Version__k=(K)0;
 K tf_tf_TF_Version(K x0) { return tf_tf_TF_Version__q(r1(x0));};
@@ -140,9 +140,9 @@ K tf_tf_readFromTensor(K x0,K x1) { return tf_tf_readFromTensor__q(r1(x0),r1(x1)
 K  tf_tf_TF_StringEncode__q(K x0,K x1,K x2,K x3);
 static K tf_tf_TF_StringEncode__k=(K)0;
 K tf_tf_TF_StringEncode(K x0,K x1,K x2,K x3) { return tf_tf_TF_StringEncode__q(r1(x0),r1(x1),r1(x2),r1(x3));};
-K  tf_tf_TF_StringDecode__q(K x0,K x1);
+K  tf_tf_TF_StringDecode__q(K x0,K x1,K x2);
 static K tf_tf_TF_StringDecode__k=(K)0;
-K tf_tf_TF_StringDecode(K x0,K x1) { return tf_tf_TF_StringDecode__q(r1(x0),r1(x1));};
+K tf_tf_TF_StringDecode(K x0,K x1,K x2) { return tf_tf_TF_StringDecode__q(r1(x0),r1(x1),r1(x2));};
 K  tf_tf_TF_StringEncodedSize__q(K x0);
 static K tf_tf_TF_StringEncodedSize__k=(K)0;
 K tf_tf_TF_StringEncodedSize(K x0) { return tf_tf_TF_StringEncodedSize__q(r1(x0));};
@@ -185,9 +185,6 @@ K tf_tf_TF_AddInput(K x0,K x1) { return tf_tf_TF_AddInput__q(r1(x0),r1(x1));};
 K  tf_tf_TF_AddInputList__q(K x0,K x1);
 static K tf_tf_TF_AddInputList__k=(K)0;
 K tf_tf_TF_AddInputList(K x0,K x1) { return tf_tf_TF_AddInputList__q(r1(x0),r1(x1));};
-K  tf_b2c_enStruct__q(K x0);
-static K tf_b2c_enStruct__k=(K)0;
-K tf_b2c_enStruct(K x0) { return tf_b2c_enStruct__q(r1(x0));};
 K  tf_tf_TF_AddControlInput__q(K x0,K x1);
 static K tf_tf_TF_AddControlInput__k=(K)0;
 K tf_tf_TF_AddControlInput(K x0,K x1) { return tf_tf_TF_AddControlInput__q(r1(x0),r1(x1));};
@@ -874,44 +871,6 @@ static K __K2C_cast(char** _x,K _y){
   while(__stc>0) r0(__st[--__stc]); 
   return __v;
  };
-static K __kvalue__q(K _x){
-  K __st[1]; int __stc=0; K __v=(K)1;
-  
-  K _f=r1(__consts[0]); 
-  __v=kdot(r1(__consts[25]),knk(1,r1(_x))); if(0==__v) goto __return;   // type[x]
-  __v=kdot(r1(__consts[47]),knk(2,r1(__consts[105]),__v)); if(0==__v) goto __return;   // =[-11;<val>]
-  __v=kif(__v); if(0==__v) goto __return; if(0==__v->j) { r0(__v); goto __l8;}; r0(__v);  // if/while check condition
-  __v=kdot(r1(__libFuncs),knk(1,r1(_x))); if(0==__v) goto __return;   // .b2c.libFuncs[x]
-  r0(_f); _f=__v;__v=r1(_f);   // f:<val>
-  __v=kdot(r1(__consts[14]),knk(1,__v)); if(0==__v) goto __return;   // null[<val>]
-  __v=kdot(r1(__consts[22]),knk(1,__v)); if(0==__v) goto __return;   // not[<val>]
-  __v=kif(__v); if(0==__v) goto __return; if(0==__v->j) { r0(__v); goto __l4;}; r0(__v);  // if/while check condition
-  __v=r1(_f);  // local f
-  goto __return;  // return cmd
-  r0(__v); 
-  // end of statement
-
- __l4:
-  __v=kdot(r1(__libGlobs),knk(1,r1(_x))); if(0==__v) goto __return;   // .b2c.libGlobs[x]
-  r0(_f); _f=__v;__v=r1(_f);   // f:<val>
-  __v=kdot(r1(__consts[14]),knk(1,__v)); if(0==__v) goto __return;   // null[<val>]
-  __v=kdot(r1(__consts[22]),knk(1,__v)); if(0==__v) goto __return;   // not[<val>]
-  __v=kif(__v); if(0==__v) goto __return; if(0==__v->j) { r0(__v); goto __l8;}; r0(__v);  // if/while check condition
-  __v=r1((*(K*)(_f)->j)); if(0==__v) goto __return;   // C.toK[<val>]
-  goto __return;  // return cmd
-  r0(__v); 
-  // end of statement
-
- __l8:
-  __v=knk(1,r1(_x)); if(0==__v) goto __return;   // C.knk[x]
-  __v=kdot(r1(__q[5]),__v); if(0==__v) goto __return;   // C.dot[get;<val>]
-  goto __return;  // return cmd
-
- __return:
-  r0(_f); r0(_x); 
-  while(__stc>0) r0(__st[--__stc]); 
-  return __v;
- };
 static K __toKS(char* _x){
   K __st[1]; int __stc=0; K __v=(K)1;
   J _c_l; char* _c_r; _Bool _vc_bool1; J _c_do1;
@@ -930,7 +889,7 @@ static K __toKS(char* _x){
 
  __l3:
   __v=kj(_c_l); if(0==__v) goto __return;   // C.toK[c.l]
-  __v=kdot(r1(__consts[52]),knk(2,__v,r1(__consts[107]))); if(0==__v) goto __return;   // #[<val>;" "]
+  __v=kdot(r1(__consts[52]),knk(2,__v,r1(__consts[106]))); if(0==__v) goto __return;   // #[<val>;" "]
   r0(_r); _r=__v;  // r:<val> - no rval, local
   
   // end of statement
@@ -990,13 +949,13 @@ static K __K2TF_Input_cast(TF_Input* _x,K _y){
   K __st[1]; int __stc=0; K __v=(K)1;
   J _vc_j1; I _vc_i1;
   K _k=r1(__consts[0]); K _kk=r1(__consts[0]); K _v=r1(__consts[0]); 
-  r0(_k); _k=r1(__consts[108]);  // k:`oper`index - no rval, local
+  r0(_k); _k=r1(__consts[107]);  // k:`oper`index - no rval, local
   
   // end of statement
   __v=kdot(r1(__consts[25]),knk(1,r1(_y))); if(0==__v) goto __return;   // type[y]
-  __v=kdot(r1(__consts[106]),knk(2,r1(__consts[109]),__v)); if(0==__v) goto __return;   // ~=[99;<val>]
+  __v=kdot(r1(__consts[105]),knk(2,r1(__consts[108]),__v)); if(0==__v) goto __return;   // ~=[99;<val>]
   __v=kif(__v); if(0==__v) goto __return; if(0==__v->j) { r0(__v); goto __l2;}; r0(__v);  // if/while check condition
-  __v=r1(__consts[110]);  // const "`c.TF_Input$: type"
+  __v=r1(__consts[109]);  // const "`c.TF_Input$: type"
   __st[__stc++]=__v;  if(__v->t==-KS) __v=krr(__v->s); else if(__v->t==KC)  __v=krr(sn(kC(__v),__v->n)); else __v=krr("stype"); goto __return;  // raise an exception
   r0(__v); 
   // end of statement
@@ -1011,7 +970,7 @@ static K __K2TF_Input_cast(TF_Input* _x,K _y){
   __v=kdot(r1(__q[13]),knk(1,__v)); if(0==__v) goto __return;   // all[<val>]
   __v=kdot(r1(__consts[22]),knk(1,__v)); if(0==__v) goto __return;   // not[<val>]
   __v=kif(__v); if(0==__v) goto __return; if(0==__v->j) { r0(__v); goto __l4;}; r0(__v);  // if/while check condition
-  __v=r1(__consts[110]);  // const "`c.TF_Input$: type"
+  __v=r1(__consts[109]);  // const "`c.TF_Input$: type"
   __st[__stc++]=__v;  if(__v->t==-KS) __v=krr(__v->s); else if(__v->t==KC)  __v=krr(sn(kC(__v),__v->n)); else __v=krr("stype"); goto __return;  // raise an exception
   r0(__v); 
   // end of statement
@@ -1043,13 +1002,13 @@ static K __K2TF_Output_cast(TF_Output* _x,K _y){
   K __st[1]; int __stc=0; K __v=(K)1;
   J _vc_j1; I _vc_i1;
   K _k=r1(__consts[0]); K _kk=r1(__consts[0]); K _v=r1(__consts[0]); 
-  r0(_k); _k=r1(__consts[108]);  // k:`oper`index - no rval, local
+  r0(_k); _k=r1(__consts[107]);  // k:`oper`index - no rval, local
   
   // end of statement
   __v=kdot(r1(__consts[25]),knk(1,r1(_y))); if(0==__v) goto __return;   // type[y]
-  __v=kdot(r1(__consts[106]),knk(2,r1(__consts[109]),__v)); if(0==__v) goto __return;   // ~=[99;<val>]
+  __v=kdot(r1(__consts[105]),knk(2,r1(__consts[108]),__v)); if(0==__v) goto __return;   // ~=[99;<val>]
   __v=kif(__v); if(0==__v) goto __return; if(0==__v->j) { r0(__v); goto __l2;}; r0(__v);  // if/while check condition
-  __v=r1(__consts[113]);  // const "`c.TF_Output$: type
+  __v=r1(__consts[112]);  // const "`c.TF_Output$: type
   __st[__stc++]=__v;  if(__v->t==-KS) __v=krr(__v->s); else if(__v->t==KC)  __v=krr(sn(kC(__v),__v->n)); else __v=krr("stype"); goto __return;  // raise an exception
   r0(__v); 
   // end of statement
@@ -1064,7 +1023,7 @@ static K __K2TF_Output_cast(TF_Output* _x,K _y){
   __v=kdot(r1(__q[13]),knk(1,__v)); if(0==__v) goto __return;   // all[<val>]
   __v=kdot(r1(__consts[22]),knk(1,__v)); if(0==__v) goto __return;   // not[<val>]
   __v=kif(__v); if(0==__v) goto __return; if(0==__v->j) { r0(__v); goto __l4;}; r0(__v);  // if/while check condition
-  __v=r1(__consts[113]);  // const "`c.TF_Output$: type
+  __v=r1(__consts[112]);  // const "`c.TF_Output$: type
   __st[__stc++]=__v;  if(__v->t==-KS) __v=krr(__v->s); else if(__v->t==KC)  __v=krr(sn(kC(__v),__v->n)); else __v=krr("stype"); goto __return;  // raise an exception
   r0(__v); 
   // end of statement
@@ -1096,7 +1055,7 @@ static K __toKTF_Output(TF_Output* _x){
   K __st[2]; int __stc=0; K __v=(K)1;
   
   K _k=r1(__consts[0]); 
-  r0(_k); _k=r1(__consts[108]);  // k:`oper`index - no rval, local
+  r0(_k); _k=r1(__consts[107]);  // k:`oper`index - no rval, local
   
   // end of statement
   __v=ki(_x->index); if(0==__v) goto __return;   // C.toK[<val>]
@@ -1114,7 +1073,7 @@ static K __toKTF_AttrMetadata(TF_AttrMetadata* _x){
   K __st[4]; int __stc=0; K __v=(K)1;
   
   K _k=r1(__consts[0]); 
-  r0(_k); _k=r1(__consts[116]);  // k:`is_list`list_size`t - no rval, local
+  r0(_k); _k=r1(__consts[115]);  // k:`is_list`list_size`t - no rval, local
   
   // end of statement
   __v=kj((J)_x->total_size); if(0==__v) goto __return;   // C.toK[<val>]
@@ -1140,7 +1099,7 @@ K tf_tf_getBuffer__q(K _x){
   // end of statement
   __v=kj((J)_c_b->length); if(0==__v) goto __return;   // C.toK[<val>]
   r0(_l); _l=__v;__v=r1(_l);   // l:<val>
-  __v=kdot(r1(__consts[52]),knk(2,__v,r1(__consts[121]))); if(0==__v) goto __return;   // #[<val>;0x00]
+  __v=kdot(r1(__consts[52]),knk(2,__v,r1(__consts[120]))); if(0==__v) goto __return;   // #[<val>;0x00]
   r0(_res); _res=__v;  // res:<val> - no rval, local
   
   // end of statement
@@ -1170,6 +1129,56 @@ K tf_tf_getBuffer__q(K _x){
   while(__stc>0) r0(__st[--__stc]); 
   return __v;
  };
+K tf_tf_encodeOut__q(K _x){
+  K __st[1]; int __stc=0; K __v=(K)1;
+  TF_Output* _c_o; char* _vc_C1; J _c_do1; J _vc_j1; I _vc_i1;
+  K _r=r1(__consts[0]); K _v=r1(__consts[0]); 
+  __v=kj((J)sizeof(TF_Output)); if(0==__v) goto __return;   // C.toK[<val>]
+  __st[__stc++]=__v; __v=kdot(r1(__consts[20]),knk(1,r1(_x))); if(0==__v) goto __return;   // count[x]
+  __v=kdot(r1(__consts[42]),knk(2,__v,__st[__stc-1]));__stc-=1;  if(0==__v) goto __return;   // *[<val>;<val>]
+  __v=kdot(r1(__consts[52]),knk(2,__v,r1(__consts[120]))); if(0==__v) goto __return;   // #[<val>;0x00]
+  r0(_r); _r=__v;  // r:<val> - no rval, local
+  
+  // end of statement
+  __v=__K2C_cast(&_vc_C1,r1(_r)); if(0==__v) goto __return; r0(__v);   // `c.C$<val>
+  _c_o=(TF_Output*)(void*)_vc_C1;  // c.o[()]::<val> - no rval, global
+  
+  // end of statement
+  __v=kdot(r1(__consts[20]),knk(1,r1(_x))); if(0==__v) goto __return;   // count[x]
+  __v=kif(__v); if(0==__v) goto __return; _c_do1=__v->j; r0(__v);  // check that do value is correct
+
+ __l1:
+  if(0>=_c_do1)goto __l3; _c_do1-=1;  // do condition
+  __v=kj(_c_do1); if(0==__v) goto __return;   // C.toK[c.do1]
+  __v=kdot(r1(_x),knk(1,__v)); if(0==__v) goto __return;   // x[<val>]
+  r0(_v); _v=__v;  // v:<val> - no rval, local
+  
+  // end of statement
+  __v=kdot(r1(_v),knk(1,r1(__consts[124]))); if(0==__v) goto __return;   // v[`oper]
+  __v=__K2j_cast(&_vc_j1,__v); if(0==__v) goto __return; r0(__v);   // `c.j$<val>
+  _c_o[_c_do1].oper=(TF_Operation*)_vc_j1;  // c.o[<val>]::<val> - no rval, global
+  
+  // end of statement
+  __v=kdot(r1(_v),knk(1,r1(__consts[125]))); if(0==__v) goto __return;   // v[`index]
+  __v=__K2i_cast(&_vc_i1,__v); if(0==__v) goto __return; r0(__v);   // `c.i$<val>
+  _c_o[_c_do1].index=_vc_i1;  // c.o[<val>]::_vc_i1 - no rval, global
+  
+  // end of statement
+  goto __l1;  // jump back to do/while
+
+ __l3:
+  __v=r1(_r);  // local r
+  goto __return;  // return cmd
+  r0(__v); 
+  // end of statement
+  __v=r1(__consts[5]);  // const ::
+  goto __return;  // return cmd
+
+ __return:
+  r0(_r); r0(_v); r0(_x); 
+  while(__stc>0) r0(__st[--__stc]); 
+  return __v;
+ };
 K tf_tf_TF_Version__q(K _x1){
   K __st[1]; int __stc=0; K __v=(K)1;
   const char* _c_res; _Bool _vc_bool1;
@@ -1183,7 +1192,7 @@ K tf_tf_TF_Version__q(K _x1){
   __v=ki(errno); if(0==__v) goto __return;   // C.toK[C.errno]
   __st[__stc++]=__v; __v=kdot(r1(__consts[26]),knk(1,r1(__glob[17]))); if(0==__v) goto __return;   // global .string.strerror
   __v=kdot(__v,knk(1,__st[__stc-1]));__stc-=1;  if(0==__v) goto __return;   // .string.strerror[<val>]
-  __v=kdot(r1(__consts[51]),knk(2,r1(__consts[124]),__v)); if(0==__v) goto __return;   // ,["C.TF_Version: ";<val>]
+  __v=kdot(r1(__consts[51]),knk(2,r1(__consts[126]),__v)); if(0==__v) goto __return;   // ,["C.TF_Version: ";<val>]
   __st[__stc++]=__v;  if(__v->t==-KS) __v=krr(__v->s); else if(__v->t==KC)  __v=krr(sn(kC(__v),__v->n)); else __v=krr("stype"); goto __return;  // raise an exception
   r0(__v); 
   // end of statement
@@ -1295,7 +1304,7 @@ K tf_tf_TF_Message__q(K _x1){
   __v=ki(errno); if(0==__v) goto __return;   // C.toK[C.errno]
   __st[__stc++]=__v; __v=kdot(r1(__consts[26]),knk(1,r1(__glob[17]))); if(0==__v) goto __return;   // global .string.strerror
   __v=kdot(__v,knk(1,__st[__stc-1]));__stc-=1;  if(0==__v) goto __return;   // .string.strerror[<val>]
-  __v=kdot(r1(__consts[51]),knk(2,r1(__consts[125]),__v)); if(0==__v) goto __return;   // ,["C.TF_Message: ";<val>]
+  __v=kdot(r1(__consts[51]),knk(2,r1(__consts[127]),__v)); if(0==__v) goto __return;   // ,["C.TF_Message: ";<val>]
   __st[__stc++]=__v;  if(__v->t==-KS) __v=krr(__v->s); else if(__v->t==KC)  __v=krr(sn(kC(__v),__v->n)); else __v=krr("stype"); goto __return;  // raise an exception
   r0(__v); 
   // end of statement
@@ -1377,64 +1386,55 @@ void tf_tf_deallocator(void* _d,size_t _s,void* _a){
   while(__stc>0) r0(__st[--__stc]); 
   if(0==__v){ PE("exception in tf_tf_deallocator"); exit(1);}; return ;
  };
-void* tf_tf_getQPtr(K _x){
+void* tf_tf_getQPtr(K _data){
   K __st[1]; int __stc=0; K __v=(K)1;
   char* _vc_C1; void* _vc_void_p1; H* _vc_H1; I* _vc_I1; J* _vc_J1; F* _vc_F1; E* _vc_E1; void* __res;
-  
-  __v=kdot(r1(__consts[26]),knk(1,r1(__glob[28]))); if(0==__v) goto __return;   // global t
-  __v=kdot(r1(__consts[62]),knk(2,__v,r1(__consts[127]))); if(0==__v) goto __return;   // in[t;4 10h]
+  K _t=r1(__consts[0]); 
+  __v=kdot(r1(__consts[25]),knk(1,r1(_data))); if(0==__v) goto __return;   // type[data]
+  r0(_t); _t=__v;__v=r1(_t);   // t:<val>
+  __v=kdot(r1(__consts[62]),knk(2,__v,r1(__consts[129]))); if(0==__v) goto __return;   // in[<val>;4 10h]
   __v=kif(__v); if(0==__v) goto __return; if(0==__v->j) { r0(__v); goto __l2;}; r0(__v);  // if/while check condition
-  __v=kdot(r1(__consts[26]),knk(1,r1(__glob[27]))); if(0==__v) goto __return;   // global data
-  __v=__K2C_cast(&_vc_C1,__v); if(0==__v) goto __return; r0(__v);   // `c.C$<val>
+  __v=__K2C_cast(&_vc_C1,r1(_data)); if(0==__v) goto __return; r0(__v);   // `c.C$<val>
   _vc_void_p1=(void*)_vc_C1;  // `c.void_p$<val>
   goto __l11;  // jmp to if end
 
  __l2:
-  __v=kdot(r1(__consts[26]),knk(1,r1(__glob[28]))); if(0==__v) goto __return;   // global t
-  __v=kdot(r1(__consts[47]),knk(2,__v,r1(__consts[128]))); if(0==__v) goto __return;   // =[t;5]
+  __v=kdot(r1(__consts[47]),knk(2,r1(_t),r1(__consts[130]))); if(0==__v) goto __return;   // =[t;5]
   __v=kif(__v); if(0==__v) goto __return; if(0==__v->j) { r0(__v); goto __l4;}; r0(__v);  // if/while check condition
-  __v=kdot(r1(__consts[26]),knk(1,r1(__glob[27]))); if(0==__v) goto __return;   // global data
-  __v=__K2H_cast(&_vc_H1,__v); if(0==__v) goto __return; r0(__v);   // `c.H$<val>
+  __v=__K2H_cast(&_vc_H1,r1(_data)); if(0==__v) goto __return; r0(__v);   // `c.H$<val>
   _vc_void_p1=(void*)_vc_H1;  // `c.void_p$<val>
   goto __l11;  // jmp to if end
 
  __l4:
-  __v=kdot(r1(__consts[26]),knk(1,r1(__glob[28]))); if(0==__v) goto __return;   // global t
-  __v=kdot(r1(__consts[47]),knk(2,__v,r1(__consts[129]))); if(0==__v) goto __return;   // =[t;6]
+  __v=kdot(r1(__consts[47]),knk(2,r1(_t),r1(__consts[131]))); if(0==__v) goto __return;   // =[t;6]
   __v=kif(__v); if(0==__v) goto __return; if(0==__v->j) { r0(__v); goto __l6;}; r0(__v);  // if/while check condition
-  __v=kdot(r1(__consts[26]),knk(1,r1(__glob[27]))); if(0==__v) goto __return;   // global data
-  __v=__K2I_cast(&_vc_I1,__v); if(0==__v) goto __return; r0(__v);   // `c.I$<val>
+  __v=__K2I_cast(&_vc_I1,r1(_data)); if(0==__v) goto __return; r0(__v);   // `c.I$<val>
   _vc_void_p1=(void*)_vc_I1;  // `c.void_p$<val>
   goto __l11;  // jmp to if end
 
  __l6:
-  __v=kdot(r1(__consts[26]),knk(1,r1(__glob[28]))); if(0==__v) goto __return;   // global t
-  __v=kdot(r1(__consts[47]),knk(2,__v,r1(__consts[130]))); if(0==__v) goto __return;   // =[t;7]
+  __v=kdot(r1(__consts[47]),knk(2,r1(_t),r1(__consts[132]))); if(0==__v) goto __return;   // =[t;7]
   __v=kif(__v); if(0==__v) goto __return; if(0==__v->j) { r0(__v); goto __l8;}; r0(__v);  // if/while check condition
-  __v=kdot(r1(__consts[26]),knk(1,r1(__glob[27]))); if(0==__v) goto __return;   // global data
-  __v=__K2J_cast(&_vc_J1,__v); if(0==__v) goto __return; r0(__v);   // `c.J$<val>
+  __v=__K2J_cast(&_vc_J1,r1(_data)); if(0==__v) goto __return; r0(__v);   // `c.J$<val>
   _vc_void_p1=(void*)_vc_J1;  // `c.void_p$<val>
   goto __l11;  // jmp to if end
 
  __l8:
-  __v=kdot(r1(__consts[26]),knk(1,r1(__glob[28]))); if(0==__v) goto __return;   // global t
-  __v=kdot(r1(__consts[47]),knk(2,__v,r1(__consts[131]))); if(0==__v) goto __return;   // =[t;9]
+  __v=kdot(r1(__consts[47]),knk(2,r1(_t),r1(__consts[133]))); if(0==__v) goto __return;   // =[t;9]
   __v=kif(__v); if(0==__v) goto __return; if(0==__v->j) { r0(__v); goto __l10;}; r0(__v);  // if/while check condition
-  __v=kdot(r1(__consts[26]),knk(1,r1(__glob[27]))); if(0==__v) goto __return;   // global data
-  __v=__K2F_cast(&_vc_F1,__v); if(0==__v) goto __return; r0(__v);   // `c.F$<val>
+  __v=__K2F_cast(&_vc_F1,r1(_data)); if(0==__v) goto __return; r0(__v);   // `c.F$<val>
   _vc_void_p1=(void*)_vc_F1;  // `c.void_p$<val>
   goto __l11;  // jmp to if end
 
  __l10:
-  __v=kdot(r1(__consts[26]),knk(1,r1(__glob[27]))); if(0==__v) goto __return;   // global data
-  __v=__K2E_cast(&_vc_E1,__v); if(0==__v) goto __return; r0(__v);   // `c.E$<val>
+  __v=__K2E_cast(&_vc_E1,r1(_data)); if(0==__v) goto __return; r0(__v);   // `c.E$<val>
   _vc_void_p1=(void*)_vc_E1;  // `c.void_p$<val>
 
  __l11:
   __res=_vc_void_p1; goto __return;  // return cmd
 
  __return:
-  r0(_x); 
+  r0(_t); r0(_data); 
   while(__stc>0) r0(__st[--__stc]); 
   if(0==__v){ PE("exception in tf_tf_getQPtr"); exit(1);}; return __res;
  };
@@ -1444,11 +1444,11 @@ K tf_tf_TF_NewTensor__q(K _dt,K _dims,K _data){
   K _t=r1(__consts[0]); K _sz=r1(__consts[0]); K _r=r1(__consts[0]); 
   __v=kdot(r1(__consts[25]),knk(1,r1(_data))); if(0==__v) goto __return;   // type[data]
   r0(_t); _t=__v;__v=r1(_t);   // t:<val>
-  __v=kdot(r1(__consts[132]),knk(1,__v)); if(0==__v) goto __return;   // 4 5 6 7 8 9 10h!1 2 [<val>]
+  __v=kdot(r1(__consts[134]),knk(1,__v)); if(0==__v) goto __return;   // 4 5 6 7 8 9 10h!1 2 [<val>]
   r0(_sz); _sz=__v;__v=r1(_sz);   // sz:<val>
   __v=kdot(r1(__consts[14]),knk(1,__v)); if(0==__v) goto __return;   // null[<val>]
   __v=kif(__v); if(0==__v) goto __return; if(0==__v->j) { r0(__v); goto __l2;}; r0(__v);  // if/while check condition
-  __v=r1(__consts[133]);  // const "TF_NewTensor: unsup
+  __v=r1(__consts[135]);  // const "TF_NewTensor: unsup
   __st[__stc++]=__v;  if(__v->t==-KS) __v=krr(__v->s); else if(__v->t==KC)  __v=krr(sn(kC(__v),__v->n)); else __v=krr("stype"); goto __return;  // raise an exception
   r0(__v); 
   // end of statement
@@ -1465,7 +1465,7 @@ K tf_tf_TF_NewTensor__q(K _dt,K _dims,K _data){
   __v=kdot(r1(__consts[42]),knk(2,r1(_sz),__v)); if(0==__v) goto __return;   // *[sz;<val>]
   __v=__K2j_cast(&_vc_j3,__v); if(0==__v) goto __return; r0(__v);   // `c.j$<val>
   __v=kdot(r1(__consts[20]),knk(1,r1(_dims))); if(0==__v) goto __return;   // count[dims]
-  __v=kdot(r1(__consts[50]),knk(2,r1(__consts[134]),__v)); if(0==__v) goto __return;   // $["i";<val>]
+  __v=kdot(r1(__consts[50]),knk(2,r1(__consts[136]),__v)); if(0==__v) goto __return;   // $["i";<val>]
   __v=__K2i_cast(&_vc_i5,__v); if(0==__v) goto __return; r0(__v);   // `c.i$<val>
   __v=__K2J_cast(&_vc_J6,r1(_dims)); if(0==__v) goto __return; r0(__v);   // `c.J$<val>
   __v=__K2i_cast(&_vc_i7,r1(_dt)); if(0==__v) goto __return; r0(__v);   // `c.i$<val>
@@ -1474,7 +1474,7 @@ K tf_tf_TF_NewTensor__q(K _dt,K _dims,K _data){
   r0(_r); _r=__v;  // r:<val> - no rval, local
   
   // end of statement
-  __v=kdot(r1(__consts[106]),knk(2,r1(_r),r1(__consts[1]))); if(0==__v) goto __return;   // ~=[r;0]
+  __v=kdot(r1(__consts[105]),knk(2,r1(_r),r1(__consts[1]))); if(0==__v) goto __return;   // ~=[r;0]
   __v=kif(__v); if(0==__v) goto __return; if(0==__v->j) { r0(__v); goto __l4;}; r0(__v);  // if/while check condition
   _c_d->r+=1;  // c.d[,`r]+::1 - no rval, global
   
@@ -1647,7 +1647,7 @@ K tf_tf_writeToTensor__q(K _ptr,K _data){
   // end of statement
   __v=kdot(r1(__consts[20]),knk(1,r1(_data))); if(0==__v) goto __return;   // count[data]
   __st[__stc++]=__v; __v=kdot(r1(__consts[25]),knk(1,r1(_data))); if(0==__v) goto __return;   // type[data]
-  __v=kdot(r1(__consts[132]),knk(1,__v)); if(0==__v) goto __return;   // 4 5 6 7 8 9 10h!1 2 [<val>]
+  __v=kdot(r1(__consts[134]),knk(1,__v)); if(0==__v) goto __return;   // 4 5 6 7 8 9 10h!1 2 [<val>]
   __v=kdot(r1(__consts[42]),knk(2,__v,__st[__stc-1]));__stc-=1;  if(0==__v) goto __return;   // *[<val>;<val>]
   __v=kif(__v); if(0==__v) goto __return; _c_do1=__v->j; r0(__v);  // check that do value is correct
 
@@ -1681,7 +1681,7 @@ K tf_tf_readFromTensor__q(K _ptr,K _data){
   // end of statement
   __v=kdot(r1(__consts[20]),knk(1,r1(_data))); if(0==__v) goto __return;   // count[data]
   __st[__stc++]=__v; __v=kdot(r1(__consts[25]),knk(1,r1(_data))); if(0==__v) goto __return;   // type[data]
-  __v=kdot(r1(__consts[132]),knk(1,__v)); if(0==__v) goto __return;   // 4 5 6 7 8 9 10h!1 2 [<val>]
+  __v=kdot(r1(__consts[134]),knk(1,__v)); if(0==__v) goto __return;   // 4 5 6 7 8 9 10h!1 2 [<val>]
   __v=kdot(r1(__consts[42]),knk(2,__v,__st[__stc-1]));__stc-=1;  if(0==__v) goto __return;   // *[<val>;<val>]
   __v=kif(__v); if(0==__v) goto __return; _c_do1=__v->j; r0(__v);  // check that do value is correct
 
@@ -1707,15 +1707,15 @@ K tf_tf_readFromTensor__q(K _ptr,K _data){
  };
 K tf_tf_TF_StringEncode__q(K _x1,K _x3,K _x4,K _x5){
   K __st[1]; int __stc=0; K __v=(K)1;
-  size_t _c_res; J _vc_j1; J _vc_j2; char* _vc_C3; J _vc_j4; char* _vc_C5;
+  size_t _c_res; J _vc_j1; J _vc_j2; J _vc_j3; J _vc_j4; char* _vc_C5;
   
   __v=__K2j_cast(&_vc_j1,r1(_x5)); if(0==__v) goto __return; r0(__v);   // `c.j$<val>
   __v=__K2j_cast(&_vc_j2,r1(_x4)); if(0==__v) goto __return; r0(__v);   // `c.j$<val>
-  __v=__K2C_cast(&_vc_C3,r1(_x3)); if(0==__v) goto __return; r0(__v);   // `c.C$<val>
+  __v=__K2j_cast(&_vc_j3,r1(_x3)); if(0==__v) goto __return; r0(__v);   // `c.j$<val>
   __v=kdot(r1(__consts[20]),knk(1,r1(_x1))); if(0==__v) goto __return;   // count[x1]
   __v=__K2j_cast(&_vc_j4,__v); if(0==__v) goto __return; r0(__v);   // `c.j$<val>
   __v=__K2C_cast(&_vc_C5,r1(_x1)); if(0==__v) goto __return; r0(__v);   // `c.C$<val>
-  _c_res=TF_StringEncode(_vc_C5,(size_t)(tfc_ij)_vc_j4,_vc_C3,(size_t)_vc_j2,(TF_Status*)_vc_j1);  // C.TF_StringEncode[_vc_C5;<val>;_vc_C3;<val>;<val>]
+  _c_res=TF_StringEncode(_vc_C5,(size_t)(tfc_ij)_vc_j4,(char*)_vc_j3,(size_t)_vc_j2,(TF_Status*)_vc_j1);  // C.TF_StringEncode[_vc_C5;<val>;<val>;<val>;<val>]
   // c.res[()]::<val> - no rval, global
   
   // end of statement
@@ -1727,26 +1727,25 @@ K tf_tf_TF_StringEncode__q(K _x1,K _x3,K _x4,K _x5){
   while(__stc>0) r0(__st[--__stc]); 
   return __v;
  };
-K tf_tf_TF_StringDecode__q(K _src,K _st){
+K tf_tf_TF_StringDecode__q(K _src,K _sz,K _st){
   K __st[1]; int __stc=0; K __v=(K)1;
-  size_t _c_r; size_t _c_l; const char* _c_dst; J _vc_j1; J _vc_j4; char* _vc_C5; _Bool _vc_bool1;
+  size_t _c_r; size_t _c_l; const char* _c_dst; J _vc_j1; J _vc_j4; J _vc_j5; _Bool _vc_bool1;
   
   __v=__K2j_cast(&_vc_j1,r1(_st)); if(0==__v) goto __return; r0(__v);   // `c.j$<val>
-  __v=kdot(r1(__consts[20]),knk(1,r1(_src))); if(0==__v) goto __return;   // count[src]
-  __v=__K2j_cast(&_vc_j4,__v); if(0==__v) goto __return; r0(__v);   // `c.j$<val>
-  __v=__K2C_cast(&_vc_C5,r1(_src)); if(0==__v) goto __return; r0(__v);   // `c.C$<val>
-  _c_r=TF_StringDecode(_vc_C5,(size_t)_vc_j4,&_c_dst,&_c_l,(TF_Status*)_vc_j1);  // C.TF_StringDecode[_vc_C5;<val>;<val>;<val>;<val>]
+  __v=__K2j_cast(&_vc_j4,r1(_sz)); if(0==__v) goto __return; r0(__v);   // `c.j$<val>
+  __v=__K2j_cast(&_vc_j5,r1(_src)); if(0==__v) goto __return; r0(__v);   // `c.j$<val>
+  _c_r=TF_StringDecode((char*)_vc_j5,(size_t)_vc_j4,&_c_dst,&_c_l,(TF_Status*)_vc_j1);  // C.TF_StringDecode[<val>;<val>;<val>;<val>;<val>]
   // c.r[()]::<val> - no rval, global
   
   // end of statement
   _vc_bool1=0LL==(J)_c_r;  // =[0LL;<val>]
-  if(0==_vc_bool1) goto __l2;  // if/while check condition
-  __v=r1(__consts[135]);  // const "TF_StringDecode: fa
-  __st[__stc++]=__v;  if(__v->t==-KS) __v=krr(__v->s); else if(__v->t==KC)  __v=krr(sn(kC(__v),__v->n)); else __v=krr("stype"); goto __return;  // raise an exception
+  if(0==_vc_bool1) goto __l3;  // if/while check condition
+  __v=r1(__consts[137]);  // const ""
+  goto __return;  // return cmd
   r0(__v); 
   // end of statement
 
- __l2:
+ __l3:
   __v=__toKC((char*)_c_dst,(J)_c_l); if(0==__v) goto __return;   // C.toK[<val>;<val>]
   goto __return;  // return cmd
   r0(__v); 
@@ -1755,7 +1754,7 @@ K tf_tf_TF_StringDecode__q(K _src,K _st){
   goto __return;  // return cmd
 
  __return:
-  r0(_src); r0(_st); 
+  r0(_src); r0(_sz); r0(_st); 
   while(__stc>0) r0(__st[--__stc]); 
   return __v;
  };
@@ -1996,22 +1995,21 @@ K tf_tf_TF_AddInputList__q(K _op,K _out){
   I _vc_i1; char* _vc_C2; J _vc_j3;
   K _v=r1(__consts[0]); 
   __v=kdot(r1(__consts[25]),knk(1,r1(_out))); if(0==__v) goto __return;   // type[out]
-  __v=kdot(r1(__consts[47]),knk(2,r1(__consts[136]),__v)); if(0==__v) goto __return;   // =[98;<val>]
+  __v=kdot(r1(__consts[47]),knk(2,r1(__consts[138]),__v)); if(0==__v) goto __return;   // =[98;<val>]
   __v=kdot(r1(__consts[22]),knk(1,__v)); if(0==__v) goto __return;   // not[<val>]
   __v=kif(__v); if(0==__v) goto __return; if(0==__v->j) { r0(__v); goto __l2;}; r0(__v);  // if/while check condition
-  __v=r1(__consts[137]);  // const "TF_AddInputList: ty
+  __v=r1(__consts[139]);  // const "TF_AddInputList: ty
   __st[__stc++]=__v;  if(__v->t==-KS) __v=krr(__v->s); else if(__v->t==KC)  __v=krr(sn(kC(__v),__v->n)); else __v=krr("stype"); goto __return;  // raise an exception
   r0(__v); 
   // end of statement
 
  __l2:
-  __v=kdot(r1(__consts[52]),knk(2,r1(__consts[108]),r1(_out))); if(0==__v) goto __return;   // #[`oper`index;out]
-  __v=tf_b2c_enStruct__q(__v); if(0==__v) goto __return;   // .b2c.enStruct[<val>]
+  __v=tf_tf_encodeOut__q(r1(_out)); if(0==__v) goto __return;   // .tf.encodeOut[out]
   r0(_v); _v=__v;  // v:<val> - no rval, local
   
   // end of statement
   __v=kdot(r1(__consts[20]),knk(1,r1(_out))); if(0==__v) goto __return;   // count[out]
-  __v=kdot(r1(__consts[50]),knk(2,r1(__consts[134]),__v)); if(0==__v) goto __return;   // $["i";<val>]
+  __v=kdot(r1(__consts[50]),knk(2,r1(__consts[136]),__v)); if(0==__v) goto __return;   // $["i";<val>]
   __v=__K2i_cast(&_vc_i1,__v); if(0==__v) goto __return; r0(__v);   // `c.i$<val>
   __v=__K2C_cast(&_vc_C2,r1(_v)); if(0==__v) goto __return; r0(__v);   // `c.C$<val>
   __v=__K2j_cast(&_vc_j3,r1(_op)); if(0==__v) goto __return; r0(__v);   // `c.j$<val>
@@ -2023,51 +2021,6 @@ K tf_tf_TF_AddInputList__q(K _op,K _out){
 
  __return:
   r0(_v); r0(_op); r0(_out); 
-  while(__stc>0) r0(__st[--__stc]); 
-  return __v;
- };
-K tf_b2c_enStruct__q(K _x){
-  K __st[1]; int __stc=0; K __v=(K)1;
-  
-  K _t=r1(__consts[0]); 
-  __v=kdot(r1(__consts[25]),knk(1,r1(_x))); if(0==__v) goto __return;   // type[x]
-  r0(_t); _t=__v;__v=r1(_t);   // t:<val>
-  __v=kdot(r1(__consts[47]),knk(2,r1(__consts[136]),__v)); if(0==__v) goto __return;   // =[98;<val>]
-  __v=kif(__v); if(0==__v) goto __return; if(0==__v->j) { r0(__v); goto __l2;}; r0(__v);  // if/while check condition
-  __v=kdot(r1(__q[14]),knk(2,r1(tf_b2c_enStruct__k),r1(_x))); if(0==__v) goto __return;   // each[;x]
-  __v=kdot(r1(__q[15]),knk(1,__v)); if(0==__v) goto __return;   // raze[<val>]
-  goto __l9;  // jmp to if end
-
- __l2:
-  __v=kdot(r1(__consts[47]),knk(2,r1(__consts[109]),r1(_t))); if(0==__v) goto __return;   // =[99;t]
-  __v=kif(__v); if(0==__v) goto __return; if(0==__v->j) { r0(__v); goto __l4;}; r0(__v);  // if/while check condition
-  __v=__kvalue__q(r1(_x)); if(0==__v) goto __return;   // value[x]
-  __v=kdot(r1(__q[14]),knk(2,r1(tf_b2c_enStruct__k),__v)); if(0==__v) goto __return;   // each[;<val>]
-  __v=kdot(r1(__q[15]),knk(1,__v)); if(0==__v) goto __return;   // raze[<val>]
-  goto __l9;  // jmp to if end
-
- __l4:
-  __v=kdot(r1(__consts[48]),knk(2,r1(_t),r1(__consts[1]))); if(0==__v) goto __return;   // <[t;0]
-  __v=kif(__v); if(0==__v) goto __return; if(0==__v->j) { r0(__v); goto __l6;}; r0(__v);  // if/while check condition
-  __v=kdot(r1(__q[16]),knk(2,r1(__consts[121]),r1(_x))); if(0==__v) goto __return;   // vs[0x00;x]
-  goto __l9;  // jmp to if end
-
- __l6:
-  __v=kdot(r1(__consts[48]),knk(2,r1(_t),r1(__consts[138]))); if(0==__v) goto __return;   // <[t;20]
-  __v=kif(__v); if(0==__v) goto __return; if(0==__v->j) { r0(__v); goto __l8;}; r0(__v);  // if/while check condition
-  __v=kdot(r1(__q[14]),knk(2,r1(tf_b2c_enStruct__k),r1(_x))); if(0==__v) goto __return;   // each[;x]
-  __v=kdot(r1(__q[15]),knk(1,__v)); if(0==__v) goto __return;   // raze[<val>]
-  goto __l9;  // jmp to if end
-
- __l8:
-  __v=r1(__consts[118]);  // const "type"
-  __st[__stc++]=__v;  if(__v->t==-KS) __v=krr(__v->s); else if(__v->t==KC)  __v=krr(sn(kC(__v),__v->n)); else __v=krr("stype"); goto __return;  // raise an exception
-
- __l9:
-  goto __return;  // return cmd
-
- __return:
-  r0(_t); r0(_x); 
   while(__stc>0) r0(__st[--__stc]); 
   return __v;
  };
@@ -2112,12 +2065,12 @@ K tf_tf_TF_SetAttrStringList__q(K _op,K _name,K _str){
   K __st[1]; int __stc=0; K __v=(K)1;
   J* _c_a; J* _c_l; J* _vc_J1; J _c_do1; char* _vc_C1; J _vc_j1; I _vc_i1; char* _vc_S4; J _vc_j5;
   K _a=r1(__consts[0]); K _l=r1(__consts[0]); K _s=r1(__consts[0]); 
-  __v=kdot(r1(__q[14]),knk(2,r1(__q[17]),r1(_str))); if(0==__v) goto __return;   // each[type;str]
-  __v=kdot(r1(__consts[62]),knk(2,__v,r1(__consts[127]))); if(0==__v) goto __return;   // in[<val>;4 10h]
+  __v=kdot(r1(__q[15]),knk(2,r1(__q[14]),r1(_str))); if(0==__v) goto __return;   // each[type;str]
+  __v=kdot(r1(__consts[62]),knk(2,__v,r1(__consts[129]))); if(0==__v) goto __return;   // in[<val>;4 10h]
   __v=kdot(r1(__q[13]),knk(1,__v)); if(0==__v) goto __return;   // all[<val>]
   __v=kdot(r1(__consts[22]),knk(1,__v)); if(0==__v) goto __return;   // not[<val>]
   __v=kif(__v); if(0==__v) goto __return; if(0==__v->j) { r0(__v); goto __l2;}; r0(__v);  // if/while check condition
-  __v=r1(__consts[139]);  // const "TF_SetAttrStringLis
+  __v=r1(__consts[140]);  // const "TF_SetAttrStringLis
   __st[__stc++]=__v;  if(__v->t==-KS) __v=krr(__v->s); else if(__v->t==KC)  __v=krr(sn(kC(__v),__v->n)); else __v=krr("stype"); goto __return;  // raise an exception
   r0(__v); 
   // end of statement
@@ -2162,7 +2115,7 @@ K tf_tf_TF_SetAttrStringList__q(K _op,K _name,K _str){
 
  __l5:
   __v=kdot(r1(__consts[20]),knk(1,r1(_str))); if(0==__v) goto __return;   // count[str]
-  __v=kdot(r1(__consts[50]),knk(2,r1(__consts[134]),__v)); if(0==__v) goto __return;   // $["i";<val>]
+  __v=kdot(r1(__consts[50]),knk(2,r1(__consts[136]),__v)); if(0==__v) goto __return;   // $["i";<val>]
   __v=__K2i_cast(&_vc_i1,__v); if(0==__v) goto __return; r0(__v);   // `c.i$<val>
   __v=__K2S_cast(&_vc_S4,r1(_name)); if(0==__v) goto __return; r0(__v);   // `c.S$<val>
   __v=__K2j_cast(&_vc_j5,r1(_op)); if(0==__v) goto __return; r0(__v);   // `c.j$<val>
@@ -2353,12 +2306,12 @@ K tf_tf_TF_SetAttrShapeList__q(K _op,K _name,K _dims){
   K __st[1]; int __stc=0; K __v=(K)1;
   J* _c_a; I* _c_l; J* _vc_J1; I* _vc_I1; J _c_do1; I _vc_i1; char* _vc_S4; J _vc_j5;
   K _a=r1(__consts[0]); K _l=r1(__consts[0]); K _s=r1(__consts[0]); 
-  __v=kdot(r1(__q[14]),knk(2,r1(__q[17]),r1(_dims))); if(0==__v) goto __return;   // each[type;dims]
-  __v=kdot(r1(__consts[47]),knk(2,r1(__consts[130]),__v)); if(0==__v) goto __return;   // =[7;<val>]
+  __v=kdot(r1(__q[15]),knk(2,r1(__q[14]),r1(_dims))); if(0==__v) goto __return;   // each[type;dims]
+  __v=kdot(r1(__consts[47]),knk(2,r1(__consts[132]),__v)); if(0==__v) goto __return;   // =[7;<val>]
   __v=kdot(r1(__q[13]),knk(1,__v)); if(0==__v) goto __return;   // all[<val>]
   __v=kdot(r1(__consts[22]),knk(1,__v)); if(0==__v) goto __return;   // not[<val>]
   __v=kif(__v); if(0==__v) goto __return; if(0==__v->j) { r0(__v); goto __l2;}; r0(__v);  // if/while check condition
-  __v=r1(__consts[140]);  // const "TF_SetAttrShapeList
+  __v=r1(__consts[141]);  // const "TF_SetAttrShapeList
   __st[__stc++]=__v;  if(__v->t==-KS) __v=krr(__v->s); else if(__v->t==KC)  __v=krr(sn(kC(__v),__v->n)); else __v=krr("stype"); goto __return;  // raise an exception
   r0(__v); 
   // end of statement
@@ -2395,7 +2348,7 @@ K tf_tf_TF_SetAttrShapeList__q(K _op,K _name,K _dims){
   
   // end of statement
   __v=kdot(r1(__consts[20]),knk(1,r1(_s))); if(0==__v) goto __return;   // count[s]
-  __v=kdot(r1(__consts[50]),knk(2,r1(__consts[134]),__v)); if(0==__v) goto __return;   // $["i";<val>]
+  __v=kdot(r1(__consts[50]),knk(2,r1(__consts[136]),__v)); if(0==__v) goto __return;   // $["i";<val>]
   __v=__K2i_cast(&_vc_i1,__v); if(0==__v) goto __return; r0(__v);   // `c.i$<val>
   _c_l[_c_do1]=_vc_i1;  // c.l[<val>]::_vc_i1 - no rval, global
   
@@ -2404,7 +2357,7 @@ K tf_tf_TF_SetAttrShapeList__q(K _op,K _name,K _dims){
 
  __l5:
   __v=kdot(r1(__consts[20]),knk(1,r1(_dims))); if(0==__v) goto __return;   // count[dims]
-  __v=kdot(r1(__consts[50]),knk(2,r1(__consts[134]),__v)); if(0==__v) goto __return;   // $["i";<val>]
+  __v=kdot(r1(__consts[50]),knk(2,r1(__consts[136]),__v)); if(0==__v) goto __return;   // $["i";<val>]
   __v=__K2i_cast(&_vc_i1,__v); if(0==__v) goto __return; r0(__v);   // `c.i$<val>
   __v=__K2S_cast(&_vc_S4,r1(_name)); if(0==__v) goto __return; r0(__v);   // `c.S$<val>
   __v=__K2j_cast(&_vc_j5,r1(_op)); if(0==__v) goto __return; r0(__v);   // `c.j$<val>
@@ -2444,12 +2397,12 @@ K tf_tf_TF_SetAttrTensorShapeProtoList__q(K _op,K _name,K _proto,K _st){
   K __st[1]; int __stc=0; K __v=(K)1;
   J* _c_a; J* _c_l; J* _vc_J1; J _c_do1; char* _vc_C1; J _vc_j1; I _vc_i2; char* _vc_S5; J _vc_j6;
   K _a=r1(__consts[0]); K _l=r1(__consts[0]); K _s=r1(__consts[0]); 
-  __v=kdot(r1(__q[14]),knk(2,r1(__q[17]),r1(_proto))); if(0==__v) goto __return;   // each[type;proto]
-  __v=kdot(r1(__consts[62]),knk(2,__v,r1(__consts[127]))); if(0==__v) goto __return;   // in[<val>;4 10h]
+  __v=kdot(r1(__q[15]),knk(2,r1(__q[14]),r1(_proto))); if(0==__v) goto __return;   // each[type;proto]
+  __v=kdot(r1(__consts[62]),knk(2,__v,r1(__consts[129]))); if(0==__v) goto __return;   // in[<val>;4 10h]
   __v=kdot(r1(__q[13]),knk(1,__v)); if(0==__v) goto __return;   // all[<val>]
   __v=kdot(r1(__consts[22]),knk(1,__v)); if(0==__v) goto __return;   // not[<val>]
   __v=kif(__v); if(0==__v) goto __return; if(0==__v->j) { r0(__v); goto __l2;}; r0(__v);  // if/while check condition
-  __v=r1(__consts[141]);  // const "TF_SetAttrTensorSha
+  __v=r1(__consts[142]);  // const "TF_SetAttrTensorSha
   __st[__stc++]=__v;  if(__v->t==-KS) __v=krr(__v->s); else if(__v->t==KC)  __v=krr(sn(kC(__v),__v->n)); else __v=krr("stype"); goto __return;  // raise an exception
   r0(__v); 
   // end of statement
@@ -2495,7 +2448,7 @@ K tf_tf_TF_SetAttrTensorShapeProtoList__q(K _op,K _name,K _proto,K _st){
  __l5:
   __v=__K2j_cast(&_vc_j1,r1(_st)); if(0==__v) goto __return; r0(__v);   // `c.j$<val>
   __v=kdot(r1(__consts[20]),knk(1,r1(_proto))); if(0==__v) goto __return;   // count[proto]
-  __v=kdot(r1(__consts[50]),knk(2,r1(__consts[134]),__v)); if(0==__v) goto __return;   // $["i";<val>]
+  __v=kdot(r1(__consts[50]),knk(2,r1(__consts[136]),__v)); if(0==__v) goto __return;   // $["i";<val>]
   __v=__K2i_cast(&_vc_i2,__v); if(0==__v) goto __return; r0(__v);   // `c.i$<val>
   __v=__K2S_cast(&_vc_S5,r1(_name)); if(0==__v) goto __return; r0(__v);   // `c.S$<val>
   __v=__K2j_cast(&_vc_j6,r1(_op)); if(0==__v) goto __return; r0(__v);   // `c.j$<val>
@@ -2603,7 +2556,7 @@ K tf_tf_TF_OperationName__q(K _x1){
   __v=ki(errno); if(0==__v) goto __return;   // C.toK[C.errno]
   __st[__stc++]=__v; __v=kdot(r1(__consts[26]),knk(1,r1(__glob[17]))); if(0==__v) goto __return;   // global .string.strerror
   __v=kdot(__v,knk(1,__st[__stc-1]));__stc-=1;  if(0==__v) goto __return;   // .string.strerror[<val>]
-  __v=kdot(r1(__consts[51]),knk(2,r1(__consts[142]),__v)); if(0==__v) goto __return;   // ,["C.TF_OperationName:;<val>]
+  __v=kdot(r1(__consts[51]),knk(2,r1(__consts[143]),__v)); if(0==__v) goto __return;   // ,["C.TF_OperationName:;<val>]
   __st[__stc++]=__v;  if(__v->t==-KS) __v=krr(__v->s); else if(__v->t==KC)  __v=krr(sn(kC(__v),__v->n)); else __v=krr("stype"); goto __return;  // raise an exception
   r0(__v); 
   // end of statement
@@ -2631,7 +2584,7 @@ K tf_tf_TF_OperationOpType__q(K _x1){
   __v=ki(errno); if(0==__v) goto __return;   // C.toK[C.errno]
   __st[__stc++]=__v; __v=kdot(r1(__consts[26]),knk(1,r1(__glob[17]))); if(0==__v) goto __return;   // global .string.strerror
   __v=kdot(__v,knk(1,__st[__stc-1]));__stc-=1;  if(0==__v) goto __return;   // .string.strerror[<val>]
-  __v=kdot(r1(__consts[51]),knk(2,r1(__consts[143]),__v)); if(0==__v) goto __return;   // ,["C.TF_OperationOpTyp;<val>]
+  __v=kdot(r1(__consts[51]),knk(2,r1(__consts[144]),__v)); if(0==__v) goto __return;   // ,["C.TF_OperationOpTyp;<val>]
   __st[__stc++]=__v;  if(__v->t==-KS) __v=krr(__v->s); else if(__v->t==KC)  __v=krr(sn(kC(__v),__v->n)); else __v=krr("stype"); goto __return;  // raise an exception
   r0(__v); 
   // end of statement
@@ -2659,7 +2612,7 @@ K tf_tf_TF_OperationDevice__q(K _x1){
   __v=ki(errno); if(0==__v) goto __return;   // C.toK[C.errno]
   __st[__stc++]=__v; __v=kdot(r1(__consts[26]),knk(1,r1(__glob[17]))); if(0==__v) goto __return;   // global .string.strerror
   __v=kdot(__v,knk(1,__st[__stc-1]));__stc-=1;  if(0==__v) goto __return;   // .string.strerror[<val>]
-  __v=kdot(r1(__consts[51]),knk(2,r1(__consts[144]),__v)); if(0==__v) goto __return;   // ,["C.TF_OperationDevic;<val>]
+  __v=kdot(r1(__consts[51]),knk(2,r1(__consts[145]),__v)); if(0==__v) goto __return;   // ,["C.TF_OperationDevic;<val>]
   __st[__stc++]=__v;  if(__v->t==-KS) __v=krr(__v->s); else if(__v->t==KC)  __v=krr(sn(kC(__v),__v->n)); else __v=krr("stype"); goto __return;  // raise an exception
   r0(__v); 
   // end of statement
@@ -2829,7 +2782,7 @@ K tf_tf_TF_OperationOutputConsumers__q(K _out){
  __l2:
   _vc_j2=(J)sizeof(TF_Input)*_c_n;  // *[<val>;c.n]
   __v=kj(_vc_j2); if(0==__v) goto __return;   // C.toK[_vc_j2]
-  __v=kdot(r1(__consts[52]),knk(2,__v,r1(__consts[121]))); if(0==__v) goto __return;   // #[<val>;0x00]
+  __v=kdot(r1(__consts[52]),knk(2,__v,r1(__consts[120]))); if(0==__v) goto __return;   // #[<val>;0x00]
   r0(_v); _v=__v;  // v:<val> - no rval, local
   
   // end of statement
@@ -2838,7 +2791,7 @@ K tf_tf_TF_OperationOutputConsumers__q(K _out){
   _vc_i1=TF_OperationOutputConsumers(_vc_TF_Output3,(TF_Input*)(void*)_vc_C2,_c_n);  // C.TF_OperationOutputConsumers[_vc_TF_Output3;<val>;c.n]
   __v=ki(_vc_i1); if(0==__v) goto __return;   // C.toK[_vc_i1]
   r0(_r); _r=__v;__v=r1(_r);   // r:<val>
-  __v=kdot(r1(__consts[145]),knk(2,r1(__consts[1]),__v)); if(0==__v) goto __return;   // ~<[0;<val>]
+  __v=kdot(r1(__consts[146]),knk(2,r1(__consts[1]),__v)); if(0==__v) goto __return;   // ~<[0;<val>]
   __v=kif(__v); if(0==__v) goto __return; if(0==__v->j) { r0(__v); goto __l5;}; r0(__v);  // if/while check condition
   __v=r1(__consts[0]);  // const ()
   goto __return;  // return cmd
@@ -2846,8 +2799,8 @@ K tf_tf_TF_OperationOutputConsumers__q(K _out){
   // end of statement
 
  __l5:
-  __v=kdot(r1(__consts[60]),knk(2,r1(__consts[147]),r1(_v))); if(0==__v) goto __return;   // 1:[(8 4;"ji");v]
-  __v=kdot(r1(__consts[55]),knk(2,r1(__consts[108]),__v)); if(0==__v) goto __return;   // ![`oper`index;<val>]
+  __v=kdot(r1(__consts[60]),knk(2,r1(__consts[148]),r1(_v))); if(0==__v) goto __return;   // 1:[(8 4;"ji");v]
+  __v=kdot(r1(__consts[55]),knk(2,r1(__consts[107]),__v)); if(0==__v) goto __return;   // ![`oper`index;<val>]
   __v=kdot(r1(__consts[8]),knk(1,__v)); if(0==__v) goto __return;   // flip[<val>]
   __v=kdot(r1(__consts[52]),knk(2,r1(_r),__v)); if(0==__v) goto __return;   // #[r;<val>]
   goto __return;  // return cmd
@@ -3572,7 +3525,7 @@ K tf_tf_TF_ImportGraphDefResultsReturnOutputs__q(K _r){
   // end of statement
 
  __l3:
-  r0(_res); _res=r1(__consts[149]);  // res:+`oper`index!(`long$ - no rval, local
+  r0(_res); _res=r1(__consts[150]);  // res:+`oper`index!(`long$ - no rval, local
   
   // end of statement
   _c_do1=_c_n;  // local _c_do1
@@ -3660,7 +3613,7 @@ K tf_tf_TF_ImportGraphDefResultsMissingUnusedInputMappings__q(K _r){
   // end of statement
 
  __l3:
-  r0(_res); _res=r1(__consts[152]);  // res:+`name`index!(();`in - no rval, local
+  r0(_res); _res=r1(__consts[151]);  // res:+`name`index!(();`in - no rval, local
   
   // end of statement
   _c_do1=_c_n;  // local _c_do1
@@ -3742,7 +3695,7 @@ K tf_tf_TF_GraphImportGraphDefWithReturnOutputs__q(K _g,K _b,K _o,K _s){
  __l3:
   _vc_j2=(J)sizeof(TF_Output)*_c_n;  // *[<val>;c.n]
   __v=kj(_vc_j2); if(0==__v) goto __return;   // C.toK[_vc_j2]
-  __v=kdot(r1(__consts[52]),knk(2,__v,r1(__consts[121]))); if(0==__v) goto __return;   // #[<val>;0x00]
+  __v=kdot(r1(__consts[52]),knk(2,__v,r1(__consts[120]))); if(0==__v) goto __return;   // #[<val>;0x00]
   r0(_v); _v=__v;  // v:<val> - no rval, local
   
   // end of statement
@@ -3754,8 +3707,8 @@ K tf_tf_TF_GraphImportGraphDefWithReturnOutputs__q(K _g,K _b,K _o,K _s){
   TF_GraphImportGraphDefWithReturnOutputs((TF_Graph*)_vc_j6,(TF_Buffer*)_vc_j5,(TF_ImportGraphDefOptions*)_vc_j4,(TF_Output*)(void*)_vc_C3,_c_n,(TF_Status*)_vc_j1);  // C.TF_GraphImportGraphDefWithReturnOutputs[<val>;<val>;<val>;<val>;c.n;<val>]
   
   // end of statement
-  __v=kdot(r1(__consts[60]),knk(2,r1(__consts[147]),r1(_v))); if(0==__v) goto __return;   // 1:[(8 4;"ji");v]
-  __v=kdot(r1(__consts[55]),knk(2,r1(__consts[108]),__v)); if(0==__v) goto __return;   // ![`oper`index;<val>]
+  __v=kdot(r1(__consts[60]),knk(2,r1(__consts[148]),r1(_v))); if(0==__v) goto __return;   // 1:[(8 4;"ji");v]
+  __v=kdot(r1(__consts[55]),knk(2,r1(__consts[107]),__v)); if(0==__v) goto __return;   // ![`oper`index;<val>]
   __v=kdot(r1(__consts[8]),knk(1,__v)); if(0==__v) goto __return;   // flip[<val>]
   goto __return;  // return cmd
   r0(__v); 
@@ -3829,7 +3782,7 @@ K tf_tf_createWhileParams(TF_WhileParams* _p){
   char* _c_res; char* _c_src; char* _vc_C1; J _c_do1;
   K _res=r1(__consts[0]); 
   __v=kj((J)sizeof(TF_WhileParams)); if(0==__v) goto __return;   // C.toK[<val>]
-  __v=kdot(r1(__consts[52]),knk(2,__v,r1(__consts[121]))); if(0==__v) goto __return;   // #[<val>;0x00]
+  __v=kdot(r1(__consts[52]),knk(2,__v,r1(__consts[120]))); if(0==__v) goto __return;   // #[<val>;0x00]
   r0(_res); _res=__v;  // res:<val> - no rval, local
   
   // end of statement
@@ -3867,7 +3820,7 @@ K tf_tf_setWhileParams__q(K _p,K _name,K _val){
   _c_p=(TF_WhileParams*)(void*)_vc_C1;  // c.p[()]::<val> - no rval, global
   
   // end of statement
-  __v=kdot(r1(__consts[47]),knk(2,r1(_name),r1(__consts[155]))); if(0==__v) goto __return;   // =[name;`cond_output]
+  __v=kdot(r1(__consts[47]),knk(2,r1(_name),r1(__consts[153]))); if(0==__v) goto __return;   // =[name;`cond_output]
   __v=kif(__v); if(0==__v) goto __return; if(0==__v->j) { r0(__v); goto __l3;}; r0(__v);  // if/while check condition
   __v=__K2j_cast(&_vc_j1,r1(_val)); if(0==__v) goto __return; r0(__v);   // `c.j$<val>
   _c_p->cond_output.oper=(TF_Operation*)_vc_j1;  // c.p[`cond_output`oper]::<val> - no rval, global
@@ -3882,16 +3835,16 @@ K tf_tf_setWhileParams__q(K _p,K _name,K _val){
   // end of statement
 
  __l3:
-  __v=kdot(r1(__consts[47]),knk(2,r1(_name),r1(__consts[158]))); if(0==__v) goto __return;   // =[name;`body_outputs]
+  __v=kdot(r1(__consts[47]),knk(2,r1(_name),r1(__consts[156]))); if(0==__v) goto __return;   // =[name;`body_outputs]
   __v=kif(__v); if(0==__v) goto __return; if(0==__v->j) { r0(__v); goto __l8;}; r0(__v);  // if/while check condition
   __v=ki(_c_p->ninputs); if(0==__v) goto __return;   // C.toK[<val>]
-  __v=kdot(r1(__consts[40]),knk(2,r1(__consts[160]),__v)); if(0==__v) goto __return;   // +[-1;<val>]
+  __v=kdot(r1(__consts[40]),knk(2,r1(__consts[158]),__v)); if(0==__v) goto __return;   // +[-1;<val>]
   __v=__enlist(knk(2,r1(__consts[1]),__v)); if(0==__v) goto __return;   // enlist[0;<val>]
   __st[__stc++]=__v; __v=kdot(r1(_val),knk(1,r1(__consts[2]))); if(0==__v) goto __return;   // val[1]
   __v=kdot(r1(__consts[63]),knk(2,__v,__st[__stc-1]));__stc-=1;  if(0==__v) goto __return;   // within[<val>;<val>]
   __v=kdot(r1(__consts[22]),knk(1,__v)); if(0==__v) goto __return;   // not[<val>]
   __v=kif(__v); if(0==__v) goto __return; if(0==__v->j) { r0(__v); goto __l6;}; r0(__v);  // if/while check condition
-  __v=r1(__consts[161]);  // const "Bad while index"
+  __v=r1(__consts[159]);  // const "Bad while index"
   __st[__stc++]=__v;  if(__v->t==-KS) __v=krr(__v->s); else if(__v->t==KC)  __v=krr(sn(kC(__v),__v->n)); else __v=krr("stype"); goto __return;  // raise an exception
   r0(__v); 
   // end of statement
@@ -3916,7 +3869,7 @@ K tf_tf_setWhileParams__q(K _p,K _name,K _val){
   // end of statement
 
  __l8:
-  __v=kdot(r1(__consts[47]),knk(2,r1(_name),r1(__consts[162]))); if(0==__v) goto __return;   // =[name;`name]
+  __v=kdot(r1(__consts[47]),knk(2,r1(_name),r1(__consts[160]))); if(0==__v) goto __return;   // =[name;`name]
   __v=kif(__v); if(0==__v) goto __return; if(0==__v->j) { r0(__v); goto __l11;}; r0(__v);  // if/while check condition
   __v=__K2S_cast(&_vc_S1,r1(_val)); if(0==__v) goto __return; r0(__v);   // `c.S$<val>
   _c_p->name=_vc_S1;  // c.p[,`name]::_vc_S1 - no rval, global
@@ -3928,7 +3881,7 @@ K tf_tf_setWhileParams__q(K _p,K _name,K _val){
   // end of statement
 
  __l11:
-  __v=r1(__consts[164]);  // const "Bad while name"
+  __v=r1(__consts[162]);  // const "Bad while name"
   __st[__stc++]=__v;  if(__v->t==-KS) __v=krr(__v->s); else if(__v->t==KC)  __v=krr(sn(kC(__v),__v->n)); else __v=krr("stype"); goto __return;  // raise an exception
   r0(__v); 
   // end of statement
@@ -3950,7 +3903,7 @@ K tf_tf_TF_FinishWhile__q(K _p,K _s){
   // end of statement
   _vc_j2=(J)sizeof(TF_Output)*_c_p->ninputs;  // *[<val>;<val>]
   __v=kj(_vc_j2); if(0==__v) goto __return;   // C.toK[_vc_j2]
-  __v=kdot(r1(__consts[52]),knk(2,__v,r1(__consts[121]))); if(0==__v) goto __return;   // #[<val>;0x00]
+  __v=kdot(r1(__consts[52]),knk(2,__v,r1(__consts[120]))); if(0==__v) goto __return;   // #[<val>;0x00]
   r0(_v); _v=__v;  // v:<val> - no rval, local
   
   // end of statement
@@ -3959,8 +3912,8 @@ K tf_tf_TF_FinishWhile__q(K _p,K _s){
   TF_FinishWhile(_c_p,(TF_Status*)_vc_j2,(TF_Output*)(void*)_vc_C1);  // C.TF_FinishWhile[c.p;<val>;<val>]
   
   // end of statement
-  __v=kdot(r1(__consts[60]),knk(2,r1(__consts[147]),r1(_v))); if(0==__v) goto __return;   // 1:[(8 4;"ji");v]
-  __v=kdot(r1(__consts[55]),knk(2,r1(__consts[108]),__v)); if(0==__v) goto __return;   // ![`oper`index;<val>]
+  __v=kdot(r1(__consts[60]),knk(2,r1(__consts[148]),r1(_v))); if(0==__v) goto __return;   // 1:[(8 4;"ji");v]
+  __v=kdot(r1(__consts[55]),knk(2,r1(__consts[107]),__v)); if(0==__v) goto __return;   // ![`oper`index;<val>]
   __v=kdot(r1(__consts[8]),knk(1,__v)); if(0==__v) goto __return;   // flip[<val>]
   __st[__stc++]=__v; __v=ki(_c_p->ninputs); if(0==__v) goto __return;   // C.toK[<val>]
   __v=kdot(r1(__consts[52]),knk(2,__v,__st[__stc-1]));__stc-=1;  if(0==__v) goto __return;   // #[<val>;<val>]
@@ -3995,19 +3948,17 @@ K tf_tf_TF_AddGradients__q(K _g,K _y,K _x,K _dx,K _s){
   K __st[1]; int __stc=0; K __v=(K)1;
   TF_Output* _c_dx; char* _vc_C1; J _vc_j2; I _vc_i4; char* _vc_C5; I _vc_i6; char* _vc_C7; J _vc_j8;
   K _yy=r1(__consts[0]); K _xx=r1(__consts[0]); K _v=r1(__consts[0]); 
-  __v=kdot(r1(__consts[52]),knk(2,r1(__consts[108]),r1(_y))); if(0==__v) goto __return;   // #[`oper`index;y]
-  __v=tf_b2c_enStruct__q(__v); if(0==__v) goto __return;   // .b2c.enStruct[<val>]
+  __v=tf_tf_encodeOut__q(r1(_y)); if(0==__v) goto __return;   // .tf.encodeOut[y]
   r0(_yy); _yy=__v;  // yy:<val> - no rval, local
   
   // end of statement
-  __v=tf_b2c_enStruct__q(r1(_x)); if(0==__v) goto __return;   // .b2c.enStruct[x]
+  __v=tf_tf_encodeOut__q(r1(_x)); if(0==__v) goto __return;   // .tf.encodeOut[x]
   r0(_xx); _xx=__v;  // xx:<val> - no rval, local
   
   // end of statement
   __v=kdot(r1(__consts[20]),knk(1,r1(_dx))); if(0==__v) goto __return;   // count[dx]
   __v=kif(__v); if(0==__v) goto __return; if(0==__v->j) { r0(__v); goto __l2;}; r0(__v);  // if/while check condition
-  __v=kdot(r1(__consts[52]),knk(2,r1(__consts[108]),r1(_dx))); if(0==__v) goto __return;   // #[`oper`index;dx]
-  __v=tf_b2c_enStruct__q(__v); if(0==__v) goto __return;   // .b2c.enStruct[<val>]
+  __v=tf_tf_encodeOut__q(r1(_dx)); if(0==__v) goto __return;   // .tf.encodeOut[dx]
   goto __l3;  // jmp to if end
 
  __l2:
@@ -4031,26 +3982,26 @@ K tf_tf_TF_AddGradients__q(K _g,K _y,K _x,K _dx,K _s){
   __v=kdot(r1(__consts[20]),knk(1,r1(_x))); if(0==__v) goto __return;   // count[x]
   __st[__stc++]=__v; __v=kj((J)sizeof(TF_Output)); if(0==__v) goto __return;   // C.toK[<val>]
   __v=kdot(r1(__consts[42]),knk(2,__v,__st[__stc-1]));__stc-=1;  if(0==__v) goto __return;   // *[<val>;<val>]
-  __v=kdot(r1(__consts[52]),knk(2,__v,r1(__consts[121]))); if(0==__v) goto __return;   // #[<val>;0x00]
+  __v=kdot(r1(__consts[52]),knk(2,__v,r1(__consts[120]))); if(0==__v) goto __return;   // #[<val>;0x00]
   r0(_v); _v=__v;  // v:<val> - no rval, local
   
   // end of statement
   __v=__K2C_cast(&_vc_C1,r1(_v)); if(0==__v) goto __return; r0(__v);   // `c.C$<val>
   __v=__K2j_cast(&_vc_j2,r1(_s)); if(0==__v) goto __return; r0(__v);   // `c.j$<val>
   __v=kdot(r1(__consts[20]),knk(1,r1(_x))); if(0==__v) goto __return;   // count[x]
-  __v=kdot(r1(__consts[50]),knk(2,r1(__consts[134]),__v)); if(0==__v) goto __return;   // $["i";<val>]
+  __v=kdot(r1(__consts[50]),knk(2,r1(__consts[136]),__v)); if(0==__v) goto __return;   // $["i";<val>]
   __v=__K2i_cast(&_vc_i4,__v); if(0==__v) goto __return; r0(__v);   // `c.i$<val>
   __v=__K2C_cast(&_vc_C5,r1(_xx)); if(0==__v) goto __return; r0(__v);   // `c.C$<val>
   __v=kdot(r1(__consts[20]),knk(1,r1(_y))); if(0==__v) goto __return;   // count[y]
-  __v=kdot(r1(__consts[50]),knk(2,r1(__consts[134]),__v)); if(0==__v) goto __return;   // $["i";<val>]
+  __v=kdot(r1(__consts[50]),knk(2,r1(__consts[136]),__v)); if(0==__v) goto __return;   // $["i";<val>]
   __v=__K2i_cast(&_vc_i6,__v); if(0==__v) goto __return; r0(__v);   // `c.i$<val>
   __v=__K2C_cast(&_vc_C7,r1(_yy)); if(0==__v) goto __return; r0(__v);   // `c.C$<val>
   __v=__K2j_cast(&_vc_j8,r1(_g)); if(0==__v) goto __return; r0(__v);   // `c.j$<val>
   TF_AddGradients((TF_Graph*)_vc_j8,(TF_Output*)(void*)_vc_C7,_vc_i6,(TF_Output*)(void*)_vc_C5,_vc_i4,_c_dx,(TF_Status*)_vc_j2,(TF_Output*)(void*)_vc_C1);  // C.TF_AddGradients[<val>;<val>;_vc_i6;<val>;_vc_i4;c.dx;<val>;<val>]
   
   // end of statement
-  __v=kdot(r1(__consts[60]),knk(2,r1(__consts[147]),r1(_v))); if(0==__v) goto __return;   // 1:[(8 4;"ji");v]
-  __v=kdot(r1(__consts[55]),knk(2,r1(__consts[108]),__v)); if(0==__v) goto __return;   // ![`oper`index;<val>]
+  __v=kdot(r1(__consts[60]),knk(2,r1(__consts[148]),r1(_v))); if(0==__v) goto __return;   // 1:[(8 4;"ji");v]
+  __v=kdot(r1(__consts[55]),knk(2,r1(__consts[107]),__v)); if(0==__v) goto __return;   // ![`oper`index;<val>]
   __v=kdot(r1(__consts[8]),knk(1,__v)); if(0==__v) goto __return;   // flip[<val>]
   goto __return;  // return cmd
   r0(__v); 
@@ -4078,20 +4029,20 @@ K tf_tf_TF_GraphToFunction__q(K _g,K _name,K _hash,K _args,K _o,K _d,K _s){
  __l2:
   __v=kdot(r1(__consts[54]),knk(2,r1(_a),r1(__consts[0]))); if(0==__v) goto __return;   // ~[a;()]
   __v=kif(__v); if(0==__v) goto __return; if(0==__v->j) { r0(__v); goto __l4;}; r0(__v);  // if/while check condition
-  __v=r1(__consts[160]);  // const -1
+  __v=r1(__consts[158]);  // const -1
   goto __l5;  // jmp to if end
 
  __l4:
   __v=r1(__consts[1]);  // const <val>
 
  __l5:
-  __v=kdot(r1(__consts[50]),knk(2,r1(__consts[134]),__v)); if(0==__v) goto __return;   // $["i";<val>]
+  __v=kdot(r1(__consts[50]),knk(2,r1(__consts[136]),__v)); if(0==__v) goto __return;   // $["i";<val>]
   r0(_nops); _nops=__v;  // nops:<val> - no rval, local
   
   // end of statement
   __v=kdot(r1(__consts[48]),knk(2,r1(_nops),r1(__consts[1]))); if(0==__v) goto __return;   // <[nops;0]
   __v=kif(__v); if(0==__v) goto __return; if(0==__v->j) { r0(__v); goto __l7;}; r0(__v);  // if/while check condition
-  __v=r1(__consts[165]);  // const `long$()
+  __v=r1(__consts[163]);  // const `long$()
   goto __l8;  // jmp to if end
 
  __l7:
@@ -4105,27 +4056,25 @@ K tf_tf_TF_GraphToFunction__q(K _g,K _name,K _hash,K _args,K _o,K _d,K _s){
   r0(_a); _a=__v;__v=r1(_a);   // a:<val>
   __v=kdot(r1(__consts[20]),knk(1,__v)); if(0==__v) goto __return;   // count[<val>]
   __v=kif(__v); if(0==__v) goto __return; if(0==__v->j) { r0(__v); goto __l10;}; r0(__v);  // if/while check condition
-  __v=kdot(r1(__consts[52]),knk(2,r1(__consts[108]),r1(_a))); if(0==__v) goto __return;   // #[`oper`index;a]
-  __v=tf_b2c_enStruct__q(__v); if(0==__v) goto __return;   // .b2c.enStruct[<val>]
+  __v=tf_tf_encodeOut__q(r1(_a)); if(0==__v) goto __return;   // .tf.encodeOut[a]
   goto __l11;  // jmp to if end
 
  __l10:
-  __v=r1(__consts[166]);  // const <val>
+  __v=r1(__consts[164]);  // const <val>
 
  __l11:
   r0(_inp); _inp=__v;  // inp:<val> - no rval, local
   
   // end of statement
-  __v=kdot(r1(_args),knk(1,r1(__consts[167]))); if(0==__v) goto __return;   // args[2]
+  __v=kdot(r1(_args),knk(1,r1(__consts[165]))); if(0==__v) goto __return;   // args[2]
   r0(_a); _a=__v;__v=r1(_a);   // a:<val>
   __v=kdot(r1(__consts[20]),knk(1,__v)); if(0==__v) goto __return;   // count[<val>]
   __v=kif(__v); if(0==__v) goto __return; if(0==__v->j) { r0(__v); goto __l13;}; r0(__v);  // if/while check condition
-  __v=kdot(r1(__consts[52]),knk(2,r1(__consts[108]),r1(_a))); if(0==__v) goto __return;   // #[`oper`index;a]
-  __v=tf_b2c_enStruct__q(__v); if(0==__v) goto __return;   // .b2c.enStruct[<val>]
+  __v=tf_tf_encodeOut__q(r1(_a)); if(0==__v) goto __return;   // .tf.encodeOut[a]
   goto __l14;  // jmp to if end
 
  __l13:
-  __v=r1(__consts[166]);  // const <val>
+  __v=r1(__consts[164]);  // const <val>
 
  __l14:
   r0(_out); _out=__v;  // out:<val> - no rval, local
@@ -4134,13 +4083,13 @@ K tf_tf_TF_GraphToFunction__q(K _g,K _name,K _hash,K _args,K _o,K _d,K _s){
   _c_s=(char**)NULL;  // c.s[()]::<val> - no rval, global
   
   // end of statement
-  __v=kdot(r1(_args),knk(1,r1(__consts[168]))); if(0==__v) goto __return;   // args[3]
+  __v=kdot(r1(_args),knk(1,r1(__consts[166]))); if(0==__v) goto __return;   // args[3]
   r0(_a); _a=__v;__v=r1(_a);   // a:<val>
   __v=kdot(r1(__consts[20]),knk(1,__v)); if(0==__v) goto __return;   // count[<val>]
   __v=kif(__v); if(0==__v) goto __return; if(0==__v->j) { r0(__v); goto __l19;}; r0(__v);  // if/while check condition
   __v=kdot(r1(__consts[20]),knk(1,r1(_a))); if(0==__v) goto __return;   // count[a]
-  __v=kdot(r1(__consts[42]),knk(2,r1(__consts[169]),__v)); if(0==__v) goto __return;   // *[8;<val>]
-  __v=kdot(r1(__consts[52]),knk(2,__v,r1(__consts[121]))); if(0==__v) goto __return;   // #[<val>;0x00]
+  __v=kdot(r1(__consts[42]),knk(2,r1(__consts[167]),__v)); if(0==__v) goto __return;   // *[8;<val>]
+  __v=kdot(r1(__consts[52]),knk(2,__v,r1(__consts[120]))); if(0==__v) goto __return;   // #[<val>;0x00]
   r0(_nms); _nms=__v;  // nms:<val> - no rval, local
   
   // end of statement
@@ -4166,14 +4115,14 @@ K tf_tf_TF_GraphToFunction__q(K _g,K _name,K _hash,K _args,K _o,K _d,K _s){
   __v=__K2S_cast(&_vc_S2,r1(_d)); if(0==__v) goto __return; r0(__v);   // `c.S$<val>
   __v=__K2j_cast(&_vc_j3,r1(_o)); if(0==__v) goto __return; r0(__v);   // `c.j$<val>
   __v=__K2C_cast(&_vc_C5,r1(_out)); if(0==__v) goto __return; r0(__v);   // `c.C$<val>
-  __v=kdot(r1(_args),knk(1,r1(__consts[167]))); if(0==__v) goto __return;   // args[2]
+  __v=kdot(r1(_args),knk(1,r1(__consts[165]))); if(0==__v) goto __return;   // args[2]
   __v=kdot(r1(__consts[20]),knk(1,__v)); if(0==__v) goto __return;   // count[<val>]
-  __v=kdot(r1(__consts[50]),knk(2,r1(__consts[134]),__v)); if(0==__v) goto __return;   // $["i";<val>]
+  __v=kdot(r1(__consts[50]),knk(2,r1(__consts[136]),__v)); if(0==__v) goto __return;   // $["i";<val>]
   __v=__K2i_cast(&_vc_i6,__v); if(0==__v) goto __return; r0(__v);   // `c.i$<val>
   __v=__K2C_cast(&_vc_C7,r1(_inp)); if(0==__v) goto __return; r0(__v);   // `c.C$<val>
   __v=kdot(r1(_args),knk(1,r1(__consts[2]))); if(0==__v) goto __return;   // args[1]
   __v=kdot(r1(__consts[20]),knk(1,__v)); if(0==__v) goto __return;   // count[<val>]
-  __v=kdot(r1(__consts[50]),knk(2,r1(__consts[134]),__v)); if(0==__v) goto __return;   // $["i";<val>]
+  __v=kdot(r1(__consts[50]),knk(2,r1(__consts[136]),__v)); if(0==__v) goto __return;   // $["i";<val>]
   __v=__K2i_cast(&_vc_i8,__v); if(0==__v) goto __return; r0(__v);   // `c.i$<val>
   __v=__K2J_cast(&_vc_J9,r1(_ops)); if(0==__v) goto __return; r0(__v);   // `c.J$<val>
   __v=__K2i_cast(&_vc_i10,r1(_nops)); if(0==__v) goto __return; r0(__v);   // `c.i$<val>
@@ -4310,12 +4259,12 @@ K tf_tf_TF_LoadSessionFromSavedModel__q(K _sopt,K _ropt,K _dir,K _tags,K _g,K _g
   K __st[1]; int __stc=0; K __v=(K)1;
   J* _c_a; J* _vc_J1; J _c_do1; char* _vc_S1; J _vc_j1; J _vc_j2; J _vc_j3; I _vc_i4; char* _vc_S6; J _vc_j7; J _vc_j8; TF_Session* _vc_TF_Session_p1;
   K _a=r1(__consts[0]); 
-  __v=kdot(r1(__q[14]),knk(2,r1(__q[17]),r1(_tags))); if(0==__v) goto __return;   // each[type;tags]
-  __v=kdot(r1(__consts[62]),knk(2,__v,r1(__consts[170]))); if(0==__v) goto __return;   // in[<val>;10h]
+  __v=kdot(r1(__q[15]),knk(2,r1(__q[14]),r1(_tags))); if(0==__v) goto __return;   // each[type;tags]
+  __v=kdot(r1(__consts[62]),knk(2,__v,r1(__consts[168]))); if(0==__v) goto __return;   // in[<val>;10h]
   __v=kdot(r1(__q[13]),knk(1,__v)); if(0==__v) goto __return;   // all[<val>]
   __v=kdot(r1(__consts[22]),knk(1,__v)); if(0==__v) goto __return;   // not[<val>]
   __v=kif(__v); if(0==__v) goto __return; if(0==__v->j) { r0(__v); goto __l2;}; r0(__v);  // if/while check condition
-  __v=r1(__consts[171]);  // const "TF_LoadSessionFromS
+  __v=r1(__consts[169]);  // const "TF_LoadSessionFromS
   __st[__stc++]=__v;  if(__v->t==-KS) __v=krr(__v->s); else if(__v->t==KC)  __v=krr(sn(kC(__v),__v->n)); else __v=krr("stype"); goto __return;  // raise an exception
   r0(__v); 
   // end of statement
@@ -4348,7 +4297,7 @@ K tf_tf_TF_LoadSessionFromSavedModel__q(K _sopt,K _ropt,K _dir,K _tags,K _g,K _g
   __v=__K2j_cast(&_vc_j2,r1(_gdef)); if(0==__v) goto __return; r0(__v);   // `c.j$<val>
   __v=__K2j_cast(&_vc_j3,r1(_g)); if(0==__v) goto __return; r0(__v);   // `c.j$<val>
   __v=kdot(r1(__consts[20]),knk(1,r1(_tags))); if(0==__v) goto __return;   // count[tags]
-  __v=kdot(r1(__consts[50]),knk(2,r1(__consts[134]),__v)); if(0==__v) goto __return;   // $["i";<val>]
+  __v=kdot(r1(__consts[50]),knk(2,r1(__consts[136]),__v)); if(0==__v) goto __return;   // $["i";<val>]
   __v=__K2i_cast(&_vc_i4,__v); if(0==__v) goto __return; r0(__v);   // `c.i$<val>
   __v=__K2S_cast(&_vc_S6,r1(_dir)); if(0==__v) goto __return; r0(__v);   // `c.S$<val>
   __v=__K2j_cast(&_vc_j7,r1(_ropt)); if(0==__v) goto __return; r0(__v);   // `c.j$<val>
@@ -4403,16 +4352,15 @@ K tf_tf_TF_DeleteSession__q(K _x1,K _x2){
 K tf_tf_TF_SessionRun__q(K _sess,K _ropts,K _inp,K _out,K _ops,K _mdata,K _st){
   K __st[1]; int __stc=0; K __v=(K)1;
   J _vc_j1; J _vc_j2; I _vc_i3; J* _vc_J4; I _vc_i5; J* _vc_J6; char* _vc_C7; I _vc_i8; J* _vc_J9; char* _vc_C10; J _vc_j11; J _vc_j12;
-  K _ii=r1(__consts[0]); K _oo=r1(__consts[0]); 
+  K _ii=r1(__consts[0]); K _oo=r1(__consts[0]); K _it=r1(__consts[0]); K _ot=r1(__consts[0]); 
   __v=kdot(r1(__consts[20]),knk(1,r1(_inp))); if(0==__v) goto __return;   // count[inp]
   __v=kif(__v); if(0==__v) goto __return; if(0==__v->j) { r0(__v); goto __l2;}; r0(__v);  // if/while check condition
   __v=kdot(r1(_inp),knk(1,r1(__consts[1]))); if(0==__v) goto __return;   // inp[0]
-  __v=kdot(r1(__consts[52]),knk(2,r1(__consts[108]),__v)); if(0==__v) goto __return;   // #[`oper`index;<val>]
-  __v=tf_b2c_enStruct__q(__v); if(0==__v) goto __return;   // .b2c.enStruct[<val>]
+  __v=tf_tf_encodeOut__q(__v); if(0==__v) goto __return;   // .tf.encodeOut[<val>]
   goto __l3;  // jmp to if end
 
  __l2:
-  __v=r1(__consts[166]);  // const <val>
+  __v=r1(__consts[164]);  // const <val>
 
  __l3:
   r0(_ii); _ii=__v;  // ii:<val> - no rval, local
@@ -4421,36 +4369,55 @@ K tf_tf_TF_SessionRun__q(K _sess,K _ropts,K _inp,K _out,K _ops,K _mdata,K _st){
   __v=kdot(r1(__consts[20]),knk(1,r1(_out))); if(0==__v) goto __return;   // count[out]
   __v=kif(__v); if(0==__v) goto __return; if(0==__v->j) { r0(__v); goto __l5;}; r0(__v);  // if/while check condition
   __v=kdot(r1(_out),knk(1,r1(__consts[1]))); if(0==__v) goto __return;   // out[0]
-  __v=kdot(r1(__consts[52]),knk(2,r1(__consts[108]),__v)); if(0==__v) goto __return;   // #[`oper`index;<val>]
-  __v=tf_b2c_enStruct__q(__v); if(0==__v) goto __return;   // .b2c.enStruct[<val>]
+  __v=tf_tf_encodeOut__q(__v); if(0==__v) goto __return;   // .tf.encodeOut[<val>]
   goto __l6;  // jmp to if end
 
  __l5:
-  __v=r1(__consts[166]);  // const <val>
+  __v=r1(__consts[164]);  // const <val>
 
  __l6:
   r0(_oo); _oo=__v;  // oo:<val> - no rval, local
   
   // end of statement
+  __v=kdot(r1(__consts[20]),knk(1,r1(_inp))); if(0==__v) goto __return;   // count[inp]
+  __v=kif(__v); if(0==__v) goto __return; if(0==__v->j) { r0(__v); goto __l8;}; r0(__v);  // if/while check condition
+  __v=kdot(r1(_inp),knk(1,r1(__consts[2]))); if(0==__v) goto __return;   // inp[1]
+  goto __l9;  // jmp to if end
+
+ __l8:
+  __v=r1(__consts[163]);  // const <val>
+
+ __l9:
+  r0(_it); _it=__v;  // it:<val> - no rval, local
+  
+  // end of statement
+  __v=kdot(r1(__consts[20]),knk(1,r1(_out))); if(0==__v) goto __return;   // count[out]
+  __v=kif(__v); if(0==__v) goto __return; if(0==__v->j) { r0(__v); goto __l11;}; r0(__v);  // if/while check condition
+  __v=kdot(r1(_out),knk(1,r1(__consts[2]))); if(0==__v) goto __return;   // out[1]
+  goto __l12;  // jmp to if end
+
+ __l11:
+  __v=r1(__consts[163]);  // const <val>
+
+ __l12:
+  r0(_ot); _ot=__v;  // ot:<val> - no rval, local
+  
+  // end of statement
   __v=__K2j_cast(&_vc_j1,r1(_st)); if(0==__v) goto __return; r0(__v);   // `c.j$<val>
   __v=__K2j_cast(&_vc_j2,r1(_mdata)); if(0==__v) goto __return; r0(__v);   // `c.j$<val>
   __v=kdot(r1(__consts[20]),knk(1,r1(_ops))); if(0==__v) goto __return;   // count[ops]
-  __v=kdot(r1(__consts[50]),knk(2,r1(__consts[134]),__v)); if(0==__v) goto __return;   // $["i";<val>]
+  __v=kdot(r1(__consts[50]),knk(2,r1(__consts[136]),__v)); if(0==__v) goto __return;   // $["i";<val>]
   __v=__K2i_cast(&_vc_i3,__v); if(0==__v) goto __return; r0(__v);   // `c.i$<val>
   __v=__K2J_cast(&_vc_J4,r1(_ops)); if(0==__v) goto __return; r0(__v);   // `c.J$<val>
-  __v=kdot(r1(_out),knk(1,r1(__consts[2]))); if(0==__v) goto __return;   // out[1]
-  __v=kdot(r1(__consts[20]),knk(1,__v)); if(0==__v) goto __return;   // count[<val>]
-  __v=kdot(r1(__consts[50]),knk(2,r1(__consts[134]),__v)); if(0==__v) goto __return;   // $["i";<val>]
+  __v=kdot(r1(__consts[20]),knk(1,r1(_ot))); if(0==__v) goto __return;   // count[ot]
+  __v=kdot(r1(__consts[50]),knk(2,r1(__consts[136]),__v)); if(0==__v) goto __return;   // $["i";<val>]
   __v=__K2i_cast(&_vc_i5,__v); if(0==__v) goto __return; r0(__v);   // `c.i$<val>
-  __v=kdot(r1(_out),knk(1,r1(__consts[2]))); if(0==__v) goto __return;   // out[1]
-  __v=__K2J_cast(&_vc_J6,__v); if(0==__v) goto __return; r0(__v);   // `c.J$<val>
+  __v=__K2J_cast(&_vc_J6,r1(_ot)); if(0==__v) goto __return; r0(__v);   // `c.J$<val>
   __v=__K2C_cast(&_vc_C7,r1(_oo)); if(0==__v) goto __return; r0(__v);   // `c.C$<val>
-  __v=kdot(r1(_inp),knk(1,r1(__consts[2]))); if(0==__v) goto __return;   // inp[1]
-  __v=kdot(r1(__consts[20]),knk(1,__v)); if(0==__v) goto __return;   // count[<val>]
-  __v=kdot(r1(__consts[50]),knk(2,r1(__consts[134]),__v)); if(0==__v) goto __return;   // $["i";<val>]
+  __v=kdot(r1(__consts[20]),knk(1,r1(_it))); if(0==__v) goto __return;   // count[it]
+  __v=kdot(r1(__consts[50]),knk(2,r1(__consts[136]),__v)); if(0==__v) goto __return;   // $["i";<val>]
   __v=__K2i_cast(&_vc_i8,__v); if(0==__v) goto __return; r0(__v);   // `c.i$<val>
-  __v=kdot(r1(_inp),knk(1,r1(__consts[2]))); if(0==__v) goto __return;   // inp[1]
-  __v=__K2J_cast(&_vc_J9,__v); if(0==__v) goto __return; r0(__v);   // `c.J$<val>
+  __v=__K2J_cast(&_vc_J9,r1(_it)); if(0==__v) goto __return; r0(__v);   // `c.J$<val>
   __v=__K2C_cast(&_vc_C10,r1(_ii)); if(0==__v) goto __return; r0(__v);   // `c.C$<val>
   __v=__K2j_cast(&_vc_j11,r1(_ropts)); if(0==__v) goto __return; r0(__v);   // `c.j$<val>
   __v=__K2j_cast(&_vc_j12,r1(_sess)); if(0==__v) goto __return; r0(__v);   // `c.j$<val>
@@ -4461,7 +4428,7 @@ K tf_tf_TF_SessionRun__q(K _sess,K _ropts,K _inp,K _out,K _ops,K _mdata,K _st){
   goto __return;  // return cmd
 
  __return:
-  r0(_ii); r0(_oo); r0(_sess); r0(_ropts); r0(_inp); r0(_out); r0(_ops); r0(_mdata); r0(_st); 
+  r0(_ii); r0(_oo); r0(_it); r0(_ot); r0(_sess); r0(_ropts); r0(_inp); r0(_out); r0(_ops); r0(_mdata); r0(_st); 
   while(__stc>0) r0(__st[--__stc]); 
   return __v;
  };
@@ -4472,12 +4439,11 @@ K tf_tf_TF_SessionPRunSetup__q(K _sess,K _inp,K _out,K _ops,K _st){
   __v=kdot(r1(__consts[20]),knk(1,r1(_inp))); if(0==__v) goto __return;   // count[inp]
   __v=kif(__v); if(0==__v) goto __return; if(0==__v->j) { r0(__v); goto __l2;}; r0(__v);  // if/while check condition
   __v=kdot(r1(_inp),knk(1,r1(__consts[1]))); if(0==__v) goto __return;   // inp[0]
-  __v=kdot(r1(__consts[52]),knk(2,r1(__consts[108]),__v)); if(0==__v) goto __return;   // #[`oper`index;<val>]
-  __v=tf_b2c_enStruct__q(__v); if(0==__v) goto __return;   // .b2c.enStruct[<val>]
+  __v=tf_tf_encodeOut__q(__v); if(0==__v) goto __return;   // .tf.encodeOut[<val>]
   goto __l3;  // jmp to if end
 
  __l2:
-  __v=r1(__consts[166]);  // const <val>
+  __v=r1(__consts[164]);  // const <val>
 
  __l3:
   r0(_ii); _ii=__v;  // ii:<val> - no rval, local
@@ -4486,12 +4452,11 @@ K tf_tf_TF_SessionPRunSetup__q(K _sess,K _inp,K _out,K _ops,K _st){
   __v=kdot(r1(__consts[20]),knk(1,r1(_out))); if(0==__v) goto __return;   // count[out]
   __v=kif(__v); if(0==__v) goto __return; if(0==__v->j) { r0(__v); goto __l5;}; r0(__v);  // if/while check condition
   __v=kdot(r1(_out),knk(1,r1(__consts[1]))); if(0==__v) goto __return;   // out[0]
-  __v=kdot(r1(__consts[52]),knk(2,r1(__consts[108]),__v)); if(0==__v) goto __return;   // #[`oper`index;<val>]
-  __v=tf_b2c_enStruct__q(__v); if(0==__v) goto __return;   // .b2c.enStruct[<val>]
+  __v=tf_tf_encodeOut__q(__v); if(0==__v) goto __return;   // .tf.encodeOut[<val>]
   goto __l6;  // jmp to if end
 
  __l5:
-  __v=r1(__consts[166]);  // const <val>
+  __v=r1(__consts[164]);  // const <val>
 
  __l6:
   r0(_oo); _oo=__v;  // oo:<val> - no rval, local
@@ -4502,15 +4467,15 @@ K tf_tf_TF_SessionPRunSetup__q(K _sess,K _inp,K _out,K _ops,K _st){
   // end of statement
   __v=__K2j_cast(&_vc_j1,r1(_st)); if(0==__v) goto __return; r0(__v);   // `c.j$<val>
   __v=kdot(r1(__consts[20]),knk(1,r1(_ops))); if(0==__v) goto __return;   // count[ops]
-  __v=kdot(r1(__consts[50]),knk(2,r1(__consts[134]),__v)); if(0==__v) goto __return;   // $["i";<val>]
+  __v=kdot(r1(__consts[50]),knk(2,r1(__consts[136]),__v)); if(0==__v) goto __return;   // $["i";<val>]
   __v=__K2i_cast(&_vc_i3,__v); if(0==__v) goto __return; r0(__v);   // `c.i$<val>
   __v=__K2J_cast(&_vc_J4,r1(_ops)); if(0==__v) goto __return; r0(__v);   // `c.J$<val>
   __v=kdot(r1(__consts[20]),knk(1,r1(_out))); if(0==__v) goto __return;   // count[out]
-  __v=kdot(r1(__consts[50]),knk(2,r1(__consts[134]),__v)); if(0==__v) goto __return;   // $["i";<val>]
+  __v=kdot(r1(__consts[50]),knk(2,r1(__consts[136]),__v)); if(0==__v) goto __return;   // $["i";<val>]
   __v=__K2i_cast(&_vc_i5,__v); if(0==__v) goto __return; r0(__v);   // `c.i$<val>
   __v=__K2C_cast(&_vc_C6,r1(_oo)); if(0==__v) goto __return; r0(__v);   // `c.C$<val>
   __v=kdot(r1(__consts[20]),knk(1,r1(_inp))); if(0==__v) goto __return;   // count[inp]
-  __v=kdot(r1(__consts[50]),knk(2,r1(__consts[134]),__v)); if(0==__v) goto __return;   // $["i";<val>]
+  __v=kdot(r1(__consts[50]),knk(2,r1(__consts[136]),__v)); if(0==__v) goto __return;   // $["i";<val>]
   __v=__K2i_cast(&_vc_i7,__v); if(0==__v) goto __return; r0(__v);   // `c.i$<val>
   __v=__K2C_cast(&_vc_C8,r1(_ii)); if(0==__v) goto __return; r0(__v);   // `c.C$<val>
   __v=__K2j_cast(&_vc_j9,r1(_sess)); if(0==__v) goto __return; r0(__v);   // `c.j$<val>
@@ -4532,16 +4497,15 @@ K tf_tf_TF_SessionPRunSetup__q(K _sess,K _inp,K _out,K _ops,K _st){
 K tf_tf_TF_SessionPRun__q(K _sess,K _hh,K _inp,K _out,K _ops,K _st){
   K __st[1]; int __stc=0; K __v=(K)1;
   J _vc_j1; I _vc_i2; J* _vc_J3; I _vc_i4; J* _vc_J5; char* _vc_C6; I _vc_i7; J* _vc_J8; char* _vc_C9; J _vc_j10; J _vc_j11;
-  K _ii=r1(__consts[0]); K _oo=r1(__consts[0]); 
+  K _ii=r1(__consts[0]); K _oo=r1(__consts[0]); K _it=r1(__consts[0]); K _ot=r1(__consts[0]); 
   __v=kdot(r1(__consts[20]),knk(1,r1(_inp))); if(0==__v) goto __return;   // count[inp]
   __v=kif(__v); if(0==__v) goto __return; if(0==__v->j) { r0(__v); goto __l2;}; r0(__v);  // if/while check condition
   __v=kdot(r1(_inp),knk(1,r1(__consts[1]))); if(0==__v) goto __return;   // inp[0]
-  __v=kdot(r1(__consts[52]),knk(2,r1(__consts[108]),__v)); if(0==__v) goto __return;   // #[`oper`index;<val>]
-  __v=tf_b2c_enStruct__q(__v); if(0==__v) goto __return;   // .b2c.enStruct[<val>]
+  __v=tf_tf_encodeOut__q(__v); if(0==__v) goto __return;   // .tf.encodeOut[<val>]
   goto __l3;  // jmp to if end
 
  __l2:
-  __v=r1(__consts[166]);  // const <val>
+  __v=r1(__consts[164]);  // const <val>
 
  __l3:
   r0(_ii); _ii=__v;  // ii:<val> - no rval, local
@@ -4550,35 +4514,54 @@ K tf_tf_TF_SessionPRun__q(K _sess,K _hh,K _inp,K _out,K _ops,K _st){
   __v=kdot(r1(__consts[20]),knk(1,r1(_out))); if(0==__v) goto __return;   // count[out]
   __v=kif(__v); if(0==__v) goto __return; if(0==__v->j) { r0(__v); goto __l5;}; r0(__v);  // if/while check condition
   __v=kdot(r1(_out),knk(1,r1(__consts[1]))); if(0==__v) goto __return;   // out[0]
-  __v=kdot(r1(__consts[52]),knk(2,r1(__consts[108]),__v)); if(0==__v) goto __return;   // #[`oper`index;<val>]
-  __v=tf_b2c_enStruct__q(__v); if(0==__v) goto __return;   // .b2c.enStruct[<val>]
+  __v=tf_tf_encodeOut__q(__v); if(0==__v) goto __return;   // .tf.encodeOut[<val>]
   goto __l6;  // jmp to if end
 
  __l5:
-  __v=r1(__consts[166]);  // const <val>
+  __v=r1(__consts[164]);  // const <val>
 
  __l6:
   r0(_oo); _oo=__v;  // oo:<val> - no rval, local
   
   // end of statement
+  __v=kdot(r1(__consts[20]),knk(1,r1(_inp))); if(0==__v) goto __return;   // count[inp]
+  __v=kif(__v); if(0==__v) goto __return; if(0==__v->j) { r0(__v); goto __l8;}; r0(__v);  // if/while check condition
+  __v=kdot(r1(_inp),knk(1,r1(__consts[2]))); if(0==__v) goto __return;   // inp[1]
+  goto __l9;  // jmp to if end
+
+ __l8:
+  __v=r1(__consts[163]);  // const <val>
+
+ __l9:
+  r0(_it); _it=__v;  // it:<val> - no rval, local
+  
+  // end of statement
+  __v=kdot(r1(__consts[20]),knk(1,r1(_out))); if(0==__v) goto __return;   // count[out]
+  __v=kif(__v); if(0==__v) goto __return; if(0==__v->j) { r0(__v); goto __l11;}; r0(__v);  // if/while check condition
+  __v=kdot(r1(_out),knk(1,r1(__consts[2]))); if(0==__v) goto __return;   // out[1]
+  goto __l12;  // jmp to if end
+
+ __l11:
+  __v=r1(__consts[163]);  // const <val>
+
+ __l12:
+  r0(_ot); _ot=__v;  // ot:<val> - no rval, local
+  
+  // end of statement
   __v=__K2j_cast(&_vc_j1,r1(_st)); if(0==__v) goto __return; r0(__v);   // `c.j$<val>
   __v=kdot(r1(__consts[20]),knk(1,r1(_ops))); if(0==__v) goto __return;   // count[ops]
-  __v=kdot(r1(__consts[50]),knk(2,r1(__consts[134]),__v)); if(0==__v) goto __return;   // $["i";<val>]
+  __v=kdot(r1(__consts[50]),knk(2,r1(__consts[136]),__v)); if(0==__v) goto __return;   // $["i";<val>]
   __v=__K2i_cast(&_vc_i2,__v); if(0==__v) goto __return; r0(__v);   // `c.i$<val>
   __v=__K2J_cast(&_vc_J3,r1(_ops)); if(0==__v) goto __return; r0(__v);   // `c.J$<val>
-  __v=kdot(r1(_out),knk(1,r1(__consts[2]))); if(0==__v) goto __return;   // out[1]
-  __v=kdot(r1(__consts[20]),knk(1,__v)); if(0==__v) goto __return;   // count[<val>]
-  __v=kdot(r1(__consts[50]),knk(2,r1(__consts[134]),__v)); if(0==__v) goto __return;   // $["i";<val>]
+  __v=kdot(r1(__consts[20]),knk(1,r1(_ot))); if(0==__v) goto __return;   // count[ot]
+  __v=kdot(r1(__consts[50]),knk(2,r1(__consts[136]),__v)); if(0==__v) goto __return;   // $["i";<val>]
   __v=__K2i_cast(&_vc_i4,__v); if(0==__v) goto __return; r0(__v);   // `c.i$<val>
-  __v=kdot(r1(_out),knk(1,r1(__consts[2]))); if(0==__v) goto __return;   // out[1]
-  __v=__K2J_cast(&_vc_J5,__v); if(0==__v) goto __return; r0(__v);   // `c.J$<val>
+  __v=__K2J_cast(&_vc_J5,r1(_ot)); if(0==__v) goto __return; r0(__v);   // `c.J$<val>
   __v=__K2C_cast(&_vc_C6,r1(_oo)); if(0==__v) goto __return; r0(__v);   // `c.C$<val>
-  __v=kdot(r1(_inp),knk(1,r1(__consts[2]))); if(0==__v) goto __return;   // inp[1]
-  __v=kdot(r1(__consts[20]),knk(1,__v)); if(0==__v) goto __return;   // count[<val>]
-  __v=kdot(r1(__consts[50]),knk(2,r1(__consts[134]),__v)); if(0==__v) goto __return;   // $["i";<val>]
+  __v=kdot(r1(__consts[20]),knk(1,r1(_it))); if(0==__v) goto __return;   // count[it]
+  __v=kdot(r1(__consts[50]),knk(2,r1(__consts[136]),__v)); if(0==__v) goto __return;   // $["i";<val>]
   __v=__K2i_cast(&_vc_i7,__v); if(0==__v) goto __return; r0(__v);   // `c.i$<val>
-  __v=kdot(r1(_inp),knk(1,r1(__consts[2]))); if(0==__v) goto __return;   // inp[1]
-  __v=__K2J_cast(&_vc_J8,__v); if(0==__v) goto __return; r0(__v);   // `c.J$<val>
+  __v=__K2J_cast(&_vc_J8,r1(_it)); if(0==__v) goto __return; r0(__v);   // `c.J$<val>
   __v=__K2C_cast(&_vc_C9,r1(_ii)); if(0==__v) goto __return; r0(__v);   // `c.C$<val>
   __v=__K2j_cast(&_vc_j10,r1(_hh)); if(0==__v) goto __return; r0(__v);   // `c.j$<val>
   __v=__K2j_cast(&_vc_j11,r1(_sess)); if(0==__v) goto __return; r0(__v);   // `c.j$<val>
@@ -4589,7 +4572,7 @@ K tf_tf_TF_SessionPRun__q(K _sess,K _hh,K _inp,K _out,K _ops,K _st){
   goto __return;  // return cmd
 
  __return:
-  r0(_ii); r0(_oo); r0(_sess); r0(_hh); r0(_inp); r0(_out); r0(_ops); r0(_st); 
+  r0(_ii); r0(_oo); r0(_it); r0(_ot); r0(_sess); r0(_hh); r0(_inp); r0(_out); r0(_ops); r0(_st); 
   while(__stc>0) r0(__st[--__stc]); 
   return __v;
  };
@@ -4793,19 +4776,19 @@ static K kamend(K ff,K a,K i,K f,K v){ K res=(K)0, lst=knk(4,a,i,f,v); I r = a->
 static K kamend3(K ff,int isG,K* a,K i,K f){if(isG)r1(*a); I r=(*a)->r; K lst=knk(3,(*a),i,f); if(0==r) (*a)->r-=1; K res=dot(ff,lst); if(0==r) {if((*a)==res) (*a)->r+=1; else kK(lst)[0]=kj(0);}; r0(lst); if((!isG)&&(0==res))a[0]=r1(__consts[0]); if(0!=res){if(isG)r0(*a); a[0]=r1(res);}; return res;};
 static K kamend4(K ff,int isG,K* a,K i,K f,K v){if(isG)r1(*a); K res=kamend(ff,(*a),i,f,v); if((!isG)&&(0==res))a[0]=r1(__consts[0]); if(0!=res){if(isG)r0(*a); a[0]=r1(res);}; return res;};
 static unsigned char __cnstArr[] = 
-  {1,0,0,0,0,7,0,0,0,0,173,0,0,0,0,0,0,0,0,0,249,0,0,0,0,0,0,0,0,249,1,0,0,0,0,0,0,0,102,12,245,0,101,0,101,255,101,0,101,1,101,2,101,3,101,4,101,5,101,6,101,7,101,8,101,9,101,10,101,11,101,41,101,13,101,14,101,15,101,16,101,17,101,18,101,19,101,20,101,21,101,22,101,23,101,24,101,25,101,26,101,27,101,28,101,29,101,30,101,31,102,0,102,1,102,2,102,3,102,4,102,5,102,6,102,7,102,8,102,9,102,10,102,11,102,12,102,13,102,14,102,15,102,16,102,17,102,18,102,19,102,20,102,21,102,22,102,23,102,24,102,25,102,26,102,27,102,28,102,29,102,30,102,31,103,0,103,1,103,2,103,3,103,4,103,5,245,116,0,245,105,0,7,0,1,0,0,0,0,0,
+  {1,0,0,0,215,6,0,0,0,0,171,0,0,0,0,0,0,0,0,0,249,0,0,0,0,0,0,0,0,249,1,0,0,0,0,0,0,0,102,12,245,0,101,0,101,255,101,0,101,1,101,2,101,3,101,4,101,5,101,6,101,7,101,8,101,9,101,10,101,11,101,41,101,13,101,14,101,15,101,16,101,17,101,18,101,19,101,20,101,21,101,22,101,23,101,24,101,25,101,26,101,27,101,28,101,29,101,30,101,31,102,0,102,1,102,2,102,3,102,4,102,5,102,6,102,7,102,8,102,9,102,10,102,11,102,12,102,13,102,14,102,15,102,16,102,17,102,18,102,19,102,20,102,21,102,22,102,23,102,24,102,25,102,26,102,27,102,28,102,29,102,30,102,31,103,0,103,1,103,2,103,3,103,4,103,5,245,116,0,245,105,0,7,0,1,0,0,0,0,0,
   0,0,0,0,0,0,10,0,14,0,0,0,75,50,105,95,99,97,115,116,58,32,116,121,112,101,245,106,0,10,0,14,0,0,0,75,50,106,95,99,97,115,116,58,32,116,121,112,101,245,102,0,10,0,14,0,0,0,75,50,102,95,99,97,115,116,58,32,116,121,112,101,245,103,0,10,0,14,0,0,0,75,50,99,95,99,97,115,116,58,32,116,121,112,101,245,114,0,10,0,16,0,0,0,75,50,73,95,99,97,115,116,58,32,110,111,32,114,101,102,245,71,48,0,10,0,14,0,0,0,75,50,73,95,99,97,115,116,58,32,116,121,112,101,10,0,16,0,0,0,75,50,74,95,99,97,115,116,58,32,110,111,32,114,101,102,10,0,14,0,0,0,75,50,74,95,99,97,115,116,58,32,116,121,112,101,10,0,16,0,0,0,75,50,72,95,99,97,115,116,
   58,32,110,111,32,114,101,102,10,0,14,0,0,0,75,50,72,95,99,97,115,116,58,32,116,121,112,101,10,0,16,0,0,0,75,50,70,95,99,97,115,116,58,32,110,111,32,114,101,102,10,0,14,0,0,0,75,50,70,95,99,97,115,116,58,32,116,121,112,101,10,0,16,0,0,0,75,50,69,95,99,97,115,116,58,32,110,111,32,114,101,102,10,0,14,0,0,0,75,50,69,95,99,97,115,116,58,32,116,121,112,101,10,0,16,0,0,0,75,50,83,95,99,97,115,116,58,32,110,111,32,114,101,102,245,115,0,10,0,28,0,0,0,75,50,83,95,99,97,115,116,58,32,110,111,32,110,117,108,108,32,116,101,114,109,105,110,97,116,111,114,10,0,14,0,0,0,75,50,83,95,99,97,115,116,58,32,116,121,112,101,10,0,16,0,0,0,75,50,67,
-  95,99,97,115,116,58,32,110,111,32,114,101,102,10,0,14,0,0,0,75,50,67,95,99,97,115,116,58,32,116,121,112,101,249,245,255,255,255,255,255,255,255,105,2,0,0,0,101,15,102,8,246,32,11,0,2,0,0,0,111,112,101,114,0,105,110,100,101,120,0,249,99,0,0,0,0,0,0,0,10,0,18,0,0,0,96,99,46,84,70,95,73,110,112,117,116,36,58,32,116,121,112,101,0,0,1,0,0,0,10,0,4,0,0,0,111,112,101,114,0,0,1,0,0,0,10,0,5,0,0,0,105,110,100,101,120,10,0,19,0,0,0,96,99,46,84,70,95,79,117,116,112,117,116,36,58,32,116,121,112,101,10,0,5,0,0,0,105,110,100,101,120,10,0,4,0,0,0,111,112,101,114,11,0,4,0,0,0,105,115,95,108,105,115,116,0,108,105,115,116,
-  95,115,105,122,101,0,116,121,112,101,0,116,111,116,97,108,95,115,105,122,101,0,10,0,10,0,0,0,116,111,116,97,108,95,115,105,122,101,10,0,4,0,0,0,116,121,112,101,10,0,9,0,0,0,108,105,115,116,95,115,105,122,101,10,0,7,0,0,0,105,115,95,108,105,115,116,252,0,245,108,101,110,103,116,104,0,245,100,97,116,97,0,10,0,14,0,0,0,67,46,84,70,95,86,101,114,115,105,111,110,58,32,10,0,14,0,0,0,67,46,84,70,95,77,101,115,115,97,103,101,58,32,11,0,1,0,0,0,114,0,5,0,2,0,0,0,4,0,10,0,249,5,0,0,0,0,0,0,0,249,6,0,0,0,0,0,0,0,249,7,0,0,0,0,0,0,0,249,9,0,0,0,0,0,0,0,99,5,0,7,0,0,0,4,0,5,0,6,0,7,
-  0,8,0,9,0,10,0,7,0,7,0,0,0,1,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,4,0,0,0,0,0,0,0,8,0,0,0,0,0,0,0,4,0,0,0,0,0,0,0,8,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,10,0,30,0,0,0,84,70,95,78,101,119,84,101,110,115,111,114,58,32,117,110,115,117,112,112,111,114,116,101,100,32,100,97,116,97,246,105,10,0,23,0,0,0,84,70,95,83,116,114,105,110,103,68,101,99,111,100,101,58,32,102,97,105,108,101,100,249,98,0,0,0,0,0,0,0,10,0,21,0,0,0,84,70,95,65,100,100,73,110,112,117,116,76,105,115,116,58,32,116,121,112,101,249,20,0,0,0,0,0,0,0,10,0,26,0,0,0,84,70,95,83,101,116,65,116,116,114,83,116,114,
-  105,110,103,76,105,115,116,58,32,116,121,112,101,10,0,25,0,0,0,84,70,95,83,101,116,65,116,116,114,83,104,97,112,101,76,105,115,116,58,32,116,121,112,101,10,0,36,0,0,0,84,70,95,83,101,116,65,116,116,114,84,101,110,115,111,114,83,104,97,112,101,80,114,111,116,111,76,105,115,116,58,32,116,121,112,101,10,0,20,0,0,0,67,46,84,70,95,79,112,101,114,97,116,105,111,110,78,97,109,101,58,32,10,0,22,0,0,0,67,46,84,70,95,79,112,101,114,97,116,105,111,110,79,112,84,121,112,101,58,32,10,0,22,0,0,0,67,46,84,70,95,79,112,101,114,97,116,105,111,110,68,101,118,105,99,101,58,32,105,2,0,0,0,101,15,102,9,245,99,46,84,70,95,73,110,112,117,116,0,0,0,2,0,0,0,7,0,2,0,0,
-  0,8,0,0,0,0,0,0,0,4,0,0,0,0,0,0,0,10,0,2,0,0,0,106,105,105,2,0,0,0,101,15,102,10,98,0,99,11,0,2,0,0,0,111,112,101,114,0,105,110,100,101,120,0,0,0,2,0,0,0,7,0,0,0,0,0,6,0,0,0,0,0,245,105,110,100,101,120,0,245,111,112,101,114,0,98,0,99,11,0,2,0,0,0,110,97,109,101,0,105,110,100,101,120,0,0,0,2,0,0,0,0,0,0,0,0,0,6,0,0,0,0,0,245,99,46,84,70,95,79,117,116,112,117,116,0,245,99,46,84,70,95,87,104,105,108,101,80,97,114,97,109,115,0,245,99,111,110,100,95,111,117,116,112,117,116,0,11,0,2,0,0,0,99,111,110,100,95,111,117,116,112,117,116,0,111,112,101,114,0,11,0,2,0,0,0,99,111,110,100,
-  95,111,117,116,112,117,116,0,105,110,100,101,120,0,245,98,111,100,121,95,111,117,116,112,117,116,115,0,245,110,105,110,112,117,116,115,0,249,255,255,255,255,255,255,255,255,10,0,15,0,0,0,66,97,100,32,119,104,105,108,101,32,105,110,100,101,120,245,110,97,109,101,0,11,0,1,0,0,0,110,97,109,101,0,10,0,14,0,0,0,66,97,100,32,119,104,105,108,101,32,110,97,109,101,7,0,0,0,0,0,4,0,0,0,0,0,249,2,0,0,0,0,0,0,0,249,3,0,0,0,0,0,0,0,249,8,0,0,0,0,0,0,0,251,10,0,10,0,34,0,0,0,84,70,95,76,111,97,100,83,101,115,115,105,111,110,70,114,111,109,83,97,118,101,100,77,111,100,101,108,58,32,116,121,112,101,0,0,0,0,0,0};
+  95,99,97,115,116,58,32,110,111,32,114,101,102,10,0,14,0,0,0,75,50,67,95,99,97,115,116,58,32,116,121,112,101,105,2,0,0,0,101,15,102,8,246,32,11,0,2,0,0,0,111,112,101,114,0,105,110,100,101,120,0,249,99,0,0,0,0,0,0,0,10,0,18,0,0,0,96,99,46,84,70,95,73,110,112,117,116,36,58,32,116,121,112,101,0,0,1,0,0,0,10,0,4,0,0,0,111,112,101,114,0,0,1,0,0,0,10,0,5,0,0,0,105,110,100,101,120,10,0,19,0,0,0,96,99,46,84,70,95,79,117,116,112,117,116,36,58,32,116,121,112,101,10,0,5,0,0,0,105,110,100,101,120,10,0,4,0,0,0,111,112,101,114,11,0,4,0,0,0,105,115,95,108,105,115,116,0,108,105,115,116,95,115,105,122,101,0,116,121,112,
+  101,0,116,111,116,97,108,95,115,105,122,101,0,10,0,10,0,0,0,116,111,116,97,108,95,115,105,122,101,10,0,4,0,0,0,116,121,112,101,10,0,9,0,0,0,108,105,115,116,95,115,105,122,101,10,0,7,0,0,0,105,115,95,108,105,115,116,252,0,245,108,101,110,103,116,104,0,245,100,97,116,97,0,245,99,46,84,70,95,79,117,116,112,117,116,0,245,111,112,101,114,0,245,105,110,100,101,120,0,10,0,14,0,0,0,67,46,84,70,95,86,101,114,115,105,111,110,58,32,10,0,14,0,0,0,67,46,84,70,95,77,101,115,115,97,103,101,58,32,11,0,1,0,0,0,114,0,5,0,2,0,0,0,4,0,10,0,249,5,0,0,0,0,0,0,0,249,6,0,0,0,0,0,0,0,249,7,0,0,0,0,0,0,0,249,9,0,0,0,0,
+  0,0,0,99,5,0,7,0,0,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,7,0,7,0,0,0,1,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,4,0,0,0,0,0,0,0,8,0,0,0,0,0,0,0,4,0,0,0,0,0,0,0,8,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,10,0,30,0,0,0,84,70,95,78,101,119,84,101,110,115,111,114,58,32,117,110,115,117,112,112,111,114,116,101,100,32,100,97,116,97,246,105,10,0,0,0,0,0,249,98,0,0,0,0,0,0,0,10,0,21,0,0,0,84,70,95,65,100,100,73,110,112,117,116,76,105,115,116,58,32,116,121,112,101,10,0,26,0,0,0,84,70,95,83,101,116,65,116,116,114,83,116,114,105,110,103,76,105,115,116,58,32,116,121,112,101,10,0,
+  25,0,0,0,84,70,95,83,101,116,65,116,116,114,83,104,97,112,101,76,105,115,116,58,32,116,121,112,101,10,0,36,0,0,0,84,70,95,83,101,116,65,116,116,114,84,101,110,115,111,114,83,104,97,112,101,80,114,111,116,111,76,105,115,116,58,32,116,121,112,101,10,0,20,0,0,0,67,46,84,70,95,79,112,101,114,97,116,105,111,110,78,97,109,101,58,32,10,0,22,0,0,0,67,46,84,70,95,79,112,101,114,97,116,105,111,110,79,112,84,121,112,101,58,32,10,0,22,0,0,0,67,46,84,70,95,79,112,101,114,97,116,105,111,110,68,101,118,105,99,101,58,32,105,2,0,0,0,101,15,102,9,245,99,46,84,70,95,73,110,112,117,116,0,0,0,2,0,0,0,7,0,2,0,0,0,8,0,0,0,0,0,0,0,4,0,0,0,0,0,
+  0,0,10,0,2,0,0,0,106,105,105,2,0,0,0,101,15,102,10,98,0,99,11,0,2,0,0,0,111,112,101,114,0,105,110,100,101,120,0,0,0,2,0,0,0,7,0,0,0,0,0,6,0,0,0,0,0,98,0,99,11,0,2,0,0,0,110,97,109,101,0,105,110,100,101,120,0,0,0,2,0,0,0,0,0,0,0,0,0,6,0,0,0,0,0,245,99,46,84,70,95,87,104,105,108,101,80,97,114,97,109,115,0,245,99,111,110,100,95,111,117,116,112,117,116,0,11,0,2,0,0,0,99,111,110,100,95,111,117,116,112,117,116,0,111,112,101,114,0,11,0,2,0,0,0,99,111,110,100,95,111,117,116,112,117,116,0,105,110,100,101,120,0,245,98,111,100,121,95,111,117,116,112,117,116,115,0,245,110,105,110,112,117,116,115,0,249,255,255,255,
+  255,255,255,255,255,10,0,15,0,0,0,66,97,100,32,119,104,105,108,101,32,105,110,100,101,120,245,110,97,109,101,0,11,0,1,0,0,0,110,97,109,101,0,10,0,14,0,0,0,66,97,100,32,119,104,105,108,101,32,110,97,109,101,7,0,0,0,0,0,4,0,0,0,0,0,249,2,0,0,0,0,0,0,0,249,3,0,0,0,0,0,0,0,249,8,0,0,0,0,0,0,0,251,10,0,10,0,34,0,0,0,84,70,95,76,111,97,100,83,101,115,115,105,111,110,70,114,111,109,83,97,118,101,100,77,111,100,101,108,58,32,116,121,112,101,0,0,0,0,0,0};
 static K tf__cnstInit() {
   K v = ktn(KG,sizeof(__cnstArr)); DO(v->n,kG(v)[i]=__cnstArr[i]);
   K res=d9(v); r0(v); if((0==res)||(-128==res->t)) { __ginited=0; return res;}; __consts=(K*)res->G0;
-  __wglobals=__consts[172];
+  __wglobals=__consts[170];
   return (K)1;
  };
 
@@ -4815,44 +4798,44 @@ static K tf__getLib(K x) {
   k=ktn(KS,144); v=ktn(0,144);
   k1=ktn(KS,1); v1=ktn(KJ,1);
   kS(k)[0]=ss(".tf.getBuffer"); kK(v)[0]=r1(tf_tf_getBuffer__k);
-  kS(k)[1]=ss(".tf.TF_Version"); kK(v)[1]=r1(tf_tf_TF_Version__k);
-  kS(k)[2]=ss(".tf.TF_DataTypeSize"); kK(v)[2]=r1(tf_tf_TF_DataTypeSize__k);
-  kS(k)[3]=ss(".tf.TF_NewStatus"); kK(v)[3]=r1(tf_tf_TF_NewStatus__k);
-  kS(k)[4]=ss(".tf.TF_DeleteStatus"); kK(v)[4]=r1(tf_tf_TF_DeleteStatus__k);
-  kS(k)[5]=ss(".tf.TF_SetStatus"); kK(v)[5]=r1(tf_tf_TF_SetStatus__k);
-  kS(k)[6]=ss(".tf.TF_GetCode"); kK(v)[6]=r1(tf_tf_TF_GetCode__k);
-  kS(k)[7]=ss(".tf.TF_Message"); kK(v)[7]=r1(tf_tf_TF_Message__k);
-  kS(k)[8]=ss(".tf.TF_NewBufferFromString"); kK(v)[8]=r1(tf_tf_TF_NewBufferFromString__k);
-  kS(k)[9]=ss(".tf.TF_NewBuffer"); kK(v)[9]=r1(tf_tf_TF_NewBuffer__k);
-  kS(k)[10]=ss(".tf.TF_DeleteBuffer"); kK(v)[10]=r1(tf_tf_TF_DeleteBuffer__k);
-  kS(k)[11]=ss(".tf.TF_NewTensor"); kK(v)[11]=r1(tf_tf_TF_NewTensor__k);
-  kS(k)[12]=ss(".tf.TF_AllocateTensor"); kK(v)[12]=r1(tf_tf_TF_AllocateTensor__k);
-  kS(k)[13]=ss(".tf.TF_TensorMaybeMove"); kK(v)[13]=r1(tf_tf_TF_TensorMaybeMove__k);
-  kS(k)[14]=ss(".tf.TF_DeleteTensor"); kK(v)[14]=r1(tf_tf_TF_DeleteTensor__k);
-  kS(k)[15]=ss(".tf.TF_TensorType"); kK(v)[15]=r1(tf_tf_TF_TensorType__k);
-  kS(k)[16]=ss(".tf.TF_NumDims"); kK(v)[16]=r1(tf_tf_TF_NumDims__k);
-  kS(k)[17]=ss(".tf.TF_Dim"); kK(v)[17]=r1(tf_tf_TF_Dim__k);
-  kS(k)[18]=ss(".tf.TF_TensorByteSize"); kK(v)[18]=r1(tf_tf_TF_TensorByteSize__k);
-  kS(k)[19]=ss(".tf.TF_TensorData"); kK(v)[19]=r1(tf_tf_TF_TensorData__k);
-  kS(k)[20]=ss(".tf.writeToTensor"); kK(v)[20]=r1(tf_tf_writeToTensor__k);
-  kS(k)[21]=ss(".tf.readFromTensor"); kK(v)[21]=r1(tf_tf_readFromTensor__k);
-  kS(k)[22]=ss(".tf.TF_StringEncode"); kK(v)[22]=r1(tf_tf_TF_StringEncode__k);
-  kS(k)[23]=ss(".tf.TF_StringDecode"); kK(v)[23]=r1(tf_tf_TF_StringDecode__k);
-  kS(k)[24]=ss(".tf.TF_StringEncodedSize"); kK(v)[24]=r1(tf_tf_TF_StringEncodedSize__k);
-  kS(k)[25]=ss(".tf.TF_NewSessionOptions"); kK(v)[25]=r1(tf_tf_TF_NewSessionOptions__k);
-  kS(k)[26]=ss(".tf.TF_SetTarget"); kK(v)[26]=r1(tf_tf_TF_SetTarget__k);
-  kS(k)[27]=ss(".tf.TF_SetConfig"); kK(v)[27]=r1(tf_tf_TF_SetConfig__k);
-  kS(k)[28]=ss(".tf.TF_DeleteSessionOptions"); kK(v)[28]=r1(tf_tf_TF_DeleteSessionOptions__k);
-  kS(k)[29]=ss(".tf.TF_NewGraph"); kK(v)[29]=r1(tf_tf_TF_NewGraph__k);
-  kS(k)[30]=ss(".tf.TF_DeleteGraph"); kK(v)[30]=r1(tf_tf_TF_DeleteGraph__k);
-  kS(k)[31]=ss(".tf.TF_GraphSetTensorShape"); kK(v)[31]=r1(tf_tf_TF_GraphSetTensorShape__k);
-  kS(k)[32]=ss(".tf.TF_GraphGetTensorNumDims"); kK(v)[32]=r1(tf_tf_TF_GraphGetTensorNumDims__k);
-  kS(k)[33]=ss(".tf.TF_GraphGetTensorShape"); kK(v)[33]=r1(tf_tf_TF_GraphGetTensorShape__k);
-  kS(k)[34]=ss(".tf.TF_NewOperation"); kK(v)[34]=r1(tf_tf_TF_NewOperation__k);
-  kS(k)[35]=ss(".tf.TF_SetDevice"); kK(v)[35]=r1(tf_tf_TF_SetDevice__k);
-  kS(k)[36]=ss(".tf.TF_AddInput"); kK(v)[36]=r1(tf_tf_TF_AddInput__k);
-  kS(k)[37]=ss(".tf.TF_AddInputList"); kK(v)[37]=r1(tf_tf_TF_AddInputList__k);
-  kS(k)[38]=ss(".b2c.enStruct"); kK(v)[38]=r1(tf_b2c_enStruct__k);
+  kS(k)[1]=ss(".tf.encodeOut"); kK(v)[1]=r1(tf_tf_encodeOut__k);
+  kS(k)[2]=ss(".tf.TF_Version"); kK(v)[2]=r1(tf_tf_TF_Version__k);
+  kS(k)[3]=ss(".tf.TF_DataTypeSize"); kK(v)[3]=r1(tf_tf_TF_DataTypeSize__k);
+  kS(k)[4]=ss(".tf.TF_NewStatus"); kK(v)[4]=r1(tf_tf_TF_NewStatus__k);
+  kS(k)[5]=ss(".tf.TF_DeleteStatus"); kK(v)[5]=r1(tf_tf_TF_DeleteStatus__k);
+  kS(k)[6]=ss(".tf.TF_SetStatus"); kK(v)[6]=r1(tf_tf_TF_SetStatus__k);
+  kS(k)[7]=ss(".tf.TF_GetCode"); kK(v)[7]=r1(tf_tf_TF_GetCode__k);
+  kS(k)[8]=ss(".tf.TF_Message"); kK(v)[8]=r1(tf_tf_TF_Message__k);
+  kS(k)[9]=ss(".tf.TF_NewBufferFromString"); kK(v)[9]=r1(tf_tf_TF_NewBufferFromString__k);
+  kS(k)[10]=ss(".tf.TF_NewBuffer"); kK(v)[10]=r1(tf_tf_TF_NewBuffer__k);
+  kS(k)[11]=ss(".tf.TF_DeleteBuffer"); kK(v)[11]=r1(tf_tf_TF_DeleteBuffer__k);
+  kS(k)[12]=ss(".tf.TF_NewTensor"); kK(v)[12]=r1(tf_tf_TF_NewTensor__k);
+  kS(k)[13]=ss(".tf.TF_AllocateTensor"); kK(v)[13]=r1(tf_tf_TF_AllocateTensor__k);
+  kS(k)[14]=ss(".tf.TF_TensorMaybeMove"); kK(v)[14]=r1(tf_tf_TF_TensorMaybeMove__k);
+  kS(k)[15]=ss(".tf.TF_DeleteTensor"); kK(v)[15]=r1(tf_tf_TF_DeleteTensor__k);
+  kS(k)[16]=ss(".tf.TF_TensorType"); kK(v)[16]=r1(tf_tf_TF_TensorType__k);
+  kS(k)[17]=ss(".tf.TF_NumDims"); kK(v)[17]=r1(tf_tf_TF_NumDims__k);
+  kS(k)[18]=ss(".tf.TF_Dim"); kK(v)[18]=r1(tf_tf_TF_Dim__k);
+  kS(k)[19]=ss(".tf.TF_TensorByteSize"); kK(v)[19]=r1(tf_tf_TF_TensorByteSize__k);
+  kS(k)[20]=ss(".tf.TF_TensorData"); kK(v)[20]=r1(tf_tf_TF_TensorData__k);
+  kS(k)[21]=ss(".tf.writeToTensor"); kK(v)[21]=r1(tf_tf_writeToTensor__k);
+  kS(k)[22]=ss(".tf.readFromTensor"); kK(v)[22]=r1(tf_tf_readFromTensor__k);
+  kS(k)[23]=ss(".tf.TF_StringEncode"); kK(v)[23]=r1(tf_tf_TF_StringEncode__k);
+  kS(k)[24]=ss(".tf.TF_StringDecode"); kK(v)[24]=r1(tf_tf_TF_StringDecode__k);
+  kS(k)[25]=ss(".tf.TF_StringEncodedSize"); kK(v)[25]=r1(tf_tf_TF_StringEncodedSize__k);
+  kS(k)[26]=ss(".tf.TF_NewSessionOptions"); kK(v)[26]=r1(tf_tf_TF_NewSessionOptions__k);
+  kS(k)[27]=ss(".tf.TF_SetTarget"); kK(v)[27]=r1(tf_tf_TF_SetTarget__k);
+  kS(k)[28]=ss(".tf.TF_SetConfig"); kK(v)[28]=r1(tf_tf_TF_SetConfig__k);
+  kS(k)[29]=ss(".tf.TF_DeleteSessionOptions"); kK(v)[29]=r1(tf_tf_TF_DeleteSessionOptions__k);
+  kS(k)[30]=ss(".tf.TF_NewGraph"); kK(v)[30]=r1(tf_tf_TF_NewGraph__k);
+  kS(k)[31]=ss(".tf.TF_DeleteGraph"); kK(v)[31]=r1(tf_tf_TF_DeleteGraph__k);
+  kS(k)[32]=ss(".tf.TF_GraphSetTensorShape"); kK(v)[32]=r1(tf_tf_TF_GraphSetTensorShape__k);
+  kS(k)[33]=ss(".tf.TF_GraphGetTensorNumDims"); kK(v)[33]=r1(tf_tf_TF_GraphGetTensorNumDims__k);
+  kS(k)[34]=ss(".tf.TF_GraphGetTensorShape"); kK(v)[34]=r1(tf_tf_TF_GraphGetTensorShape__k);
+  kS(k)[35]=ss(".tf.TF_NewOperation"); kK(v)[35]=r1(tf_tf_TF_NewOperation__k);
+  kS(k)[36]=ss(".tf.TF_SetDevice"); kK(v)[36]=r1(tf_tf_TF_SetDevice__k);
+  kS(k)[37]=ss(".tf.TF_AddInput"); kK(v)[37]=r1(tf_tf_TF_AddInput__k);
+  kS(k)[38]=ss(".tf.TF_AddInputList"); kK(v)[38]=r1(tf_tf_TF_AddInputList__k);
   kS(k)[39]=ss(".tf.TF_AddControlInput"); kK(v)[39]=r1(tf_tf_TF_AddControlInput__k);
   kS(k)[40]=ss(".tf.TF_SetAttrString"); kK(v)[40]=r1(tf_tf_TF_SetAttrString__k);
   kS(k)[41]=ss(".tf.TF_SetAttrStringList"); kK(v)[41]=r1(tf_tf_TF_SetAttrStringList__k);
@@ -4970,10 +4953,10 @@ K tf__init(K x) {
   if(__ginited>0) return tf__getLib((K)0);
   __ginited=1; K lst;
 
-  res=k(0,".q`set`show`enlist`any`not`get`cols`upsert`meta`xasc`xdesc`inv`keys`all`each`raze`vs`type",(K)0); if((0==res)||(-128==res->t)) { __ginited=0; return res;}; __q=(K*)res->G0;
-  res=k(0,"``.b2c.intmap`.b2c.libFuncs`C.toK`.b2c.libGlobs`C.knk`C.dot`.b2c.kapp1`.b2c.wglobals`C.kamend4`C.r0`C.r1`.b2c.kxsc`C.kamend3`C.ktn`C.TF_Version`C.errno`.string.strerror`C.TF_DataTypeSize`C.TF_NewStatus`C.TF_DeleteStatus`C.TF_SetStatus`C.TF_GetCode`C.TF_Message`C.TF_NewBufferFromString`C.TF_NewBuffer`C.TF_DeleteBuffer`data`t`.tf.getQPtr`.tf.deallocator`C.TF_NewTensor`C.TF_AllocateTensor`C.TF_TensorMaybeMove`C.TF_DeleteTensor`C.TF_TensorType`C.TF_NumDims`C.TF_Dim`C.TF_TensorByteSize`C.TF_TensorData`C.TF_StringEncode`C.TF_StringDecode`C.TF_StringEncodedSize`C.TF_NewSessionOptions`C.TF_SetTarget`C.TF_SetConfig`C.TF_DeleteSessionOptions`C.TF_NewGraph`C.TF_DeleteGraph`C.TF_GraphSetTensorShape`C.TF_GraphGetTensorNumDims`C.TF_GraphGetTensorShape`C.TF_NewOperation`C.TF_SetDevice`C.TF_AddInput`.b2c.enStruct`C.TF_AddInputList`C.TF_AddControlInput`C.TF_SetAttrString`C.TF_SetAttrStringList`C.TF_SetAttrInt`C.TF_SetAttrIntList`C.TF_SetAttrFloat`C.TF_SetAttrFloatList`C.TF_SetAttrBool`C.TF_SetAttrBoolList`C.TF_SetAttrType`C.TF_SetAttrTypeList`C.TF_SetAttrShape`C.TF_SetAttrShapeList`C.TF_SetAttrTensorShapeProto`C.TF_SetAttrTensorShapeProtoList`C.TF_SetAttrTensor`C.TF_SetAttrTensorList`C.TF_SetAttrValueProto`C.TF_FinishOperation`C.TF_OperationName`C.TF_OperationOpType`C.TF_OperationDevice`C.TF_OperationNumOutputs`C.TF_OperationOutputType`C.TF_OperationOutputListLength`C.TF_OperationNumInputs`C.TF_OperationInputType`C.TF_OperationInputListLength`C.TF_OperationInput`C.TF_OperationOutputNumConsumers`C.TF_OperationOutputConsumers`C.TF_OperationNumControlInputs`C.TF_OperationGetControlInputs`C.TF_OperationNumControlOutputs`C.TF_OperationGetControlOutputs`C.TF_OperationGetAttrMetadata`C.TF_OperationGetAttrString`C.TF_OperationGetAttrStringList`C.TF_OperationGetAttrInt`C.TF_OperationGetAttrIntList`C.TF_OperationGetAttrFloat`C.TF_OperationGetAttrFloatList`C.TF_OperationGetAttrBool`C.TF_OperationGetAttrBoolList`C.TF_OperationGetAttrType`C.TF_OperationGetAttrTypeList`C.TF_OperationGetAttrShape`C.TF_OperationGetAttrShapeList`C.TF_OperationGetAttrTensorShapeProto`C.TF_OperationGetAttrTensor`C.TF_OperationGetAttrTensorList`C.TF_GraphOperationByName`C.TF_GraphNextOperation`C.TF_GraphToGraphDef`C.TF_GraphGetOpDef`C.TF_GraphVersions`C.TF_NewImportGraphDefOptions`C.TF_DeleteImportGraphDefOptions`C.TF_ImportGraphDefOptionsSetPrefix`C.TF_ImportGraphDefOptionsSetUniquifyNames`C.TF_ImportGraphDefOptionsSetUniquifyPrefix`C.TF_ImportGraphDefOptionsAddInputMapping`C.TF_ImportGraphDefOptionsRemapControlDependency`C.TF_ImportGraphDefOptionsAddControlDependency`C.TF_ImportGraphDefOptionsAddReturnOutput`C.TF_ImportGraphDefOptionsNumReturnOutputs`C.TF_ImportGraphDefOptionsAddReturnOperation`C.TF_ImportGraphDefOptionsNumReturnOperations`C.TF_ImportGraphDefResultsReturnOutputs`C.TF_ImportGraphDefResultsReturnOperations`C.TF_ImportGraphDefResultsMissingUnusedInputMappings`C.TF_DeleteImportGraphDefResults`C.TF_GraphImportGraphDefWithResults`C.TF_GraphImportGraphDefWithReturnOutputs`C.TF_GraphImportGraphDef`C.TF_GraphCopyFunction`C.TF_OperationToNodeDef`C.TF_FinishWhile`C.TF_AbortWhile`C.NULL`C.TF_AddGradients`C.TF_GraphToFunction`C.TF_FunctionToFunctionDef`C.TF_FunctionImportFunctionDef`C.TF_FunctionSetAttrValueProto`C.TF_FunctionGetAttrValueProto`C.TF_DeleteFunction`C.TF_NewSession`C.TF_LoadSessionFromSavedModel`C.TF_CloseSession`C.TF_DeleteSession`C.TF_SessionRun`C.TF_SessionPRunSetup`C.TF_SessionPRun`C.TF_DeletePRunHandle`C.TF_SessionListDevices`C.TF_DeleteDeviceList`C.TF_DeviceListCount`C.TF_DeviceListName`C.TF_DeviceListType`C.TF_DeviceListMemoryBytes`C.TF_LoadLibrary`C.TF_GetOpList`.tf.getBuffer`C.TF_DeleteLibraryHandle`C.TF_GetAllOpList,1",(K)0); if((0==res)||(-128==res->t)) { __ginited=0; return res;}; __glob=(K*)res->G0;
-  __kvalue__k=dl(__kvalue,1);
+  res=k(0,".q`set`show`enlist`any`not`get`cols`upsert`meta`xasc`xdesc`inv`keys`all`type`each",(K)0); if((0==res)||(-128==res->t)) { __ginited=0; return res;}; __q=(K*)res->G0;
+  res=k(0,"``.b2c.intmap`.b2c.libFuncs`C.toK`.b2c.libGlobs`C.knk`C.dot`.b2c.kapp1`.b2c.wglobals`C.kamend4`C.r0`C.r1`.b2c.kxsc`C.kamend3`C.ktn`C.TF_Version`C.errno`.string.strerror`C.TF_DataTypeSize`C.TF_NewStatus`C.TF_DeleteStatus`C.TF_SetStatus`C.TF_GetCode`C.TF_Message`C.TF_NewBufferFromString`C.TF_NewBuffer`C.TF_DeleteBuffer`.tf.getQPtr`.tf.deallocator`C.TF_NewTensor`C.TF_AllocateTensor`C.TF_TensorMaybeMove`C.TF_DeleteTensor`C.TF_TensorType`C.TF_NumDims`C.TF_Dim`C.TF_TensorByteSize`C.TF_TensorData`C.TF_StringEncode`C.TF_StringDecode`C.TF_StringEncodedSize`C.TF_NewSessionOptions`C.TF_SetTarget`C.TF_SetConfig`C.TF_DeleteSessionOptions`C.TF_NewGraph`C.TF_DeleteGraph`C.TF_GraphSetTensorShape`C.TF_GraphGetTensorNumDims`C.TF_GraphGetTensorShape`C.TF_NewOperation`C.TF_SetDevice`C.TF_AddInput`.tf.encodeOut`C.TF_AddInputList`C.TF_AddControlInput`C.TF_SetAttrString`C.TF_SetAttrStringList`C.TF_SetAttrInt`C.TF_SetAttrIntList`C.TF_SetAttrFloat`C.TF_SetAttrFloatList`C.TF_SetAttrBool`C.TF_SetAttrBoolList`C.TF_SetAttrType`C.TF_SetAttrTypeList`C.TF_SetAttrShape`C.TF_SetAttrShapeList`C.TF_SetAttrTensorShapeProto`C.TF_SetAttrTensorShapeProtoList`C.TF_SetAttrTensor`C.TF_SetAttrTensorList`C.TF_SetAttrValueProto`C.TF_FinishOperation`C.TF_OperationName`C.TF_OperationOpType`C.TF_OperationDevice`C.TF_OperationNumOutputs`C.TF_OperationOutputType`C.TF_OperationOutputListLength`C.TF_OperationNumInputs`C.TF_OperationInputType`C.TF_OperationInputListLength`C.TF_OperationInput`C.TF_OperationOutputNumConsumers`C.TF_OperationOutputConsumers`C.TF_OperationNumControlInputs`C.TF_OperationGetControlInputs`C.TF_OperationNumControlOutputs`C.TF_OperationGetControlOutputs`C.TF_OperationGetAttrMetadata`C.TF_OperationGetAttrString`C.TF_OperationGetAttrStringList`C.TF_OperationGetAttrInt`C.TF_OperationGetAttrIntList`C.TF_OperationGetAttrFloat`C.TF_OperationGetAttrFloatList`C.TF_OperationGetAttrBool`C.TF_OperationGetAttrBoolList`C.TF_OperationGetAttrType`C.TF_OperationGetAttrTypeList`C.TF_OperationGetAttrShape`C.TF_OperationGetAttrShapeList`C.TF_OperationGetAttrTensorShapeProto`C.TF_OperationGetAttrTensor`C.TF_OperationGetAttrTensorList`C.TF_GraphOperationByName`C.TF_GraphNextOperation`C.TF_GraphToGraphDef`C.TF_GraphGetOpDef`C.TF_GraphVersions`C.TF_NewImportGraphDefOptions`C.TF_DeleteImportGraphDefOptions`C.TF_ImportGraphDefOptionsSetPrefix`C.TF_ImportGraphDefOptionsSetUniquifyNames`C.TF_ImportGraphDefOptionsSetUniquifyPrefix`C.TF_ImportGraphDefOptionsAddInputMapping`C.TF_ImportGraphDefOptionsRemapControlDependency`C.TF_ImportGraphDefOptionsAddControlDependency`C.TF_ImportGraphDefOptionsAddReturnOutput`C.TF_ImportGraphDefOptionsNumReturnOutputs`C.TF_ImportGraphDefOptionsAddReturnOperation`C.TF_ImportGraphDefOptionsNumReturnOperations`C.TF_ImportGraphDefResultsReturnOutputs`C.TF_ImportGraphDefResultsReturnOperations`C.TF_ImportGraphDefResultsMissingUnusedInputMappings`C.TF_DeleteImportGraphDefResults`C.TF_GraphImportGraphDefWithResults`C.TF_GraphImportGraphDefWithReturnOutputs`C.TF_GraphImportGraphDef`C.TF_GraphCopyFunction`C.TF_OperationToNodeDef`C.TF_FinishWhile`C.TF_AbortWhile`C.NULL`C.TF_AddGradients`C.TF_GraphToFunction`C.TF_FunctionToFunctionDef`C.TF_FunctionImportFunctionDef`C.TF_FunctionSetAttrValueProto`C.TF_FunctionGetAttrValueProto`C.TF_DeleteFunction`C.TF_NewSession`C.TF_LoadSessionFromSavedModel`C.TF_CloseSession`C.TF_DeleteSession`C.TF_SessionRun`C.TF_SessionPRunSetup`C.TF_SessionPRun`C.TF_DeletePRunHandle`C.TF_SessionListDevices`C.TF_DeleteDeviceList`C.TF_DeviceListCount`C.TF_DeviceListName`C.TF_DeviceListType`C.TF_DeviceListMemoryBytes`C.TF_LoadLibrary`C.TF_GetOpList`.tf.getBuffer`C.TF_DeleteLibraryHandle`C.TF_GetAllOpList,1",(K)0); if((0==res)||(-128==res->t)) { __ginited=0; return res;}; __glob=(K*)res->G0;
   tf_tf_getBuffer__k=dl(tf_tf_getBuffer,1);
+  tf_tf_encodeOut__k=dl(tf_tf_encodeOut,1);
   tf_tf_TF_Version__k=dl(tf_tf_TF_Version,1);
   tf_tf_TF_DataTypeSize__k=dl(tf_tf_TF_DataTypeSize,1);
   tf_tf_TF_NewStatus__k=dl(tf_tf_TF_NewStatus,1);
@@ -4996,7 +4979,7 @@ K tf__init(K x) {
   tf_tf_writeToTensor__k=dl(tf_tf_writeToTensor,2);
   tf_tf_readFromTensor__k=dl(tf_tf_readFromTensor,2);
   tf_tf_TF_StringEncode__k=dl(tf_tf_TF_StringEncode,4);
-  tf_tf_TF_StringDecode__k=dl(tf_tf_TF_StringDecode,2);
+  tf_tf_TF_StringDecode__k=dl(tf_tf_TF_StringDecode,3);
   tf_tf_TF_StringEncodedSize__k=dl(tf_tf_TF_StringEncodedSize,1);
   tf_tf_TF_NewSessionOptions__k=dl(tf_tf_TF_NewSessionOptions,1);
   tf_tf_TF_SetTarget__k=dl(tf_tf_TF_SetTarget,2);
@@ -5011,7 +4994,6 @@ K tf__init(K x) {
   tf_tf_TF_SetDevice__k=dl(tf_tf_TF_SetDevice,2);
   tf_tf_TF_AddInput__k=dl(tf_tf_TF_AddInput,2);
   tf_tf_TF_AddInputList__k=dl(tf_tf_TF_AddInputList,2);
-  tf_b2c_enStruct__k=dl(tf_b2c_enStruct,1);
   tf_tf_TF_AddControlInput__k=dl(tf_tf_TF_AddControlInput,2);
   tf_tf_TF_SetAttrString__k=dl(tf_tf_TF_SetAttrString,3);
   tf_tf_TF_SetAttrStringList__k=dl(tf_tf_TF_SetAttrStringList,3);
