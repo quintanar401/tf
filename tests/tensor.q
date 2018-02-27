@@ -36,7 +36,7 @@
   if[not x[0]~v:.tf.tensor.type t;'"Tensor types differ: ",string[x 0]," vs ",.Q.s1 v];
   if[not ((),x[1])~v:.tf.tensor.shape t;'"Tensor shapes differ: ",.Q.s1[x 1]," vs ",.Q.s1 v];
   if[not x[2]~v:.tf.tensor.value t;'"Tensor values differ: ",.Q.s1[x 2]," vs ",.Q.s1 v];
-  if[x[0]~`TF_DOUBLE; if[not (sz:8*count x 2)=tsz:.tf.tensor.size tensor;'"Tensor sizes differ: ",string[sz]," vs ",string tsz]];
+  if[x[0]~`TF_DOUBLE; if[not (sz:8*count x 2)=tsz:.tf.tensor.size t;'"Tensor sizes differ: ",string[sz]," vs ",string tsz]];
   if[count[x 1]&not `TF_STRING=x 0;
     ptr:.tf.i.lib[`.tf.TF_TensorData]t;
     .tf.i.lib[`.tf.writeToTensor][ptr;.tf.i.dt[x 0]#0xa0];

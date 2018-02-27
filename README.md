@@ -72,12 +72,17 @@ r:.tf.assignAdd[scope;var;val]; / +: assign
 r:.tf.assignSub[scope;var;val]; / -: assign
 r:.tf.readVar[scope;var]; / create a read node, pass r into session.run output list
 
-r:.tf.add[scope;v1;v2]; / add
+r:.tf.add[scope;v1;v2]; / add (like Q +)
+r:.tf.addN[scope;v1,v2,...]; / addN
 r:.tf.sub[scope;v1;v2]; / sub
 r:.tf.mul[scope;v1;v2]; / mul
 r:.tf.div[scope;v1;v2]; / div
+r:.tf.neg[scope;v]; / neg
+r:.tf.abs[scope;v]; / abs
 r:.tf.matMul[scope;v1;v2]; / matrix mult
 r:.tf.matMul[scope,`transpose_a`transpose_b!0 1b;v1;v2]; / optional attributes
+
+.tf.cast[scope;val;`TF_INT32]; / cast val to type
 
 i:.tf.iter[scope;name;container;outputTypes;outputShapes] aka .tf.iter[scope;`;`;`TF_FLOAT;enlist 10]
 i:.tf.makeIter[scope;data;iter]
@@ -151,7 +156,7 @@ Add an operation to a graph:
 / @t string operation type as in ops.q (`FloorMod and etc).
 / @i (dict|table|list) Inputs. For the single input should be a table/dict. Otherwise 0 type list.
 / @a dict Optional attributes. Attribute values are string/str list/(), long/long list, float/double atom/list, bool/bool list, datatype(as a symbol)/symbol list, (`tensor;long/long list)
-/ @returns table Operation outputs.
+/ @returns table Operation outputs (even if there is no outputs - dummy tbl is returned).
 out:.tf.addOp[sc:.tf.newScope .tf.graph.new[];`ShapeN;([] oper:(op1;op2); index: 0 1i);()]
 out:.tf.addOp[scope;`Placeholder;();`dtype`shape!(`TF_FLOAT;10)]
 ```

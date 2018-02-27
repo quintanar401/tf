@@ -175,7 +175,7 @@
   if[0i>=c.i.n:C.TF_OperationOutputNumConsumers `c.TF_Output$out;C.toK c.n];
   v:(C.toK (`c.j$count`c.TF_Input)*c.n)#0x00;
   if[0>=r:C.toK C.TF_OperationOutputConsumers[`c.TF_Output$out;`c.TF_Input_p$`c.void_p$`c.C$v;c.n];:()];
-  : r#flip`oper`index!(8 4;"ji")1: v;
+  : r#flip`oper`index!("ji ";8 4 4)1: v;
  };
 .b2c.defExtFn[`tf;`C.TF_OperationNumControlInputs;`c.i;`c.TF_Operation_p;()]; / int TF_OperationNumControlInputs(TF_Operation* oper)
 .b2c.defExtFn[`tf;`C.TF_OperationGetControlInputs;`c.i;(`c.TF_Operation_p;enlist`c.J`c.void_p`c.TF_Operation_p_p;(`c.i;enlist(`length;2)));()]; / int TF_OperationGetControlInputs(TF_Operation* oper, TF_Operation** control_inputs, int max_control_inputs)
@@ -319,9 +319,8 @@
 / TF_Session* TF_LoadSessionFromSavedModel(const TF_SessionOptions* session_options, const TF_Buffer* run_options,const char* export_dir, const char* const* tags, int tags_len,TF_Graph* graph, TF_Buffer* meta_graph_def, TF_Status* status)
 .b2c.defExtFn[`tf;`C.TF_LoadSessionFromSavedModel;`c.TF_Session_p;`c.TF_SessionOptions_p`c.TF_Buffer_p`c.S`c.cchar_p_p`c.i`c.TF_Graph_p`c.TF_Buffer_p`c.TF_Status_p;(enlist`nogen)!(),1b];
 .tf.TF_LoadSessionFromSavedModel:{[sopt;ropt;dir;tags;g;gdef;st]
-  if[not all(type each tags)in 10h;'"TF_LoadSessionFromSavedModel: type"];
   a:count[tags]#0; c.J.a: `c.J$a;
-  do[count tags;c.a[c.do1]:`c.j$`c.S$tags C.toK c.do1];
+  do[count tags;c.a[c.do1]:`c.j$`c.S$t:tags C.toK c.do1];
   : C.toK `c.j$C.TF_LoadSessionFromSavedModel[`c.TF_SessionOptions_p$sopt;`c.TF_Buffer_p$ropt;`c.S$dir;`c.cchar_p_p$`c.void_p$c.a;`c.i$"i"$count tags;`c.TF_Graph_p$g;`c.TF_Buffer_p$gdef;`c.TF_Status_p$st];
  };
 .b2c.defExtFn[`tf;`C.TF_CloseSession;`c.void;`c.TF_Session_p`c.TF_Status_p;()]; / void TF_CloseSession(TF_Session*, TF_Status* status)
@@ -338,10 +337,10 @@
 / void TF_SessionPRunSetup(TF_Session*,const TF_Output* inputs, int ninputs,const TF_Output* outputs, int noutputs, const TF_Operation* const* target_opers, int ntargets, const char** handle,TF_Status*)
 .b2c.defExtFn[`tf;`C.TF_SessionPRunSetup;`c.void;`c.TF_Session_p`c.TF_Output_p`c.i`c.TF_Output_p`c.i`c.ccTF_Operation_p_p`c.i`c.cchar_p_p`c.TF_Status_p;(enlist`nogen)!(),1b];
 .tf.TF_SessionPRunSetup:{[sess;inp;out;ops;st]
-  ii:$[count inp;.tf.encodeOut inp 0;0#0x00]; oo:$[count out;.tf.encodeOut out 0;0#0x00];
-  c.S_p.p:`c.S_p$`c.void_p$`c.j$0;
+  ii:$[count inp;.tf.encodeOut inp;0#0x00]; oo:$[count out;.tf.encodeOut out;0#0x00];
+  c.C.p:`c.C$`c.void_p$`c.j$0;
   C.TF_SessionPRunSetup[`c.TF_Session_p$sess;`c.TF_Output_p$`c.void_p$`c.C$ii;`c.i$"i"$count inp;`c.TF_Output_p$`c.void_p$`c.C$oo;`c.i$"i"$count out;
-    `c.ccTF_Operation_p_p$`c.void_p$`c.J$ops;`c.i$"i"$count ops;`c.cchar_p_p$`c.void_p$c.p;`c.TF_Status_p$st];
+    `c.ccTF_Operation_p_p$`c.void_p$`c.J$ops;`c.i$"i"$count ops;`c.cchar_p_p$`c.void_p$(&)c.p;`c.TF_Status_p$st];
   : C.toK `c.j$c.p 0; / handle pointer
  };
 / void TF_SessionPRun(TF_Session*, const char* handle,const TF_Output* inputs, TF_Tensor* const* input_values, int ninputs,

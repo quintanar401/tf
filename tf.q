@@ -19,7 +19,7 @@
 / @t string operation type as in ops.q (`FloorMod and etc).
 / @i (dict|table|list) Inputs. For the single input should be a table/dict. Otherwise 0 type list.
 / @a dict Optional attributes. Attribute values are string/str list/(), long/long list, float/double atom/list, bool/bool list, datatype(as a symbol)/symbol list, (`tensor;long/long list)
-/ @returns table Operation outputs.
+/ @returns table Operation outputs (even if there is no outputs - dummy tbl is returned).
 .tf.addOp:{[scope;t;i;a]
   if[null op:exec first i from .tf.ops.ops where name=t;'".tf.addOp: undefined op ",string n];
   op:.tf.ops.ops op; att:.tf.ops.att (),op`att; inp:.tf.ops.inp (),op`input_arg; out:.tf.ops.inp (),op`output_arg;
@@ -33,7 +33,7 @@
   {[op;a;ioatt;at] if[not (n:at`name)in key a; if[(not n in ioatt)&(::)~at`default_value;'".tf.addOp: no attribute ",string n]; :()]; .tf.i.setAttr[op;n;a n;at`atype]}[op;a;ioatt]each att;
   op:.tf.i.lib[`.tf.TF_FinishOperation][op;s:.tf.newStatus[]];
   .tf.checkAndDelStatus["addOp::finish";s];
-  : .tf.ops.outputs op;
+  : $[count r:.tf.ops.outputs op;r;enlist`oper`index`dtype!(op;0i;`)];
  };
 .tf.i.addInput:{[op;att;i;inp]
   i:.tf.i.chkType[att;i;inp];
@@ -86,11 +86,11 @@
 / Operation outputs.
 / @x long operation
 / @returns table operation, index and its data type
-.tf.ops.outputs:{if[not -7=type x;'".tf.ops.outputs: type"]; if[1>i:.tf.i.lib[`.tf.TF_OperationNumOutputs]x; :enlist`oper`index`dtype!(x;0i;`)]; {`oper`index`dtype!(x;y;key[.tf.i.dt].tf.i.lib[`.tf.TF_OperationOutputType]`oper`index!(x;y))}[x]each "i"$til i};
+.tf.ops.outputs:{if[not -7=type x;'".tf.ops.outputs: type"]; if[1>i:.tf.i.lib[`.tf.TF_OperationNumOutputs]x; :()]; {`oper`index`dtype!(x;y;key[.tf.i.dt].tf.i.lib[`.tf.TF_OperationOutputType]`oper`index!(x;y))}[x]each "i"$til i};
 / Operation outputs.
 / @x long operation
 / @returns table operation, index and its data type
-.tf.ops.inputs:{if[not -7=type x;'".tf.ops.inputs: type"]; if[1>=i:.tf.i.lib[`.tf.TF_OperationNumInputs]x; :()]; {`oper`index`dtype!(o;y;key[.tf.i.dt].tf.i.lib[`.tf.TF_OperationInputType]`oper`index!(x;y))}[x]each "i"$til i};
+.tf.ops.inputs:{if[not -7=type x;'".tf.ops.inputs: type"]; if[1>i:.tf.i.lib[`.tf.TF_OperationNumInputs]x; :()]; {`oper`index`dtype!(x;y;key[.tf.i.dt].tf.i.lib[`.tf.TF_OperationInputType]`oper`index!(x;y))}[x]each "i"$til i};
 / Source of an input.
 / @x dict operation and input index
 / @returns dict operation and output index
@@ -318,7 +318,7 @@
 .tf.tensor.alloc:{
   if[not 7=type y:(),y;'".tf.tensor.alloc: type"];
   .tf.i.chkTy[".tf.tensor.alloc";x];
-  $[(str:x=`TF_STRING)&(all (type each z)in 4 10)|10=type z;1;null .tf.i.dt x;'".tf.tensor.alloc: unsupported data type";(.tf.i.qdt abs type z)=.tf.i.dt x;1;'".tf.tensor.alloc: incompatible TF and Q types"];
+  $[(str:x=`TF_STRING)&(all (type each z)in 4 10h)|(type z)in 4 10h;1;null .tf.i.dt x;'".tf.tensor.alloc: unsupported data type";(.tf.i.qdt abs type z)=.tf.i.dt x;1;'".tf.tensor.alloc: incompatible TF and Q types"];
   z:$[str&0<>type z; z:enlist z;0>type z;(),z;z]; if[not count[z]=size:(1^.tf.i.t2q x)*prd y;'".tf.tensor.alloc: size"];
   if[str;size:(8*count z)+sum {.tf.i.lib[`.tf.TF_StringEncodedSize]count x}each z];
   if[0=t:.tf.i.lib[`.tf.TF_AllocateTensor]["i"$key[.tf.i.dt]?x;y;size*(1^.tf.i.dt x)];'".tf.tensor.alloc: alloc"];
@@ -410,19 +410,20 @@
 / @gmeta long a buffer with meta graph, can be 0
 / @returns (long list) A pair (session;graph)
 .tf.loadSavedModel:{[dir;tags;opts;runOpts;gmeta]
-  if[10=type tags; tags:enlist tags]; if[not (-11=type dir)&(all 10=type each tags)&7=type (opts;runOpts;gmeta);'".tf.loadSavedModel: type"];
+  if[-11=type tags; tags:enlist tags]; if[not (-11=type dir)&(11=type tags)&7=type (opts;runOpts;gmeta);'".tf.loadSavedModel: type"];
+  if[opts=0;opts:.tf.i.sessOpts];
   g:.tf.graph.new[];
-  s:.tf.i.lib[`.tf.TF_LoadSessionFromSavedModel][opts;runOpts;dir;tags;g;gmeta;s:.tf.newStatus[]];
+  sess:.tf.i.lib[`.tf.TF_LoadSessionFromSavedModel][opts;runOpts;dir;tags;g;gmeta;s:.tf.newStatus[]];
   if[not `TF_OK=.tf.getStatus s; .tf.graph.del g];
   .tf.checkAndDelStatus s;
-  : (s;g);
+  : (sess;g);
  };
 / Initialize the library.
 / @x symbol tf.so path or `
 .tf.init:{x:$[`=x;`:tf;x:` sv x,`tf]; l:x 2: (`tf__init;1); .tf.i.lib:l[]; .tf.i.sessOpts:.tf.session.newOps[`;0#0x00];};
 .tf.i.const:{
   if[not(c:count x)within 2 4;'".tf.const: args"]; sc:x 0; qdt:x 1;
-  dim:$[(not 7=abs t2:type x 2)&4>c;$[(t=10)|0>t:type qdt;`long();count qdt];7=abs t2;(),x 2;(7=abs type x 3)&4=c;x 3;'".tf.const: dims"];
+  dim:$[(not 7=abs t2:type x 2)&4>c;$[(t=10)|0>t:type qdt;`long$();count qdt];7=abs t2;(),x 2;(7=abs type x 3)&4=c;x 3;'".tf.const: dims"];
   ty:$[0=type qdt;$[all 10=type each qdt;`TF_STRING;`];.tf.i.defTy abs type qdt];
   ty:$[2=c;ty;-11=t2;x 2;(-11=type x 3)&4=c;x 3;ty]; .tf.i.chkTy[".tf.const";ty];
   t:.tf.tensor.alloc[ty;dim;qdt];
@@ -467,7 +468,7 @@
 / @sc dict scope
 / @dt symbol TF datatype
 / option in scope: `shape
-.tf.placeholder:{[sc;dt] a:enlist[`dtype]!enlist .tf.i.chkTy[".tf.placeholder";dt]; if[`shape in key sc;a[`shape]:sc`shape]; .tf.addOp[sc;`Placeholder;();a]};
+.tf.placeholder:{[sc;dt] a:enlist[`dtype]!enlist .tf.i.chkTy[".tf.placeholder";dt]; if[`shape in key sc;a:a,enlist[`shape]!enlist (),sc`shape]; .tf.addOp[sc;`Placeholder;();a]};
 / Matrix multiplication.
 / @sc dict scope
 / @v1 (dict|table) Input 1
@@ -479,6 +480,10 @@
 / @v1 (dict|table) Input 1
 / @v2 (dict|table) Input 2
 .tf.add:{[sc;v1;v2] .tf.addOp[sc;`Add;(.tf.i.chkOut[".tf.add";v1];.tf.i.chkOut[".tf.add";v2]);()]};
+/ AddN.
+/ @sc dict scope
+/ @v1 table Inputs
+.tf.addN:{[sc;v1] .tf.addOp[sc;`AddN;.tf.i.chkOut[".tf.add";v1];()]};
 / Sub.
 / @sc dict scope
 / @v1 (dict|table) Input 1
@@ -497,7 +502,11 @@
 / Neg.
 / @sc dict scope
 / @v1 (dict|table) Input 1
-.tf.neg:{[sc;v1;v2] .tf.addOp[sc;`Neg;.tf.i.chkOut[".tf.neg";v1];()]};
+.tf.neg:{[sc;v1] .tf.addOp[sc;`Neg;.tf.i.chkOut[".tf.neg";v1];()]};
+/ Abs.
+/ @sc dict scope
+/ @v1 (dict|table) Input 1
+.tf.abs:{[sc;v1] .tf.addOp[sc;`Abs;.tf.i.chkOut[".tf.abs";v1];()]};
 / TensorDataset
 / @sc dict scope
 / @i table Inputs
@@ -515,3 +524,8 @@
 / @ty (symbol list) TF types
 / @sh list Shapes
 .tf.iter:{[sc;n;c;ty;sh] if[not(all 7=type each sh)&11=type(n;c);'".tf.iter: type"]; .tf.addOp[sc;`Iterator;();`shared_name`container`output_types`output_shapes!(n;c;.tf.i.chkTy[".tf.iter"] each (),ty;sh)]};
+/ Cast value to type.
+/ @sc dict scope
+/ @v table Input
+/ @t symbol TF type
+.tf.cast:{[sc;v;t] .tf.addOp[sc;`Cast;.tf.i.chkOut[".tf.cast";v];enlist[`DstT]!enlist.tf.i.chkTy[".tf.cast";t]];};

@@ -2799,7 +2799,7 @@ K tf_tf_TF_OperationOutputConsumers__q(K _out){
   // end of statement
 
  __l5:
-  __v=kdot(r1(__consts[60]),knk(2,r1(__consts[148]),r1(_v))); if(0==__v) goto __return;   // 1:[(8 4;"ji");v]
+  __v=kdot(r1(__consts[60]),knk(2,r1(__consts[148]),r1(_v))); if(0==__v) goto __return;   // 1:[("ji ";8 4 4);v]
   __v=kdot(r1(__consts[55]),knk(2,r1(__consts[107]),__v)); if(0==__v) goto __return;   // ![`oper`index;<val>]
   __v=kdot(r1(__consts[8]),knk(1,__v)); if(0==__v) goto __return;   // flip[<val>]
   __v=kdot(r1(__consts[52]),knk(2,r1(_r),__v)); if(0==__v) goto __return;   // #[r;<val>]
@@ -3707,7 +3707,7 @@ K tf_tf_TF_GraphImportGraphDefWithReturnOutputs__q(K _g,K _b,K _o,K _s){
   TF_GraphImportGraphDefWithReturnOutputs((TF_Graph*)_vc_j6,(TF_Buffer*)_vc_j5,(TF_ImportGraphDefOptions*)_vc_j4,(TF_Output*)(void*)_vc_C3,_c_n,(TF_Status*)_vc_j1);  // C.TF_GraphImportGraphDefWithReturnOutputs[<val>;<val>;<val>;<val>;c.n;<val>]
   
   // end of statement
-  __v=kdot(r1(__consts[60]),knk(2,r1(__consts[148]),r1(_v))); if(0==__v) goto __return;   // 1:[(8 4;"ji");v]
+  __v=kdot(r1(__consts[60]),knk(2,r1(__consts[152]),r1(_v))); if(0==__v) goto __return;   // 1:[(8 4;"ji");v]
   __v=kdot(r1(__consts[55]),knk(2,r1(__consts[107]),__v)); if(0==__v) goto __return;   // ![`oper`index;<val>]
   __v=kdot(r1(__consts[8]),knk(1,__v)); if(0==__v) goto __return;   // flip[<val>]
   goto __return;  // return cmd
@@ -3820,7 +3820,7 @@ K tf_tf_setWhileParams__q(K _p,K _name,K _val){
   _c_p=(TF_WhileParams*)(void*)_vc_C1;  // c.p[()]::<val> - no rval, global
   
   // end of statement
-  __v=kdot(r1(__consts[47]),knk(2,r1(_name),r1(__consts[153]))); if(0==__v) goto __return;   // =[name;`cond_output]
+  __v=kdot(r1(__consts[47]),knk(2,r1(_name),r1(__consts[154]))); if(0==__v) goto __return;   // =[name;`cond_output]
   __v=kif(__v); if(0==__v) goto __return; if(0==__v->j) { r0(__v); goto __l3;}; r0(__v);  // if/while check condition
   __v=__K2j_cast(&_vc_j1,r1(_val)); if(0==__v) goto __return; r0(__v);   // `c.j$<val>
   _c_p->cond_output.oper=(TF_Operation*)_vc_j1;  // c.p[`cond_output`oper]::<val> - no rval, global
@@ -3835,16 +3835,16 @@ K tf_tf_setWhileParams__q(K _p,K _name,K _val){
   // end of statement
 
  __l3:
-  __v=kdot(r1(__consts[47]),knk(2,r1(_name),r1(__consts[156]))); if(0==__v) goto __return;   // =[name;`body_outputs]
+  __v=kdot(r1(__consts[47]),knk(2,r1(_name),r1(__consts[157]))); if(0==__v) goto __return;   // =[name;`body_outputs]
   __v=kif(__v); if(0==__v) goto __return; if(0==__v->j) { r0(__v); goto __l8;}; r0(__v);  // if/while check condition
   __v=ki(_c_p->ninputs); if(0==__v) goto __return;   // C.toK[<val>]
-  __v=kdot(r1(__consts[40]),knk(2,r1(__consts[158]),__v)); if(0==__v) goto __return;   // +[-1;<val>]
+  __v=kdot(r1(__consts[40]),knk(2,r1(__consts[159]),__v)); if(0==__v) goto __return;   // +[-1;<val>]
   __v=__enlist(knk(2,r1(__consts[1]),__v)); if(0==__v) goto __return;   // enlist[0;<val>]
   __st[__stc++]=__v; __v=kdot(r1(_val),knk(1,r1(__consts[2]))); if(0==__v) goto __return;   // val[1]
   __v=kdot(r1(__consts[63]),knk(2,__v,__st[__stc-1]));__stc-=1;  if(0==__v) goto __return;   // within[<val>;<val>]
   __v=kdot(r1(__consts[22]),knk(1,__v)); if(0==__v) goto __return;   // not[<val>]
   __v=kif(__v); if(0==__v) goto __return; if(0==__v->j) { r0(__v); goto __l6;}; r0(__v);  // if/while check condition
-  __v=r1(__consts[159]);  // const "Bad while index"
+  __v=r1(__consts[160]);  // const "Bad while index"
   __st[__stc++]=__v;  if(__v->t==-KS) __v=krr(__v->s); else if(__v->t==KC)  __v=krr(sn(kC(__v),__v->n)); else __v=krr("stype"); goto __return;  // raise an exception
   r0(__v); 
   // end of statement
@@ -3869,7 +3869,7 @@ K tf_tf_setWhileParams__q(K _p,K _name,K _val){
   // end of statement
 
  __l8:
-  __v=kdot(r1(__consts[47]),knk(2,r1(_name),r1(__consts[160]))); if(0==__v) goto __return;   // =[name;`name]
+  __v=kdot(r1(__consts[47]),knk(2,r1(_name),r1(__consts[161]))); if(0==__v) goto __return;   // =[name;`name]
   __v=kif(__v); if(0==__v) goto __return; if(0==__v->j) { r0(__v); goto __l11;}; r0(__v);  // if/while check condition
   __v=__K2S_cast(&_vc_S1,r1(_val)); if(0==__v) goto __return; r0(__v);   // `c.S$<val>
   _c_p->name=_vc_S1;  // c.p[,`name]::_vc_S1 - no rval, global
@@ -3881,7 +3881,7 @@ K tf_tf_setWhileParams__q(K _p,K _name,K _val){
   // end of statement
 
  __l11:
-  __v=r1(__consts[162]);  // const "Bad while name"
+  __v=r1(__consts[163]);  // const "Bad while name"
   __st[__stc++]=__v;  if(__v->t==-KS) __v=krr(__v->s); else if(__v->t==KC)  __v=krr(sn(kC(__v),__v->n)); else __v=krr("stype"); goto __return;  // raise an exception
   r0(__v); 
   // end of statement
@@ -3912,7 +3912,7 @@ K tf_tf_TF_FinishWhile__q(K _p,K _s){
   TF_FinishWhile(_c_p,(TF_Status*)_vc_j2,(TF_Output*)(void*)_vc_C1);  // C.TF_FinishWhile[c.p;<val>;<val>]
   
   // end of statement
-  __v=kdot(r1(__consts[60]),knk(2,r1(__consts[148]),r1(_v))); if(0==__v) goto __return;   // 1:[(8 4;"ji");v]
+  __v=kdot(r1(__consts[60]),knk(2,r1(__consts[152]),r1(_v))); if(0==__v) goto __return;   // 1:[(8 4;"ji");v]
   __v=kdot(r1(__consts[55]),knk(2,r1(__consts[107]),__v)); if(0==__v) goto __return;   // ![`oper`index;<val>]
   __v=kdot(r1(__consts[8]),knk(1,__v)); if(0==__v) goto __return;   // flip[<val>]
   __st[__stc++]=__v; __v=ki(_c_p->ninputs); if(0==__v) goto __return;   // C.toK[<val>]
@@ -4000,7 +4000,7 @@ K tf_tf_TF_AddGradients__q(K _g,K _y,K _x,K _dx,K _s){
   TF_AddGradients((TF_Graph*)_vc_j8,(TF_Output*)(void*)_vc_C7,_vc_i6,(TF_Output*)(void*)_vc_C5,_vc_i4,_c_dx,(TF_Status*)_vc_j2,(TF_Output*)(void*)_vc_C1);  // C.TF_AddGradients[<val>;<val>;_vc_i6;<val>;_vc_i4;c.dx;<val>;<val>]
   
   // end of statement
-  __v=kdot(r1(__consts[60]),knk(2,r1(__consts[148]),r1(_v))); if(0==__v) goto __return;   // 1:[(8 4;"ji");v]
+  __v=kdot(r1(__consts[60]),knk(2,r1(__consts[152]),r1(_v))); if(0==__v) goto __return;   // 1:[(8 4;"ji");v]
   __v=kdot(r1(__consts[55]),knk(2,r1(__consts[107]),__v)); if(0==__v) goto __return;   // ![`oper`index;<val>]
   __v=kdot(r1(__consts[8]),knk(1,__v)); if(0==__v) goto __return;   // flip[<val>]
   goto __return;  // return cmd
@@ -4029,7 +4029,7 @@ K tf_tf_TF_GraphToFunction__q(K _g,K _name,K _hash,K _args,K _o,K _d,K _s){
  __l2:
   __v=kdot(r1(__consts[54]),knk(2,r1(_a),r1(__consts[0]))); if(0==__v) goto __return;   // ~[a;()]
   __v=kif(__v); if(0==__v) goto __return; if(0==__v->j) { r0(__v); goto __l4;}; r0(__v);  // if/while check condition
-  __v=r1(__consts[158]);  // const -1
+  __v=r1(__consts[159]);  // const -1
   goto __l5;  // jmp to if end
 
  __l4:
@@ -4042,7 +4042,7 @@ K tf_tf_TF_GraphToFunction__q(K _g,K _name,K _hash,K _args,K _o,K _d,K _s){
   // end of statement
   __v=kdot(r1(__consts[48]),knk(2,r1(_nops),r1(__consts[1]))); if(0==__v) goto __return;   // <[nops;0]
   __v=kif(__v); if(0==__v) goto __return; if(0==__v->j) { r0(__v); goto __l7;}; r0(__v);  // if/while check condition
-  __v=r1(__consts[163]);  // const `long$()
+  __v=r1(__consts[164]);  // const `long$()
   goto __l8;  // jmp to if end
 
  __l7:
@@ -4060,13 +4060,13 @@ K tf_tf_TF_GraphToFunction__q(K _g,K _name,K _hash,K _args,K _o,K _d,K _s){
   goto __l11;  // jmp to if end
 
  __l10:
-  __v=r1(__consts[164]);  // const <val>
+  __v=r1(__consts[165]);  // const <val>
 
  __l11:
   r0(_inp); _inp=__v;  // inp:<val> - no rval, local
   
   // end of statement
-  __v=kdot(r1(_args),knk(1,r1(__consts[165]))); if(0==__v) goto __return;   // args[2]
+  __v=kdot(r1(_args),knk(1,r1(__consts[166]))); if(0==__v) goto __return;   // args[2]
   r0(_a); _a=__v;__v=r1(_a);   // a:<val>
   __v=kdot(r1(__consts[20]),knk(1,__v)); if(0==__v) goto __return;   // count[<val>]
   __v=kif(__v); if(0==__v) goto __return; if(0==__v->j) { r0(__v); goto __l13;}; r0(__v);  // if/while check condition
@@ -4074,7 +4074,7 @@ K tf_tf_TF_GraphToFunction__q(K _g,K _name,K _hash,K _args,K _o,K _d,K _s){
   goto __l14;  // jmp to if end
 
  __l13:
-  __v=r1(__consts[164]);  // const <val>
+  __v=r1(__consts[165]);  // const <val>
 
  __l14:
   r0(_out); _out=__v;  // out:<val> - no rval, local
@@ -4083,12 +4083,12 @@ K tf_tf_TF_GraphToFunction__q(K _g,K _name,K _hash,K _args,K _o,K _d,K _s){
   _c_s=(char**)NULL;  // c.s[()]::<val> - no rval, global
   
   // end of statement
-  __v=kdot(r1(_args),knk(1,r1(__consts[166]))); if(0==__v) goto __return;   // args[3]
+  __v=kdot(r1(_args),knk(1,r1(__consts[167]))); if(0==__v) goto __return;   // args[3]
   r0(_a); _a=__v;__v=r1(_a);   // a:<val>
   __v=kdot(r1(__consts[20]),knk(1,__v)); if(0==__v) goto __return;   // count[<val>]
   __v=kif(__v); if(0==__v) goto __return; if(0==__v->j) { r0(__v); goto __l19;}; r0(__v);  // if/while check condition
   __v=kdot(r1(__consts[20]),knk(1,r1(_a))); if(0==__v) goto __return;   // count[a]
-  __v=kdot(r1(__consts[42]),knk(2,r1(__consts[167]),__v)); if(0==__v) goto __return;   // *[8;<val>]
+  __v=kdot(r1(__consts[42]),knk(2,r1(__consts[168]),__v)); if(0==__v) goto __return;   // *[8;<val>]
   __v=kdot(r1(__consts[52]),knk(2,__v,r1(__consts[120]))); if(0==__v) goto __return;   // #[<val>;0x00]
   r0(_nms); _nms=__v;  // nms:<val> - no rval, local
   
@@ -4115,7 +4115,7 @@ K tf_tf_TF_GraphToFunction__q(K _g,K _name,K _hash,K _args,K _o,K _d,K _s){
   __v=__K2S_cast(&_vc_S2,r1(_d)); if(0==__v) goto __return; r0(__v);   // `c.S$<val>
   __v=__K2j_cast(&_vc_j3,r1(_o)); if(0==__v) goto __return; r0(__v);   // `c.j$<val>
   __v=__K2C_cast(&_vc_C5,r1(_out)); if(0==__v) goto __return; r0(__v);   // `c.C$<val>
-  __v=kdot(r1(_args),knk(1,r1(__consts[165]))); if(0==__v) goto __return;   // args[2]
+  __v=kdot(r1(_args),knk(1,r1(__consts[166]))); if(0==__v) goto __return;   // args[2]
   __v=kdot(r1(__consts[20]),knk(1,__v)); if(0==__v) goto __return;   // count[<val>]
   __v=kdot(r1(__consts[50]),knk(2,r1(__consts[136]),__v)); if(0==__v) goto __return;   // $["i";<val>]
   __v=__K2i_cast(&_vc_i6,__v); if(0==__v) goto __return; r0(__v);   // `c.i$<val>
@@ -4258,18 +4258,7 @@ K tf_tf_TF_NewSession__q(K _x1,K _x2,K _x3){
 K tf_tf_TF_LoadSessionFromSavedModel__q(K _sopt,K _ropt,K _dir,K _tags,K _g,K _gdef,K _st){
   K __st[1]; int __stc=0; K __v=(K)1;
   J* _c_a; J* _vc_J1; J _c_do1; char* _vc_S1; J _vc_j1; J _vc_j2; J _vc_j3; I _vc_i4; char* _vc_S6; J _vc_j7; J _vc_j8; TF_Session* _vc_TF_Session_p1;
-  K _a=r1(__consts[0]); 
-  __v=kdot(r1(__q[15]),knk(2,r1(__q[14]),r1(_tags))); if(0==__v) goto __return;   // each[type;tags]
-  __v=kdot(r1(__consts[62]),knk(2,__v,r1(__consts[168]))); if(0==__v) goto __return;   // in[<val>;10h]
-  __v=kdot(r1(__q[13]),knk(1,__v)); if(0==__v) goto __return;   // all[<val>]
-  __v=kdot(r1(__consts[22]),knk(1,__v)); if(0==__v) goto __return;   // not[<val>]
-  __v=kif(__v); if(0==__v) goto __return; if(0==__v->j) { r0(__v); goto __l2;}; r0(__v);  // if/while check condition
-  __v=r1(__consts[169]);  // const "TF_LoadSessionFromS
-  __st[__stc++]=__v;  if(__v->t==-KS) __v=krr(__v->s); else if(__v->t==KC)  __v=krr(sn(kC(__v),__v->n)); else __v=krr("stype"); goto __return;  // raise an exception
-  r0(__v); 
-  // end of statement
-
- __l2:
+  K _a=r1(__consts[0]); K _t=r1(__consts[0]); 
   __v=kdot(r1(__consts[20]),knk(1,r1(_tags))); if(0==__v) goto __return;   // count[tags]
   __v=kdot(r1(__consts[52]),knk(2,__v,r1(__consts[1]))); if(0==__v) goto __return;   // #[<val>;0]
   r0(_a); _a=__v;  // a:<val> - no rval, local
@@ -4282,17 +4271,18 @@ K tf_tf_TF_LoadSessionFromSavedModel__q(K _sopt,K _ropt,K _dir,K _tags,K _g,K _g
   __v=kdot(r1(__consts[20]),knk(1,r1(_tags))); if(0==__v) goto __return;   // count[tags]
   __v=kif(__v); if(0==__v) goto __return; _c_do1=__v->j; r0(__v);  // check that do value is correct
 
- __l3:
-  if(0>=_c_do1)goto __l5; _c_do1-=1;  // do condition
+ __l1:
+  if(0>=_c_do1)goto __l3; _c_do1-=1;  // do condition
   __v=kj(_c_do1); if(0==__v) goto __return;   // C.toK[c.do1]
   __v=kdot(r1(_tags),knk(1,__v)); if(0==__v) goto __return;   // tags[<val>]
+  r0(_t); _t=__v;__v=r1(_t);   // t:<val>
   __v=__K2S_cast(&_vc_S1,__v); if(0==__v) goto __return; r0(__v);   // `c.S$<val>
   _c_a[_c_do1]=(J)_vc_S1;  // c.a[<val>]::<val> - no rval, global
   
   // end of statement
-  goto __l3;  // jump back to do/while
+  goto __l1;  // jump back to do/while
 
- __l5:
+ __l3:
   __v=__K2j_cast(&_vc_j1,r1(_st)); if(0==__v) goto __return; r0(__v);   // `c.j$<val>
   __v=__K2j_cast(&_vc_j2,r1(_gdef)); if(0==__v) goto __return; r0(__v);   // `c.j$<val>
   __v=__K2j_cast(&_vc_j3,r1(_g)); if(0==__v) goto __return; r0(__v);   // `c.j$<val>
@@ -4311,7 +4301,7 @@ K tf_tf_TF_LoadSessionFromSavedModel__q(K _sopt,K _ropt,K _dir,K _tags,K _g,K _g
   goto __return;  // return cmd
 
  __return:
-  r0(_a); r0(_sopt); r0(_ropt); r0(_dir); r0(_tags); r0(_g); r0(_gdef); r0(_st); 
+  r0(_a); r0(_t); r0(_sopt); r0(_ropt); r0(_dir); r0(_tags); r0(_g); r0(_gdef); r0(_st); 
   while(__stc>0) r0(__st[--__stc]); 
   return __v;
  };
@@ -4360,7 +4350,7 @@ K tf_tf_TF_SessionRun__q(K _sess,K _ropts,K _inp,K _out,K _ops,K _mdata,K _st){
   goto __l3;  // jmp to if end
 
  __l2:
-  __v=r1(__consts[164]);  // const <val>
+  __v=r1(__consts[165]);  // const <val>
 
  __l3:
   r0(_ii); _ii=__v;  // ii:<val> - no rval, local
@@ -4373,7 +4363,7 @@ K tf_tf_TF_SessionRun__q(K _sess,K _ropts,K _inp,K _out,K _ops,K _mdata,K _st){
   goto __l6;  // jmp to if end
 
  __l5:
-  __v=r1(__consts[164]);  // const <val>
+  __v=r1(__consts[165]);  // const <val>
 
  __l6:
   r0(_oo); _oo=__v;  // oo:<val> - no rval, local
@@ -4385,7 +4375,7 @@ K tf_tf_TF_SessionRun__q(K _sess,K _ropts,K _inp,K _out,K _ops,K _mdata,K _st){
   goto __l9;  // jmp to if end
 
  __l8:
-  __v=r1(__consts[163]);  // const <val>
+  __v=r1(__consts[164]);  // const <val>
 
  __l9:
   r0(_it); _it=__v;  // it:<val> - no rval, local
@@ -4397,7 +4387,7 @@ K tf_tf_TF_SessionRun__q(K _sess,K _ropts,K _inp,K _out,K _ops,K _mdata,K _st){
   goto __l12;  // jmp to if end
 
  __l11:
-  __v=r1(__consts[163]);  // const <val>
+  __v=r1(__consts[164]);  // const <val>
 
  __l12:
   r0(_ot); _ot=__v;  // ot:<val> - no rval, local
@@ -4434,16 +4424,15 @@ K tf_tf_TF_SessionRun__q(K _sess,K _ropts,K _inp,K _out,K _ops,K _mdata,K _st){
  };
 K tf_tf_TF_SessionPRunSetup__q(K _sess,K _inp,K _out,K _ops,K _st){
   K __st[1]; int __stc=0; K __v=(K)1;
-  char** _c_p; J _vc_j1; I _vc_i3; J* _vc_J4; I _vc_i5; char* _vc_C6; I _vc_i7; char* _vc_C8; J _vc_j9;
+  char* _c_p; J _vc_j1; I _vc_i3; J* _vc_J4; I _vc_i5; char* _vc_C6; I _vc_i7; char* _vc_C8; J _vc_j9;
   K _ii=r1(__consts[0]); K _oo=r1(__consts[0]); 
   __v=kdot(r1(__consts[20]),knk(1,r1(_inp))); if(0==__v) goto __return;   // count[inp]
   __v=kif(__v); if(0==__v) goto __return; if(0==__v->j) { r0(__v); goto __l2;}; r0(__v);  // if/while check condition
-  __v=kdot(r1(_inp),knk(1,r1(__consts[1]))); if(0==__v) goto __return;   // inp[0]
-  __v=tf_tf_encodeOut__q(__v); if(0==__v) goto __return;   // .tf.encodeOut[<val>]
+  __v=tf_tf_encodeOut__q(r1(_inp)); if(0==__v) goto __return;   // .tf.encodeOut[inp]
   goto __l3;  // jmp to if end
 
  __l2:
-  __v=r1(__consts[164]);  // const <val>
+  __v=r1(__consts[165]);  // const <val>
 
  __l3:
   r0(_ii); _ii=__v;  // ii:<val> - no rval, local
@@ -4451,18 +4440,17 @@ K tf_tf_TF_SessionPRunSetup__q(K _sess,K _inp,K _out,K _ops,K _st){
   // end of statement
   __v=kdot(r1(__consts[20]),knk(1,r1(_out))); if(0==__v) goto __return;   // count[out]
   __v=kif(__v); if(0==__v) goto __return; if(0==__v->j) { r0(__v); goto __l5;}; r0(__v);  // if/while check condition
-  __v=kdot(r1(_out),knk(1,r1(__consts[1]))); if(0==__v) goto __return;   // out[0]
-  __v=tf_tf_encodeOut__q(__v); if(0==__v) goto __return;   // .tf.encodeOut[<val>]
+  __v=tf_tf_encodeOut__q(r1(_out)); if(0==__v) goto __return;   // .tf.encodeOut[out]
   goto __l6;  // jmp to if end
 
  __l5:
-  __v=r1(__consts[164]);  // const <val>
+  __v=r1(__consts[165]);  // const <val>
 
  __l6:
   r0(_oo); _oo=__v;  // oo:<val> - no rval, local
   
   // end of statement
-  _c_p=(char**)(void*)0LL;  // c.p[()]::<val> - no rval, global
+  _c_p=(char*)(void*)0LL;  // c.p[()]::<val> - no rval, global
   
   // end of statement
   __v=__K2j_cast(&_vc_j1,r1(_st)); if(0==__v) goto __return; r0(__v);   // `c.j$<val>
@@ -4479,7 +4467,7 @@ K tf_tf_TF_SessionPRunSetup__q(K _sess,K _inp,K _out,K _ops,K _st){
   __v=__K2i_cast(&_vc_i7,__v); if(0==__v) goto __return; r0(__v);   // `c.i$<val>
   __v=__K2C_cast(&_vc_C8,r1(_ii)); if(0==__v) goto __return; r0(__v);   // `c.C$<val>
   __v=__K2j_cast(&_vc_j9,r1(_sess)); if(0==__v) goto __return; r0(__v);   // `c.j$<val>
-  TF_SessionPRunSetup((TF_Session*)_vc_j9,(TF_Output*)(void*)_vc_C8,_vc_i7,(TF_Output*)(void*)_vc_C6,_vc_i5,(const TF_Operation* const*)(void*)_vc_J4,_vc_i3,(tfc_cchar_p_p)(void*)_c_p,(TF_Status*)_vc_j1);  // C.TF_SessionPRunSetup[<val>;<val>;_vc_i7;<val>;_vc_i5;<val>;_vc_i3;<val>;<val>]
+  TF_SessionPRunSetup((TF_Session*)_vc_j9,(TF_Output*)(void*)_vc_C8,_vc_i7,(TF_Output*)(void*)_vc_C6,_vc_i5,(const TF_Operation* const*)(void*)_vc_J4,_vc_i3,(tfc_cchar_p_p)(void*)&_c_p,(TF_Status*)_vc_j1);  // C.TF_SessionPRunSetup[<val>;<val>;_vc_i7;<val>;_vc_i5;<val>;_vc_i3;<val>;<val>]
   
   // end of statement
   __v=kj((J)_c_p[0]); if(0==__v) goto __return;   // C.toK[<val>]
@@ -4505,7 +4493,7 @@ K tf_tf_TF_SessionPRun__q(K _sess,K _hh,K _inp,K _out,K _ops,K _st){
   goto __l3;  // jmp to if end
 
  __l2:
-  __v=r1(__consts[164]);  // const <val>
+  __v=r1(__consts[165]);  // const <val>
 
  __l3:
   r0(_ii); _ii=__v;  // ii:<val> - no rval, local
@@ -4518,7 +4506,7 @@ K tf_tf_TF_SessionPRun__q(K _sess,K _hh,K _inp,K _out,K _ops,K _st){
   goto __l6;  // jmp to if end
 
  __l5:
-  __v=r1(__consts[164]);  // const <val>
+  __v=r1(__consts[165]);  // const <val>
 
  __l6:
   r0(_oo); _oo=__v;  // oo:<val> - no rval, local
@@ -4530,7 +4518,7 @@ K tf_tf_TF_SessionPRun__q(K _sess,K _hh,K _inp,K _out,K _ops,K _st){
   goto __l9;  // jmp to if end
 
  __l8:
-  __v=r1(__consts[163]);  // const <val>
+  __v=r1(__consts[164]);  // const <val>
 
  __l9:
   r0(_it); _it=__v;  // it:<val> - no rval, local
@@ -4542,7 +4530,7 @@ K tf_tf_TF_SessionPRun__q(K _sess,K _hh,K _inp,K _out,K _ops,K _st){
   goto __l12;  // jmp to if end
 
  __l11:
-  __v=r1(__consts[163]);  // const <val>
+  __v=r1(__consts[164]);  // const <val>
 
  __l12:
   r0(_ot); _ot=__v;  // ot:<val> - no rval, local
@@ -4776,19 +4764,19 @@ static K kamend(K ff,K a,K i,K f,K v){ K res=(K)0, lst=knk(4,a,i,f,v); I r = a->
 static K kamend3(K ff,int isG,K* a,K i,K f){if(isG)r1(*a); I r=(*a)->r; K lst=knk(3,(*a),i,f); if(0==r) (*a)->r-=1; K res=dot(ff,lst); if(0==r) {if((*a)==res) (*a)->r+=1; else kK(lst)[0]=kj(0);}; r0(lst); if((!isG)&&(0==res))a[0]=r1(__consts[0]); if(0!=res){if(isG)r0(*a); a[0]=r1(res);}; return res;};
 static K kamend4(K ff,int isG,K* a,K i,K f,K v){if(isG)r1(*a); K res=kamend(ff,(*a),i,f,v); if((!isG)&&(0==res))a[0]=r1(__consts[0]); if(0!=res){if(isG)r0(*a); a[0]=r1(res);}; return res;};
 static unsigned char __cnstArr[] = 
-  {1,0,0,0,215,6,0,0,0,0,171,0,0,0,0,0,0,0,0,0,249,0,0,0,0,0,0,0,0,249,1,0,0,0,0,0,0,0,102,12,245,0,101,0,101,255,101,0,101,1,101,2,101,3,101,4,101,5,101,6,101,7,101,8,101,9,101,10,101,11,101,41,101,13,101,14,101,15,101,16,101,17,101,18,101,19,101,20,101,21,101,22,101,23,101,24,101,25,101,26,101,27,101,28,101,29,101,30,101,31,102,0,102,1,102,2,102,3,102,4,102,5,102,6,102,7,102,8,102,9,102,10,102,11,102,12,102,13,102,14,102,15,102,16,102,17,102,18,102,19,102,20,102,21,102,22,102,23,102,24,102,25,102,26,102,27,102,28,102,29,102,30,102,31,103,0,103,1,103,2,103,3,103,4,103,5,245,116,0,245,105,0,7,0,1,0,0,0,0,0,
+  {1,0,0,0,217,6,0,0,0,0,170,0,0,0,0,0,0,0,0,0,249,0,0,0,0,0,0,0,0,249,1,0,0,0,0,0,0,0,102,12,245,0,101,0,101,255,101,0,101,1,101,2,101,3,101,4,101,5,101,6,101,7,101,8,101,9,101,10,101,11,101,41,101,13,101,14,101,15,101,16,101,17,101,18,101,19,101,20,101,21,101,22,101,23,101,24,101,25,101,26,101,27,101,28,101,29,101,30,101,31,102,0,102,1,102,2,102,3,102,4,102,5,102,6,102,7,102,8,102,9,102,10,102,11,102,12,102,13,102,14,102,15,102,16,102,17,102,18,102,19,102,20,102,21,102,22,102,23,102,24,102,25,102,26,102,27,102,28,102,29,102,30,102,31,103,0,103,1,103,2,103,3,103,4,103,5,245,116,0,245,105,0,7,0,1,0,0,0,0,0,
   0,0,0,0,0,0,10,0,14,0,0,0,75,50,105,95,99,97,115,116,58,32,116,121,112,101,245,106,0,10,0,14,0,0,0,75,50,106,95,99,97,115,116,58,32,116,121,112,101,245,102,0,10,0,14,0,0,0,75,50,102,95,99,97,115,116,58,32,116,121,112,101,245,103,0,10,0,14,0,0,0,75,50,99,95,99,97,115,116,58,32,116,121,112,101,245,114,0,10,0,16,0,0,0,75,50,73,95,99,97,115,116,58,32,110,111,32,114,101,102,245,71,48,0,10,0,14,0,0,0,75,50,73,95,99,97,115,116,58,32,116,121,112,101,10,0,16,0,0,0,75,50,74,95,99,97,115,116,58,32,110,111,32,114,101,102,10,0,14,0,0,0,75,50,74,95,99,97,115,116,58,32,116,121,112,101,10,0,16,0,0,0,75,50,72,95,99,97,115,116,
   58,32,110,111,32,114,101,102,10,0,14,0,0,0,75,50,72,95,99,97,115,116,58,32,116,121,112,101,10,0,16,0,0,0,75,50,70,95,99,97,115,116,58,32,110,111,32,114,101,102,10,0,14,0,0,0,75,50,70,95,99,97,115,116,58,32,116,121,112,101,10,0,16,0,0,0,75,50,69,95,99,97,115,116,58,32,110,111,32,114,101,102,10,0,14,0,0,0,75,50,69,95,99,97,115,116,58,32,116,121,112,101,10,0,16,0,0,0,75,50,83,95,99,97,115,116,58,32,110,111,32,114,101,102,245,115,0,10,0,28,0,0,0,75,50,83,95,99,97,115,116,58,32,110,111,32,110,117,108,108,32,116,101,114,109,105,110,97,116,111,114,10,0,14,0,0,0,75,50,83,95,99,97,115,116,58,32,116,121,112,101,10,0,16,0,0,0,75,50,67,
   95,99,97,115,116,58,32,110,111,32,114,101,102,10,0,14,0,0,0,75,50,67,95,99,97,115,116,58,32,116,121,112,101,105,2,0,0,0,101,15,102,8,246,32,11,0,2,0,0,0,111,112,101,114,0,105,110,100,101,120,0,249,99,0,0,0,0,0,0,0,10,0,18,0,0,0,96,99,46,84,70,95,73,110,112,117,116,36,58,32,116,121,112,101,0,0,1,0,0,0,10,0,4,0,0,0,111,112,101,114,0,0,1,0,0,0,10,0,5,0,0,0,105,110,100,101,120,10,0,19,0,0,0,96,99,46,84,70,95,79,117,116,112,117,116,36,58,32,116,121,112,101,10,0,5,0,0,0,105,110,100,101,120,10,0,4,0,0,0,111,112,101,114,11,0,4,0,0,0,105,115,95,108,105,115,116,0,108,105,115,116,95,115,105,122,101,0,116,121,112,
   101,0,116,111,116,97,108,95,115,105,122,101,0,10,0,10,0,0,0,116,111,116,97,108,95,115,105,122,101,10,0,4,0,0,0,116,121,112,101,10,0,9,0,0,0,108,105,115,116,95,115,105,122,101,10,0,7,0,0,0,105,115,95,108,105,115,116,252,0,245,108,101,110,103,116,104,0,245,100,97,116,97,0,245,99,46,84,70,95,79,117,116,112,117,116,0,245,111,112,101,114,0,245,105,110,100,101,120,0,10,0,14,0,0,0,67,46,84,70,95,86,101,114,115,105,111,110,58,32,10,0,14,0,0,0,67,46,84,70,95,77,101,115,115,97,103,101,58,32,11,0,1,0,0,0,114,0,5,0,2,0,0,0,4,0,10,0,249,5,0,0,0,0,0,0,0,249,6,0,0,0,0,0,0,0,249,7,0,0,0,0,0,0,0,249,9,0,0,0,0,
   0,0,0,99,5,0,7,0,0,0,4,0,5,0,6,0,7,0,8,0,9,0,10,0,7,0,7,0,0,0,1,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,4,0,0,0,0,0,0,0,8,0,0,0,0,0,0,0,4,0,0,0,0,0,0,0,8,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,10,0,30,0,0,0,84,70,95,78,101,119,84,101,110,115,111,114,58,32,117,110,115,117,112,112,111,114,116,101,100,32,100,97,116,97,246,105,10,0,0,0,0,0,249,98,0,0,0,0,0,0,0,10,0,21,0,0,0,84,70,95,65,100,100,73,110,112,117,116,76,105,115,116,58,32,116,121,112,101,10,0,26,0,0,0,84,70,95,83,101,116,65,116,116,114,83,116,114,105,110,103,76,105,115,116,58,32,116,121,112,101,10,0,
-  25,0,0,0,84,70,95,83,101,116,65,116,116,114,83,104,97,112,101,76,105,115,116,58,32,116,121,112,101,10,0,36,0,0,0,84,70,95,83,101,116,65,116,116,114,84,101,110,115,111,114,83,104,97,112,101,80,114,111,116,111,76,105,115,116,58,32,116,121,112,101,10,0,20,0,0,0,67,46,84,70,95,79,112,101,114,97,116,105,111,110,78,97,109,101,58,32,10,0,22,0,0,0,67,46,84,70,95,79,112,101,114,97,116,105,111,110,79,112,84,121,112,101,58,32,10,0,22,0,0,0,67,46,84,70,95,79,112,101,114,97,116,105,111,110,68,101,118,105,99,101,58,32,105,2,0,0,0,101,15,102,9,245,99,46,84,70,95,73,110,112,117,116,0,0,0,2,0,0,0,7,0,2,0,0,0,8,0,0,0,0,0,0,0,4,0,0,0,0,0,
-  0,0,10,0,2,0,0,0,106,105,105,2,0,0,0,101,15,102,10,98,0,99,11,0,2,0,0,0,111,112,101,114,0,105,110,100,101,120,0,0,0,2,0,0,0,7,0,0,0,0,0,6,0,0,0,0,0,98,0,99,11,0,2,0,0,0,110,97,109,101,0,105,110,100,101,120,0,0,0,2,0,0,0,0,0,0,0,0,0,6,0,0,0,0,0,245,99,46,84,70,95,87,104,105,108,101,80,97,114,97,109,115,0,245,99,111,110,100,95,111,117,116,112,117,116,0,11,0,2,0,0,0,99,111,110,100,95,111,117,116,112,117,116,0,111,112,101,114,0,11,0,2,0,0,0,99,111,110,100,95,111,117,116,112,117,116,0,105,110,100,101,120,0,245,98,111,100,121,95,111,117,116,112,117,116,115,0,245,110,105,110,112,117,116,115,0,249,255,255,255,
-  255,255,255,255,255,10,0,15,0,0,0,66,97,100,32,119,104,105,108,101,32,105,110,100,101,120,245,110,97,109,101,0,11,0,1,0,0,0,110,97,109,101,0,10,0,14,0,0,0,66,97,100,32,119,104,105,108,101,32,110,97,109,101,7,0,0,0,0,0,4,0,0,0,0,0,249,2,0,0,0,0,0,0,0,249,3,0,0,0,0,0,0,0,249,8,0,0,0,0,0,0,0,251,10,0,10,0,34,0,0,0,84,70,95,76,111,97,100,83,101,115,115,105,111,110,70,114,111,109,83,97,118,101,100,77,111,100,101,108,58,32,116,121,112,101,0,0,0,0,0,0};
+  25,0,0,0,84,70,95,83,101,116,65,116,116,114,83,104,97,112,101,76,105,115,116,58,32,116,121,112,101,10,0,36,0,0,0,84,70,95,83,101,116,65,116,116,114,84,101,110,115,111,114,83,104,97,112,101,80,114,111,116,111,76,105,115,116,58,32,116,121,112,101,10,0,20,0,0,0,67,46,84,70,95,79,112,101,114,97,116,105,111,110,78,97,109,101,58,32,10,0,22,0,0,0,67,46,84,70,95,79,112,101,114,97,116,105,111,110,79,112,84,121,112,101,58,32,10,0,22,0,0,0,67,46,84,70,95,79,112,101,114,97,116,105,111,110,68,101,118,105,99,101,58,32,105,2,0,0,0,101,15,102,9,245,99,46,84,70,95,73,110,112,117,116,0,0,0,2,0,0,0,10,0,3,0,0,0,106,105,32,7,0,3,0,0,0,8,0,0,0,0,
+  0,0,0,4,0,0,0,0,0,0,0,4,0,0,0,0,0,0,0,105,2,0,0,0,101,15,102,10,98,0,99,11,0,2,0,0,0,111,112,101,114,0,105,110,100,101,120,0,0,0,2,0,0,0,7,0,0,0,0,0,6,0,0,0,0,0,98,0,99,11,0,2,0,0,0,110,97,109,101,0,105,110,100,101,120,0,0,0,2,0,0,0,0,0,0,0,0,0,6,0,0,0,0,0,0,0,2,0,0,0,7,0,2,0,0,0,8,0,0,0,0,0,0,0,4,0,0,0,0,0,0,0,10,0,2,0,0,0,106,105,245,99,46,84,70,95,87,104,105,108,101,80,97,114,97,109,115,0,245,99,111,110,100,95,111,117,116,112,117,116,0,11,0,2,0,0,0,99,111,110,100,95,111,117,116,112,117,116,0,111,112,101,114,0,11,0,2,0,0,0,
+  99,111,110,100,95,111,117,116,112,117,116,0,105,110,100,101,120,0,245,98,111,100,121,95,111,117,116,112,117,116,115,0,245,110,105,110,112,117,116,115,0,249,255,255,255,255,255,255,255,255,10,0,15,0,0,0,66,97,100,32,119,104,105,108,101,32,105,110,100,101,120,245,110,97,109,101,0,11,0,1,0,0,0,110,97,109,101,0,10,0,14,0,0,0,66,97,100,32,119,104,105,108,101,32,110,97,109,101,7,0,0,0,0,0,4,0,0,0,0,0,249,2,0,0,0,0,0,0,0,249,3,0,0,0,0,0,0,0,249,8,0,0,0,0,0,0,0,0,0,0,0,0,0};
 static K tf__cnstInit() {
   K v = ktn(KG,sizeof(__cnstArr)); DO(v->n,kG(v)[i]=__cnstArr[i]);
   K res=d9(v); r0(v); if((0==res)||(-128==res->t)) { __ginited=0; return res;}; __consts=(K*)res->G0;
-  __wglobals=__consts[170];
+  __wglobals=__consts[169];
   return (K)1;
  };
 
