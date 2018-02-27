@@ -318,8 +318,8 @@
 .tf.tensor.alloc:{
   if[not 7=type y:(),y;'".tf.tensor.alloc: type"];
   .tf.i.chkTy[".tf.tensor.alloc";x];
-  $[(str:x=`TF_STRING)&(all 10=type each z)|10=type z;1;null .tf.i.dt x;'".tf.tensor.alloc: unsupported data type";(.tf.i.qdt abs type z)=.tf.i.dt x;1;'".tf.tensor.alloc: incompatible TF and Q types"];
-  z:$[10=type z; z:enlist z;0>type z;(),z;z]; if[not count[z]=size:(1^.tf.i.t2q x)*prd y;'".tf.tensor.alloc: size"];
+  $[(str:x=`TF_STRING)&(all (type each z)in 4 10)|10=type z;1;null .tf.i.dt x;'".tf.tensor.alloc: unsupported data type";(.tf.i.qdt abs type z)=.tf.i.dt x;1;'".tf.tensor.alloc: incompatible TF and Q types"];
+  z:$[str&0<>type z; z:enlist z;0>type z;(),z;z]; if[not count[z]=size:(1^.tf.i.t2q x)*prd y;'".tf.tensor.alloc: size"];
   if[str;size:(8*count z)+sum {.tf.i.lib[`.tf.TF_StringEncodedSize]count x}each z];
   if[0=t:.tf.i.lib[`.tf.TF_AllocateTensor]["i"$key[.tf.i.dt]?x;y;size*(1^.tf.i.dt x)];'".tf.tensor.alloc: alloc"];
   ptr:.tf.i.lib[`.tf.TF_TensorData]t;
