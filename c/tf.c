@@ -4470,7 +4470,7 @@ K tf_tf_TF_SessionPRunSetup__q(K _sess,K _inp,K _out,K _ops,K _st){
   TF_SessionPRunSetup((TF_Session*)_vc_j9,(TF_Output*)(void*)_vc_C8,_vc_i7,(TF_Output*)(void*)_vc_C6,_vc_i5,(const TF_Operation* const*)(void*)_vc_J4,_vc_i3,(tfc_cchar_p_p)(void*)&_c_p,(TF_Status*)_vc_j1);  // C.TF_SessionPRunSetup[<val>;<val>;_vc_i7;<val>;_vc_i5;<val>;_vc_i3;<val>;<val>]
   
   // end of statement
-  __v=kj((J)_c_p[0]); if(0==__v) goto __return;   // C.toK[<val>]
+  __v=kj((J)_c_p); if(0==__v) goto __return;   // C.toK[<val>]
   goto __return;  // return cmd
   r0(__v); 
   // end of statement

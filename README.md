@@ -153,10 +153,10 @@ Operations are defined in `.tf.ops.ops`. Help is not provided, use TF website (h
 Add an operation to a graph:
 ```
 / @scope dict graph, namespace, dependencies
-/ @t string operation type as in ops.q (`FloorMod and etc).
+/ @t symbol operation type as in ops.q (`FloorMod and etc).
 / @i (dict|table|list) Inputs. For the single input should be a table/dict. Otherwise 0 type list.
-/ @a dict Optional attributes. Attribute values are string/str list/(), long/long list, float/double atom/list, bool/bool list, datatype(as a symbol)/symbol list, (`tensor;long/long list)
-/ @returns table Operation outputs (even if there is no outputs - dummy tbl is returned).
+/ @a dict Optional attributes. Attribute values are string/str list/(), long/long list, float/double atom/list, bool/bool list, datatype(as a symbol)/symbol list, tensor or shape - long/long list
+/ @returns table Operation outputs (even if there are no outputs - dummy tbl is returned).
 out:.tf.addOp[sc:.tf.newScope .tf.graph.new[];`ShapeN;([] oper:(op1;op2); index: 0 1i);()]
 out:.tf.addOp[scope;`Placeholder;();`dtype`shape!(`TF_FLOAT;10)]
 ```

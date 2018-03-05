@@ -341,7 +341,7 @@
   c.C.p:`c.C$`c.void_p$`c.j$0;
   C.TF_SessionPRunSetup[`c.TF_Session_p$sess;`c.TF_Output_p$`c.void_p$`c.C$ii;`c.i$"i"$count inp;`c.TF_Output_p$`c.void_p$`c.C$oo;`c.i$"i"$count out;
     `c.ccTF_Operation_p_p$`c.void_p$`c.J$ops;`c.i$"i"$count ops;`c.cchar_p_p$`c.void_p$(&)c.p;`c.TF_Status_p$st];
-  : C.toK `c.j$c.p 0; / handle pointer
+  : C.toK `c.j$c.p; / handle pointer
  };
 / void TF_SessionPRun(TF_Session*, const char* handle,const TF_Output* inputs, TF_Tensor* const* input_values, int ninputs,
 /     const TF_Output* outputs, TF_Tensor** output_values, int noutputs, const TF_Operation* const* target_opers, int ntargets,TF_Status*)

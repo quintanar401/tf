@@ -7,8 +7,8 @@
   sess:.tf.newSession[g;0];
   t:.tst.getImage[hsym i];
   o:.tf.session.run[sess;`oper`index`tensor!(.tf.ops.getOpByName[g;`input];0i;t);`oper`index!(.tf.ops.getOpByName[g;`output];0i);();0;0];
-  v:v i:iasc v:.tf.tensor.value o 0; / the output tensor is an array of vectors, but with 1 example it is just a vector
-  -1 "\nTop 5 predictions"; {-1 string[.tst.labels y],"(",x,")"}'[5#v;5#i];
+  v:v i:idesc v:.tf.tensor.value o 0; / the output tensor is an array of vectors, but with 1 example it is just a vector
+  -1 "\nTop 5 predictions"; {-1 .tst.labels[y],"(",string[x],")"}'[5#v;5#i];
   .tf.delSession sess;
   .tf.tensor.del each t,o;
  };

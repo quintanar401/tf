@@ -5,10 +5,10 @@
   z:.tf.add[s;x;y];
   sess:.tf.newSession[s;0];
   i:x,y;
-  i[`tensor]:.tf.tensor.alloc[`TF_INT32;1;7];
+  i[`tensor]:.tf.tensor.alloc[`TF_INT32;1;7i];
   r:.tf.session.run[sess;i;z;();0;0];
   if[not 1=count r;'"unexpected return val"];
-  if[not enlist[14i]=v:.tf.tensor.value r 0;'"wrong value: ",.Q.s1 v];
+  if[not enlist[14i]~v:.tf.tensor.value r 0;'"wrong value: ",.Q.s1 v];
   .tf.tensor.del each r;
   .tf.delSession sess;
   .tf.delScope s;
@@ -23,7 +23,7 @@
   if[not 2=count l:.tf.ops.outputs o;'"wrong output: ",.Q.s1 l];
   if[not 2=l:.tf.ops.inputLength[o;`input];'"wrong input length: ",string l];
   if[not 2=count l:.tf.ops.inputs o;'"wrong output: ",.Q.s1 l];
-  .tf.delScope[];
+  .tf.delScope[s];
  };
 
 .t.testOp:{
@@ -38,5 +38,5 @@
   if[not (flip`oper`index`dtype!(2#o;0 1i;2#`TF_INT64))~v:.tf.ops.inputs o;'"wrong inputs: ",.Q.s1 v];
   if[not c1[0;`oper]=v:(.tf.ops.producer`oper`index!(o;0i))`oper;'"wrong producer: ",string v];
   if[not (op1[0]`oper;op2[0]`oper)~v:(.tf.ops.consumers`oper`index!(o;0i))`oper;'"wrong consumers: ",.Q.s1 v];
-  .tf.delScope[];
+  .tf.delScope[s];
  };
