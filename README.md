@@ -2,6 +2,8 @@
 
 You need to have `tensorflow.so` in your library path.
 
+Also you need to compile tf.c into tf.so (see instructions in c/README.md).
+
 A thin wrapper for TF. Expects that `.tf.ops.inp`, `.tf.ops.att` and `.tf.ops.ops` tables are initialized (load `c/ops.q`). Call `.tf.init[path_to_tf.so]` to initialize:
 ```
 \l c/ops.q
